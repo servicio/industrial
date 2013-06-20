@@ -27,3 +27,10 @@
     </center>
 </body>
 </html>
+
+<?php
+echo 'hola';
+
+
+
+?>
