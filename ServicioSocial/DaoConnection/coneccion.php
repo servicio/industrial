@@ -24,7 +24,10 @@ class coneccion {
         }
         return $link;
     }
-
+    function cerrarseBD(){
+        
+        mysql_close();
+    }
 }
 
 ?>
