@@ -1,15 +1,4 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of coneccion
- *
- * @author Comodoro
- */
 class coneccion {
 
     function conectarse() {
@@ -18,7 +7,7 @@ class coneccion {
             echo "Error conectando a la base de datos.";
             exit();
         }
-        if (!mysql_select_db("10d2", $link)) {
+        if (!mysql_select_db("prototipo", $link)) {
             echo "Error seleccionando la base de datos.";
             exit();
         }
