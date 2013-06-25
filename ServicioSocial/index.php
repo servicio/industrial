@@ -3,7 +3,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="css/css.css">
         <link rel="stylesheet" type="text/css" href="bootsTrap/css/bootstrap.css"/>
         <script src="bootsTrap/js/jquery.min.js"></script>
         <script src="bootsTrap/js/bootstrap.js"></script>
@@ -27,10 +26,3 @@
     </center>
 </body>
 </html>
-
-<?php
-echo 'hola';
-
-
-
-?>
