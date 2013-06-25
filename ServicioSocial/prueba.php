@@ -1,6 +1,8 @@
 <?php
+
 include './clases/usuario.php';
 include './Dao/daoServicio.php';
+
 $usuario = new usuario();
 $usuario->setUsuario("e09080264");
 $usuario->setPassword("pjgt");
