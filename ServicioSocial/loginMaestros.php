@@ -14,14 +14,14 @@
         <div class="hero-unit">
             <h1 style="color: blue">Login Maestros</h1><br>
             <form>
-            <div class="control-group"> 
-   Usuario: &nbs; <input type="text" id="inputEmail" placeholder="Usuario"><br>
-   Password:&nbsp <input type="password" id="inputPassword" placeholder="Password">
-   <br>
-        <input type="checkbox"> Remember me
-         <button type="submit" class="btn">Entrar</button>
-         </div>  
-                </form>
+                <div class="control-group"> 
+                    <input type="text" id="inputEmail" placeholder="Usuario"><br>
+                    <input type="password" id="inputPassword" placeholder="Password">
+                    <br>
+                    <input type="checkbox"> Remember me
+                    <button type="submit" class="btn">Entrar</button>
+                </div>  
+            </form>
         </div>
     </center>
 </body>
