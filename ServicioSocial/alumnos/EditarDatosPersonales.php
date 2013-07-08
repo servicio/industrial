@@ -1,7 +1,8 @@
 <?php
+include '../clases/alumnos.php';
+include '../DaoConnection/coneccion.php';
+$alumnos = new alumnos();
+$dServicio = new daoServicio();
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 ?>

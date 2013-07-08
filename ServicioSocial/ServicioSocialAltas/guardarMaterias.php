@@ -1,8 +1,8 @@
 <?php
 
-include '../clases/historial.php';
+include '../clases/historialAcademico.php';
 include '../Dao/daoServicio.php';
-$historial = new historial();
+$historial = new historialAcademico();
 $dao = new daoServicio();
 $historial->setUsuario($_GET["matricula"]);
 $historial->setIdMateria($_GET["materia"]);

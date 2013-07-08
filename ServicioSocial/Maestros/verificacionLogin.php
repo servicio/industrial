@@ -4,7 +4,7 @@ include '../clases/usuario.php';
 include '../Dao/daoServicio.php';
 $usuario = new usuario();
 $dServicio = new daoServicio();
-$usuario->setUsuario($_GET["usuario"]);
+$usuario->setUsuario($_GET["usua"]);
 $usuario->setPassword($_GET["pass"]);
 $paso = $dServicio->verificacion_de_ingreso($usuario);
 if ($paso == true) {
