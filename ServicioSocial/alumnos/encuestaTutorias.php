@@ -1,3 +1,5 @@
+<?php include './plantilla.php';
+?>
 <html>
     
     <link rel="stylesheet" type="text/css" href="..css/css.css">
@@ -5,172 +7,157 @@
     <script src="..bootsTrap/js/jquery.min.js"></script>
     <script src="..bootsTrap/js/bootstrap.js"></script>
     
-    <form>  
+    <form name="cuestionario" action="guardarEncuesta.php">
      1.-¿Con quien vives?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Padre</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Madre </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Ambos</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = false">
-        especifica <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
+        
+            <input type="radio" name="LugarViviendo" value="opción1" id="RadioGroup1_0" onClick="opcion1.disabled = true">
+            Padre
+            <input type="radio" name="LugarViviendo" value="opción2" id="RadioGroup1_1" onClick="opcion1.disabled = true">
+            Madre 
+            <input type="radio" name="LugarViviendo "value="opción3" id="RadioGroup1_2" onClick="opcion1.disabled = true">
+            Ambos
+        <input type="radio" name="LugarViviendo" value="opción4" id="RadioGroup1_2" onClick="opcion1.disabled = false">
+        especifica <input name="opcion1" type="text" disabled="disabled"> <br>
    
-    <form>
-        2.-¿Cual es el estado civil de tus padres? <br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Casados</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            divorciados </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Union libre</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = false">
-        otro(especifica) <input name="opcion" type="text" disabled="disabled"> </label> <br>
-
-    </form>
+   
     
-    <form>
+        2.-¿Cual es el estado civil de tus padres? <br>
+        
+            <input type="radio" name="EstCivilPadre" value="opción1" id="RadioGroup1_0" onClick="opcion2.disabled = true">
+            Casados
+        
+            <input type="radio" name="EstCivilPadre" value="opción2" id="RadioGroup1_1" onclick="opcion2.disabled = true">
+            divorciados
+            <input type="radio" name="EstCivilPadre" value="opción3" id="RadioGroup1_2" onclick="opcion2.disabled = true">
+            Union libre
+        <input type="radio" name="EstCivilPadre" value="opción4" id="RadioGroup1_2" onclick="opcion2.disabled = false">
+        otro(especifica) <input name="opcion2" type="text" disabled="disabled">  <br>
+
+   
+    
+   
         3.-¿Que escolaridad tiene tu.. <br>
         3.1.-padre?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Primaria</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Secundaria </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Bachillerato</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+        
+            <input type="radio" name="EscPadre" value="opción1" id="RadioGroup1_0" onClick="opcion3.disabled = true">
+            Primaria
+            <input type="radio" name="EscPadre" value="opción2" id="RadioGroup1_1" onclick="opcion3.disabled = true">
+            Secundaria 
+            <input type="radio" name="EscPadre" value="opción3" id="RadioGroup1_2" onclick="opcion3.disabled = true">
+            Bachillerato
+        <input type="radio" name="EscPadre" value="opción4" id="RadioGroup1_2" onclick="opcion3.disabled = true">
         Profesional 
-        <input type="radio" name="RadioGroup1" value="opción5" id="RadioGroup1_2" onclick="opcion.disabled = false">
+        <input type="radio" name="EscPadre" value="opción5" id="RadioGroup1_2" onclick="opcion3.disabled = false">
         Otro 
-        <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
+        <input name="opcion3" type="text" disabled="disabled">  <br>
     
-    <form>
+    
+    
         3.2.-madre?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Primaria</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Secundaria </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Bachillerato</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+        
+            <input type="radio" name="EscMadre" value="opción1" id="RadioGroup1_0" onClick="opcion3y2.disabled = true">
+            Primaria
+            <input type="radio" name="EscMadre" value="opción2" id="RadioGroup1_1" onclick="opcion3y2.disabled = true">
+            Secundaria 
+            <input type="radio" name="EscMadre" value="opción3" id="RadioGroup1_2" onclick="opcion3y2.disabled = true">
+            Bachillerato
+        <input type="radio" name="EscMadre" value="opción4" id="RadioGroup1_2" onclick="opcion3y2.disabled = true">
         Profesional 
-        <input type="radio" name="RadioGroup1" value="opción5" id="RadioGroup1_2" onclick="opcion.disabled = false">
+        <input type="radio" name="EscMadre" value="opción5" id="RadioGroup1_2" onclick="opcion3y2.disabled = false">
         Otro 
-        <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
-   
-    <form>
-        4.-¿Cuanto es el ingreso econocmico familiar mensual aproximado de tu familia?<br>
-        $<input type="text" name="pregunta4"> 
-
-    </form>
-
-    <form>
-        5.-Cuantos hermanos son en tu familia incluyéndote?<br>
-        <input type="text" name="pregunta5">
-    </form>
+        <input name="opcion3y2" type="text" disabled="disabled">  <br>
     
-    <form>
-        6.-¿con quien platicas cuando tienes un problema personal?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Padre</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Madre </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Ambos</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
-        Hermanos 
-        <input type="radio" name="RadioGroup1" value="opción5" id="RadioGroup1_2" onclick="opcion.disabled = false">
-        Otro(Especifica) 
-        <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
+   
+    
+        4.-¿Cuanto es el ingreso econocmico familiar mensual aproximado de tu familia?<br>
+        $<input type="text" name="IngresosMenFam"> <br>
 
-    <form>
+    
+
+    
+        5.-Cuantos hermanos son en tu familia incluyéndote?<br>
+        <input type="text" name="pregunta5"><br>
+    
+    
+    
+        6.-¿con quien platicas cuando tienes un problema personal?<br>
+        
+            <input type="radio" name="Pregunta6" value="opción1" id="RadioGroup1_0" onClick="opcion6.disabled = true">
+            Padre
+        
+            <input type="radio" name="Pregunta6" value="opción2" id="RadioGroup1_1" onclick="opcion6.disabled = true">
+            Madre 
+        
+            <input type="radio" name="Pregunta6" value="opción3" id="RadioGroup1_2" onclick="opcion6.disabled = true">
+            Ambos
+        <input type="radio" name="Pregunta6" value="opción4" id="RadioGroup1_2" onclick="opcion6.disabled = true">
+        Hermanos 
+        <input type="radio" name="Pregunta6" value="opción5" id="RadioGroup1_2" onclick="opcion6.disabled = false">
+        Otro(Especifica) 
+        <input name="opcion6" type="text" disabled="disabled">  <br>
+    
+
+    
         6.-¿Cómo te llevas con tu…<br>
        6.1 Padre ?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Bien</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Regular </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Mal</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+        
+            <input type="radio" name="RelacionPadre" value="opción1" id="RadioGroup1_0" onClick="opcion6.disabled = true">
+            Bien
+            <input type="radio" name="RelacionPadre" value="opción2" id="RadioGroup1_1" onclick="opcion6.disabled = true">
+            Regular
+            <input type="radio" name="RelacionPadre" value="opción3" id="RadioGroup1_2" onclick="opcion6.disabled = true">
+            Mal
+        <input type="radio" name="RelacionPadre" value="opción4" id="RadioGroup1_2" onclick="opcion6.disabled = true">
         No convivo
         <br>
-    </form>
+    
   
-    <form>
+   
         6.2Madre?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Bien</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Regular </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Mal</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+       
+            <input type="radio" name="RelacionMadre" value="opción1" id="RadioGroup1_0" onClick="opcion6y2.disabled = true">
+            Bien
+            <input type="radio" name="RelacionMadre" value="opción2" id="RadioGroup1_1" onclick="opcion6y2.disabled = true">
+            Regular 
+            <input type="radio" name="RelacionMadre" value="opción3" id="RadioGroup1_2" onclick="opcion6y2.disabled = true">
+            Mal
+        <input type="radio" name="RelacionMadre" value="opción4" id="RadioGroup1_2" onclick="opcion6y2.disabled = true">
         No convivo
         <br>
-    </form>
+   
 
-    <form>
+    
         6.3.-Hermanos?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Bien</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Regular </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Mal</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+      
+            <input type="radio" name="Pregunta6y3" value="opción1" id="RadioGroup1_0" onClick="opcion6y3.disabled = true">
+            Bien
+            <input type="radio" name="Pregunta6y3" value="opción2" id="RadioGroup1_1" onclick="opcion6y3.disabled = true">
+            Regular 
+            <input type="radio" name="Pregunta6y3" value="opción3" id="RadioGroup1_2" onclick="opcion6y3.disabled = true">
+            Mal
+        <input type="radio" name="Pregunta6y3" value="opción4" id="RadioGroup1_2" onclick="opcion6y3.disabled = true">
         No convivo
 
         <br>
-    </form>
     
-    <form>
+    
+   
         7.-¿Quién sostiene económicamente tus estudios?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Padre</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            Madre </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Ambos</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+       
+            <input type="radio" name="FuenteIngreso" value="opción1" id="RadioGroup1_0" onClick="opcion7.disabled = true">
+            Padre
+            <input type="radio" name="FuenteIngreso" value="opción2" id="RadioGroup1_1" onclick="opcion7.disabled = true">
+            Madre 
+            <input type="radio" name="FuenteIngreso" value="opción3" id="RadioGroup1_2" onclick="opcion7.disabled = true">
+            Ambos
+        <input type="radio" name="FuenteIngreso" value="opción4" id="RadioGroup1_2" onclick="opcion7.disabled = true">
         Hermanos
-        <input type="radio" name="RadioGroup1" value="opción5" id="RadioGroup1_2" onclick="opcion.disabled = false">
+        <input type="radio" name="FuenteIngreso" value="opción5" id="RadioGroup1_2" onclick="opcion7.disabled = false">
         Otro (Especifica)  
-        <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
+        <input name="opcion7" type="text" disabled="disabled">  <br>
     
-    <form>
+    
+   
        8.- Menciona las escuelas donde has estudiado el bachillerato, indicando los grados estudiados en caso de haber estudiado en mas de una escuela.<br>
         <table width="440" border="1" cellspacing="dsadasdasdsa" cellpadding="dsadasddd">
             <tr>
@@ -196,230 +183,192 @@
                 <td><input type="text" name="textfield9" id="textfield9"></td>
             </tr>
         </table>
-    </form>
     
-    <form>
+    
+   
         9.-Que materias te gustan mas?<br>
-        <input type="text" name="alguno"> <br>
-    </form>
+        <input type="text" name="HabMaterias"> <br>
     
-    <form>
+    
+   
         10.-Realizas otros estudios fuera de tecnológico?especifica<br>
 
 
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-        <label>
-            cuales:<input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
+        
+            <input type="radio" name="EstudiosExtTec" value="opción1" id="RadioGroup1_0" onClick="opcion10.disabled = false">
+            Si
+            <input type="radio" name="EstudiosExtTec" value="opción2" id="RadioGroup1_1" onclick="opcion10.disabled = true">
+            No 
+            cuales:<input name="opcion10" type="text" disabled="disabled">  <br>
+   
     
-    <form name="form1" method="post" action="">
+   
 
        11.-Marca dos actividades que realices como pasatiempo<br> 
 
 
-        <label>
-            <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_0">
-            Cine </label>
+        
+            <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_0">
+            Cine
+            <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_1">
+            Conciertos 
 
-        <label>
-            <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_1">
-            Conciertos </label>
-
-        <label>
-            <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_2">
+            <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_2">
             Actividades Culturales
-        </label>
+            <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_3">
+            bibliotecas 
+            <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_4">
+            bailar 
+            <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_5">
+            fiestas 
+        <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_5">
+        VideoJuegos 
+        <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_5">
+        Compras 
+        <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_5">
+        Deportes
 
-        <label>
-            <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_3">
-            bibliotecas </label>
-
-        <label>
-            <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_4">
-            bailar </label>
-
-        <label>
-            <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_5">
-            fiestas </label>
-
-        <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_5">
-        VideoJuegos </label>
-
-        <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_5">
-        Compras </label>
-        <input type="checkbox" name="CheckboxGroup1" value="casilla de verificación " id="CheckboxGroup1_5">
-        Deportes </label>
-    </form>
-
-    <form>
+        <br>
         12.-Trabajas actualmente?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-
+        
+            <input type="radio" name="Trabajas" value="opción1" id="RadioGroup1_0" onClick="opcion12.disabled = false" >
+            Si
+            <input type="radio" name="Trabajas" value="opción2" id="RadioGroup1_1" onClick="opcion12.disabled = true" >
+            No <br>
        12.1.- En que trabajas?<br>
-        <input name="opcion" type="text" disabled="disabled">  <br>
+       <input name="DondeTrabajas" type="text" disabled="disabled" >  <br>
       
       12.2.- ¿cual es el motivo por el cual laboras?<br>
 
-        <input name="opcion" type="text" disabled="disabled">  <br>
-    </form>
+        <input name="PorqTrab" type="text" disabled="disabled">  <br>
+   12.3.- ¿Ocupacion en el trabajo?<br>
+    <input name="OcupacionTrab" type="text" disabled="disabled">  <br>
     
-    <form> 
+    
         13.-Cuales son las razones por la que ingrsaste al tecnológico?
-        <label>
-            <br><input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Porque esta es la escuela que desean mis padres.</label><br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            porque no es cara la colegiatura. </label><br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
+      
+            <br><input type="radio" name="IngresastRazTec" value="opción1" id="RadioGroup1_0" onClick="opcion13.disabled = true">
+            Porque esta es la escuela que desean mis padres.  <label>
+            <input type="radio" name="IngresastRazTec" value="opción2" id="RadioGroup1_1" onclick="opcion13.disabled = true">
+            porque no es cara la colegiatura. 
+       
+            <input type="radio" name="IngresastRazTec" value="opción3" id="RadioGroup1_2" onclick="opcion13.disabled = true">
             Porque la institucion tiene prestigio</label><br>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+        <input type="radio" name="IngresastRazTec" value="opción4" id="RadioGroup1_2" onclick="opcion13.disabled = true">
         porque tiene buenos egresados. <br>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+        <input type="radio" name="IngresastRazTec" value="opción4" id="RadioGroup1_2" onclick="opcion13.disabled = true">
         Porque no alcanze cupo en otra escuela. <br>
-        <input type="radio" name="RadioGroup1" value="opción5" id="RadioGroup1_2" onclick="opcion.disabled = false">
+        <input type="radio" name="IngresastRazTec" value="opción5" id="RadioGroup1_2" onclick="opcion13.disabled = false">
         Otro(Especifica) 
-        <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
+        <input name="opcion13" type="text" disabled="disabled">  <br>
     
-    <form>
+    
+    
        14.- Cuales son las razones por la que ingresaste a la carrera?<br>
 
-        <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-        porque espero ganar mucho dinero con ella. </label><br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            Porque les la carrera que he elegido y me apasiona</label><br>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+        <input type="radio" name="IngresastRazCar" value="opción2" id="RadioGroup1_1" onclick="opcion14.disabled = true">
+        porque espero ganar mucho dinero con ella. 
+        
+            <input type="radio" name="IngresastRazCar" value="opción3" id="RadioGroup1_2" onclick="opcion14.disabled = true">
+            Porque les la carrera que he elegido y me apasiona
+        <input type="radio" name="IngresastRazCar" value="opción4" id="RadioGroup1_2" onclick="opcion14.disabled = true">
         por su plan de estudios. <br>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
+        <input type="radio" name="IngresastRazCar" value="opción4" id="RadioGroup1_2" onclick="opcion14.disabled = true">
         Porque no hubo cupo en la carrera que me interesa. <br>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
-        Porque es la carrera que desena mis padres. <br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Porque es la unica escuela que da esta carrera.</label><br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción5" id="RadioGroup1_2" onclick="opcion.disabled = false">
+        <input type="radio" name="IngresastRazCar" value="opción4" id="RadioGroup1_2" onclick="opcion14.disabled = true">
+        Porque es la carrera que desena mis padres. 
+            <input type="radio" name="IngresastRazCar" value="opción1" id="RadioGroup1_0" onClick="opcion14.disabled = true">
+            Porque es la unica escuela que da esta carrera.
+            <input type="radio" name="IngresastRazCar" value="opción5" id="RadioGroup1_2" onclick="opcion14.disabled = false">
             Otro(Especifica) 
-            <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
-
-    <form>
-       15.- ¿Padece alguna alergia?
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-        <br>
-        ¿cual?  <input name="opcion" type="text" disabled="disabled"> </label> <br>
-
-    </form>
-    <form>
-       16.- Padece alguna enfermedad crónica? 
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-        <br>
-        ¿Cuál?  <input name="opcion" type="text" disabled="disabled"> </label> <br>
-
-    </form>
-    <form>
-       17.- Has recibido atención psicológica? 
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-        <br>
-        Especifica que tipo <input name="opcion" type="text" disabled="disabled"> </label> <br>
-
-
-    </form><br>
-    
-    <form>
-        18.-Donde recibes atención medica?<br>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = true">
-            Imss</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            issste </label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción3" id="RadioGroup1_2" onclick="opcion.disabled = true">
-            h. militar</label>
-        <input type="radio" name="RadioGroup1" value="opción4" id="RadioGroup1_2" onclick="opcion.disabled = true">
-        particular  <br>
-    </form>
-  
-    <form>
-       19-. ¿fumas?
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-        <br>
-    </form>
-    
-    <form>
-        20.-Consumes bebidas embriagantes?
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-        <br>
-    </form>
+            <input name="opcion14" type="text" disabled="disabled">  <br>
    
-    <form>
-        21.-Has tenido problemas legales? 
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label>
-        <br>
-        especifica el motivo <input name="opcion" type="text" disabled="disabled"> </label> <br>
-    </form>
+
     
-    <form>
+       15.- ¿Padece alguna alergia?<br>
+       
+            <input type="radio" name="Alergias" value="opción1" id="RadioGroup1_0" onClick="CualAlergia.disabled = false">
+            Si
+            <input type="radio" name="Alergias" value="opción2" id="RadioGroup1_1" onclick="CualAlergia.disabled = true">
+            No         <br>
+        ¿cual?  <input name="CualAlergia" type="text" disabled="disabled"> </label> <br>
+
+    
+    
+       16.- Padece alguna enfermedad crónica? <br>
+        
+            <input type="radio" name="Cronica" value="opción1" id="RadioGroup1_0" onClick="CronicaCual.disabled = false">
+            Si
+            <input type="radio" name="Cronica" value="opción2" id="RadioGroup1_1" onclick="CronicaCual.disabled = true">
+            No         <br>
+        ¿Cuál?  <input name="CronicaCual" type="text" disabled="disabled">  <br>
+
+    
+    
+       17.- Has recibido atención psicológica? 
+      
+            <input type="radio" name="AtencionPsi" value="opción1" id="RadioGroup1_0" onClick="CualAtencionPsi.disabled = false">
+            Si
+            <input type="radio" name="AtencionPsi" value="opción2" id="RadioGroup1_1" onclick="CualAtencionPsi.disabled = true">
+            No 
+        <br>
+        Especifica que tipo <input name="CualAtencionPsi" type="text" disabled="disabled">  <br>
+
+
+    <br>
+    
+    
+        18.-Donde recibes atención medica?<br>
+       
+            <input type="radio" name="AtencionMedica" value="opción1" id="RadioGroup1_0" onClick="AtencionMedica.disabled = true">
+            Imss
+            <input type="radio" name="AtencionMedica" value="opción2" id="RadioGroup1_1" onclick="AtencionMedica.disabled = true">
+            issste 
+            <input type="radio" name="AtencionMedica" value="opción3" id="RadioGroup1_2" onclick="AtencionMedica.disabled = true">
+            h. militar
+        <input type="radio" name="AtencionMedica" value="opción4" id="RadioGroup1_2" onclick="AtencionMedica.disabled = true">
+        particular  <br>
+    
+       19-. ¿fumas?
+       
+            <input type="radio" name="Fumador" value="opción1" id="RadioGroup1_0" onClick="opcion19.disabled = false">
+            Si
+            <input type="radio" name="Fumador" value="opción2" id="RadioGroup1_1" onclick="opcion19.disabled = true">
+            No 
+        <br>
+    
+        20.-Consumes bebidas embriagantes?
+       
+            <input type="radio" name="BebidasAlc" value=opción1" id="RadioGroup1_0" onClick="opcion20.disabled = false">
+            Si
+            <input type="radio" name="BebidasAlc" value="opción2" id="RadioGroup1_1" onclick="opcion20.disabled = true">
+            No 
+        <br>
+  
+        21.-Has tenido problemas legales? 
+        
+            <input type="radio" name="ProblemLegal" value="opción1" id="RadioGroup1_0" onClick="Motivo.disabled = false">
+            Si
+            <input type="radio" name="ProblemLegal" value="opción2" id="RadioGroup1_1" onclick="Motivo.disabled = true">
+            No 
+        <br>
+        especifica el motivo <input name="Motivo" type="text" disabled="disabled">  <br>
+   
        22.- Practicas algun deporte
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción1" id="RadioGroup1_0" onClick="opcion.disabled = false">
-            Si</label>
-        <label>
-            <input type="radio" name="RadioGroup1" value="opción2" id="RadioGroup1_1" onclick="opcion.disabled = true">
-            No </label><br>
-        Cual? <input name="opcion" type="text" disabled="disabled"> </label> <br>
+        
+            <input type="radio" name="Deporte" value="opción1" id="RadioGroup1_0" onClick="CualDep.disabled = false">
+            Si
+            <input type="radio" name="Deporte" value="opción2" id="RadioGroup1_1" onclick="CualDep.disabled = true">
+            No <br>
+        Cual? <input name="CualDep" type="text" disabled="disabled">  <br>
 
 
-        Conque frecuencia lo realizas?<input name="opcion" type="text" disabled="disabled"> </label> <br>
+        Conque frecuencia lo realizas?<input name="FrecuenciaDept" type="text" disabled="disabled"> <br>
 
-    </form>
+    
 
     <input type="submit" name="guardar" value="Guardar" >
+    </form>
 
-</form>
     
 </html>

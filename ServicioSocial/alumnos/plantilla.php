@@ -17,7 +17,7 @@
                 </ul> <!-- /tabs -->
             </div>
             <div class="row">
-                <div class="span12" style="background-color: #e9562b">
+                <div id="medio"class="span12" style="background-color: #e9562b">
 
                 </div>
                 <br>

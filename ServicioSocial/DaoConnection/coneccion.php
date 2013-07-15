@@ -11,6 +11,7 @@ class coneccion {
             echo "Error seleccionando la base de datos.";
             exit();
         }
+        
         return $link;
     }
     

@@ -13,7 +13,7 @@
             $('#verificacion').click(function() {
                 var usua = $('#usuario').val();
                 var pass = $('#pass').val();
-                $('#error').load('verificacionLogin.php?usuario=' + usua + '&pass=' + pass);
+                $('#error').load('verificacionLogin.php?usua=' + usua + '&pass=' + pass);
             });
         });
     </script>

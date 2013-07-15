@@ -1,14 +1,14 @@
 <?php
 include '../clases/tutorias.php';
-include '../DaoConnection/coneccion.php';
+include '../Dao/daoServicio.php';
 $tutorias = new tutorias();
 $dao = new daoServicio();
-$tutorias->setIdTutorias($_GET["IdTutorias"]);
+
 $tutorias->setLugarViviendo($_GET["LugarViviendo"]);
 $tutorias->setEstCivilPadre($_GET["EstCivilPadre"]);
 $tutorias->setEscPadre($_GET["EscPadre"]);
 $tutorias->setEscMadre($_GET["EscMadre"]);
-$tutorias->setIngresosMenFam($_GET["ngresosMenFam"]);
+$tutorias->setIngresosMenFam($_GET["IngresosMenFam"]);
 $tutorias->setRelacionPadre($_GET["RelacionPadre"]);
 $tutorias->setRelacionMadre($_GET["RelacionMadre"]);
 $tutorias->setFuenteIngreso($_GET["FuenteIngreso"]);
