@@ -31,7 +31,7 @@ class daoServicio {
         $sqlguardar = "INSERT INTO TUTORIAS (idTutorias, lugarViviendo, estCivilPadres, escPadre, escMadre, ingresosMenFam, relacionPadre, relacionMadre, fuenteIngreso, habMaterias, estudiosExtTec, cualExtTec, pasatiempos, trabajas, dondeTrabajas, ocupacionTrab, porqTrab, ingresastRazTec, ingresastRazCar, alergias, cualAlergia, cronica, cronicaCual, atencionPsi, cualAtencionPsi, atencionMedica, bebidasAlc, fumador, problemLegal, motivo, deporte, cualDep, frecuenciaDep, realizado) VALUES('" . $t->getLugarViviendo() . "','" . $t->getEstCivilPadre() . "',
             '" . $t->getEstCivilPadre() . "','" . $t->getEscPadre() . "','" . $t->getEscMadre() . "','" . $t->getIngresosMenFam() . "','" . $t->getRelacionMadre() . "','" . $t->getRelacionPadre() . "','" . $t->getFuenteIngreso() . "','" . $t->getHabMaterias() . "','" . $t->getEstudiosExtTec() . "','" . $t->getCualExtTec() . "','" . $t->getPasatiempos() . "','" . $t->getTrabajas() . "','" . $t->getDondeTrabajas() . "','" . $t->getOcupacionTrab() . "','" . $t->getPorqTrab() . "','" . $t->getIngresastRazTec() . "',
                 '" . $t->getIngresastRazCar() . "','" . $t->getAlergias() . "','" . $t->getCualAlergia() . "','" . $t->getCronica() . "','" . $t->getCronicaCual() . "','" . $t->getAtencionPsi() . "','" . $t->getCualAtencionPsi() . "','" . $t->getAtencionMedica() . "','" . $t->getBebidasAlc() . "','" . $t->getFumador() . "','" . $t->getProblemLegal() . "','" . $t->getMotivo() . "','" . $t->getDeporte() . "','" . $t->getCualDep() . "','" . $t->getFrecuenciaDept() . "','" . $t->getRealizado() . "')";
-        mysql_query($sqlInsertar, $c->Conectarse());
+        mysql_query($sqlguardar, $c->Conectarse());
         $c->cerrarBd();
     }
 
@@ -43,11 +43,11 @@ class daoServicio {
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
-    function guardarRegistroDatos(usuario $t){
+    function guardarRegistroDatos(usuario $usuario){
          $cn = new coneccion();
-        $sql = "INSERT INTO usuarios(usuario, pass, Nombres, ApellidoMaterno,ApellidoPaterno)
-         VALUES('" . $t->getUsuario() . "','" . $t->getNombres() . "','" . $t->getApellidoPaterno() . "'
-             ,'" . $t->getApellidoMaterno() . "','" . $t->getEmail() . "')"; 
+        $sql = "INSERT INTO usuarios(usuario, pass, Nombres, ApellidoMaterno,ApellidoPaterno,Email)
+         VALUES('" . $usuario->getUsuario() . "','" . $usuario->getPass() . "','" . $usuario->getNombres() . "','" . $usuario->getApellidoMaterno() . "'
+             ,'" . $usuario->getApellidoPaterno() . "','" . $usuario->getEmail() . "')"; 
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
