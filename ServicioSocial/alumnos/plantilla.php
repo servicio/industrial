@@ -9,7 +9,7 @@
             <div class="bs-docs-example" style="background-color: #0088cc">
                 <ul class="nav nav-pills">
                     <li class="active" style="color: white"><a>Portal Alumnos</a></li>
-                    <li><a href="" style="color: white">Datos Personales</a> </li>
+                    <li><a href="#myModal" style="color: white"  data-toggle="modal">Regitro de Usuario</a> </li>
                     <li><a href=""style="color: white">Calificaciones</a> </li>
                     <li><a href=""style="color: white">creditosExtra</a> </li>
                     <li><a href=""style="color: white">Creacion de grupos</a> </li>
@@ -27,6 +27,8 @@
             </div>
         </div>
     </div>
-
+    <?php
+    include './datosPersonales.php';
+    ?>
 
 </body>

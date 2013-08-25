@@ -48,5 +48,6 @@
     <button class="btn btn-primary">Aceptar</button>
   </div>
 </div>
+</div>
 </body>
 </html>
