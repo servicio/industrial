@@ -8,16 +8,16 @@
 class coordina {
 
     
-    private $nombre_coor;
+    private $nombreCoor;
     private $usuario;
     private $contraseña;
     
     public function getNombre_coor() {
-        return $this->nombre_coor;
+        return $this->nombreCoor;
     }
 
     public function setNombre_coor($nombre_coor) {
-        $this->nombre_coor = $nombre_coor;
+        $this->nombreCoor = $nombre_coor;
     }
 
     public function getUsuario() {
