@@ -11,9 +11,54 @@
  * @author Solis
  */
 class materias {
+    private $id;
+    private $idEspecialidad;
+    private $materia;
+    private $tiempos;
+    private $creditos;
     private $semestre;
-    private $materias;
-    private $planEstudios;
+    
+    public function getMateria() {
+        return $this->materia;
+    }
+
+    public function setMateria($materia) {
+        $this->materia = $materia;
+    }
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function getIdEspecialidad() {
+        return $this->idEspecialidad;
+    }
+
+    public function setIdEspecialidad($idEspecialidad) {
+        $this->idEspecialidad = $idEspecialidad;
+    }
+
+    public function getTiempos() {
+        return $this->tiempos;
+    }
+
+    public function setTiempos($tiempos) {
+        $this->tiempos = $tiempos;
+    }
+
+    public function getCreditos() {
+        return $this->creditos;
+    }
+
+    public function setCreditos($creditos) {
+        $this->creditos = $creditos;
+    }
+
+        
     public function getSemestre() {
         return $this->semestre;
     }
@@ -21,24 +66,6 @@ class materias {
     public function setSemestre($semestre) {
         $this->semestre = $semestre;
     }
-
-    public function getMaterias() {
-        return $this->materias;
-    }
-
-    public function setMaterias($materias) {
-        $this->materias = $materias;
-    }
-
-    public function getPlanEstudios() {
-        return $this->planEstudios;
-    }
-
-    public function setPlanEstudios($planEstudios) {
-        $this->planEstudios = $planEstudios;
-    }
-
-
 }
 
 ?>

@@ -15,7 +15,7 @@ class tutotMaestrosAlumnos {
 
 private $id;
 private $idMaestro;
-private $idMaterias;
+private $matricula;
 
 
 public function getId() {
@@ -35,11 +35,11 @@ public function setIdMaestro($idMaestro) {
 }
 
 public function getIdMaterias() {
-    return $this->idMaterias;
+    return $this->matricula;
 }
 
 public function setIdMaterias($idMaterias) {
-    $this->idMaterias = $idMaterias;
+    $this->matricula = $idMaterias;
 }
 
 }

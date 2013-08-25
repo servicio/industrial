@@ -12,14 +12,32 @@
  */
 class historialAcademico {
 
-    private $matricula;
-    private $id_materia;
-    private $acredito;
+    private $id;
+    private $usuario;
+    private $idMateria;
+    private $idAcreditacion;
     private $calificacion;
     private $idCurso;
     private $cursando;
-    private $ingresoCursando;
+    private $ingresoCursado;
+    
+    public function getId() {
+        return $this->id;
+    }
 
+    public function setId($id) {
+        $this->id = $id;
+    }
+    
+    public function getUsuario() {
+        return $this->usuario;
+    }
+
+    public function setUsuario($usuario) {
+        $this->usuario = $usuario;
+    }
+
+    
     public function getIdCurso() {
         return $this->idCurso;
     }
@@ -37,11 +55,11 @@ class historialAcademico {
     }
 
     public function getIngresoCursando() {
-        return $this->ingresoCursando;
+        return $this->ingresoCursado;
     }
 
     public function setIngresoCursando($ingresoCursando) {
-        $this->ingresoCursando = $ingresoCursando;
+        $this->ingresoCursado = $ingresoCursando;
     }
 
     public function getMatricula() {
@@ -53,11 +71,11 @@ class historialAcademico {
     }
 
     public function getId_materia() {
-        return $this->id_materia;
+        return $this->idMateria;
     }
 
     public function setId_materia($id_materia) {
-        $this->id_materia = $id_materia;
+        $this->idMateria = $id_materia;
     }
 
     public function getCalificacion() {
@@ -69,11 +87,11 @@ class historialAcademico {
     }
 
     public function getAcredito() {
-        return $this->acredito;
+        return $this->idAcreditacion;
     }
 
     public function setAcredito($acredito) {
-        $this->acredito = $acredito;
+        $this->idAcreditacion = $acredito;
     }
 
 }

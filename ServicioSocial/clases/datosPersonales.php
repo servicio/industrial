@@ -12,10 +12,19 @@
  */
 class datosPersonales {
 
+    private $idDatosPersonales;
     private $usuario;
     private $nombre;
     private $apellidoPaterno;
     private $apellidoMaterno;
+    
+    public function getIdDatosPersonales() {
+        return $this->idDatosPersonales;
+    }
+
+    public function setIdDatosPersonales($idDatosPersonales) {
+        $this->idDatosPersonales = $idDatosPersonales;
+    }
 
     public function getUsuario() {
         return $this->usuario;

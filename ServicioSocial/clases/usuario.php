@@ -12,7 +12,7 @@
  */
 class usuario {
     private $usuario;
-    private $password;
+    private $pass;
     private $idPersona;
     private $semestre;
     
@@ -27,11 +27,11 @@ class usuario {
     }
 
     public function getPassword() {
-        return $this->password;
+        return $this->pass;
     }
 
     public function setPassword($password) {
-        $this->password = $password;
+        $this->pass = $password;
     }
 
     public function getIdPersona() {

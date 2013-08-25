@@ -17,7 +17,6 @@ class materiasCargadasUsuario {
     private $idCurso;
     private $año;
     private $cursando;
-    private $oportunidades;
 
     public function getIdMaterias() {
         return $this->idMaterias;
@@ -58,15 +57,6 @@ class materiasCargadasUsuario {
     public function setCursando($cursando) {
         $this->cursando = $cursando;
     }
-
-    public function getOportunidades() {
-        return $this->oportunidades;
-    }
-
-    public function setOportunidades($oportunidades) {
-        $this->oportunidades = $oportunidades;
-    }
-
 }
 
 ?>
