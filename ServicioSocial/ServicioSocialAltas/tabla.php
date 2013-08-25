@@ -1,5 +1,4 @@
 <?php
-
 include '../DaoConnection/coneccion.php';
 $matricula = $_GET["matricula"];
 $cn = new coneccion();

@@ -17,7 +17,9 @@ if ($id == 0) {
     }
     $datos = mysql_query($sql, $cn->Conectarse());
     echo "<select name='materia' id='materia'  style='width: 250px'>";
+    echo"<option>Seleccione una materia</option>";
     while ($fila = mysql_fetch_array($datos)) {
+
         echo "<option value='" . $fila["id"] . "'>" . utf8_encode($fila["materia"]) . "</option>";
     }
     echo "</select>";

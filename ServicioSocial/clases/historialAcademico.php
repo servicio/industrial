@@ -11,10 +11,39 @@
  * @author Solis
  */
 class historialAcademico {
+
     private $matricula;
     private $id_materia;
-    private $calificacion;
     private $acredito;
+    private $calificacion;
+    private $idCurso;
+    private $cursando;
+    private $ingresoCursando;
+
+    public function getIdCurso() {
+        return $this->idCurso;
+    }
+
+    public function setIdCurso($idCurso) {
+        $this->idCurso = $idCurso;
+    }
+
+    public function getCursando() {
+        return $this->cursando;
+    }
+
+    public function setCursando($cursando) {
+        $this->cursando = $cursando;
+    }
+
+    public function getIngresoCursando() {
+        return $this->ingresoCursando;
+    }
+
+    public function setIngresoCursando($ingresoCursando) {
+        $this->ingresoCursando = $ingresoCursando;
+    }
+
     public function getMatricula() {
         return $this->matricula;
     }
@@ -46,7 +75,6 @@ class historialAcademico {
     public function setAcredito($acredito) {
         $this->acredito = $acredito;
     }
-
 
 }
 
