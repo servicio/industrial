@@ -6,7 +6,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
     <h3 id="myModalLabel">Regitro de Usuario</h3>
   </div>
-    <form action="guardarDatosPersonales.php">
+    <form class="alguna" method="post"action="guardarDatosPersonales.php ">
   <div class="modal-body">
   <div class="row-fluid">
       <div class="span4">Usuario:</div> <div class="span3"><input type="text" name="usuario" /> </div> 
