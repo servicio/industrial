@@ -19,14 +19,15 @@
         especifica <input name="opcion1" type="text" disabled="disabled"> <br>
 
         2.-¿Cual es el estado civil de tus padres? <br>
-        <input type="radio" name="EstCivilPadre" value="Casados" id="RadioGroup1_0" onClick="opcion2.disabled = true">
+        <input type="radio" name="EstCivilPadre" value="Casados" id="RadioGroup2_0" onClick="opcion2.disabled = true">
         Casados
-        <input type="radio" name="EstCivilPadre" value="Divorciados" id="RadioGroup1_1" onclick="opcion2.disabled = true">
+        <input type="radio" name="EstCivilPadre" value="Divorciados" id="RadioGroup2_1" onclick="opcion2.disabled = true">
         Divorciados
-        <input type="radio" name="EstCivilPadre" value="Union libre" id="RadioGroup1_2" onclick="opcion2.disabled = true">
+        <input type="radio" name="EstCivilPadre" value="Union libre" id="RadioGroup2_2" onclick="opcion2.disabled = true">
         Union libre
-        <input type="radio" name="EstCivilPadre" value="Especifica" id="RadioGroup1_2" onclick="opcion2.disabled = false">
+        <input type="radio" name="EstCivilPadre" value="<?php $text ?>" id="RadioGroup2_3" onclick="opcion2.disabled = false">
         otro(especifica) <input name="opcion2" type="text" disabled="disabled">  <br>
+        <?php $text = $_POST['opcion2']; ?>
 
         3.-¿Que escolaridad tiene tu.. <br>
         3.1.-padre?<br>
@@ -126,7 +127,7 @@
 
 
         8.- Menciona las escuelas donde has estudiado el bachillerato, indicando los grados estudiados en caso de haber estudiado en mas de una escuela.<br>
-        <table width="440" border="1" cellspacing="100" cellpadding="100">
+        <table width="440" border="1" cellspacing="10" cellpadding="10">
             <tr>
                 <th width="144" scope="col">Nombre de la escuela</th>
                 <th width="144" scope="col">Estado donde se encuentra</th>
@@ -157,7 +158,7 @@
         10.-Realizas otros estudios fuera de tecnológico?<br>
         <input type="radio" name="EstudiosExtTec" value="Si" id="RadioGroup1_0" onClick="opcion10.disabled = false">
         Si (Especifica)
-        <!--        Cuadro de texto-->
+                Cuadro de texto
         <input name="opcion10" type="text" disabled="disabled">  
         <input type="radio" name="EstudiosExtTec" value="No" id="RadioGroup1_1" onclick="opcion10.disabled = true">
         No
