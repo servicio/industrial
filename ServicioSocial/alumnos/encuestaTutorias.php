@@ -16,8 +16,11 @@
         <input type="radio" name="LugarViviendo" value="opción4" id="RadioGroup1_3" onClick="opcion1.disabled = false">
         especifica <input name="opcion1" type="text" disabled="disabled"> <br>
 
-        2.-¿Cual es el estado civil de tus padres? <br>
-        <input type="radio" name="EstCivilPadre" value="Casados" id="RadioGroup1_0" onClick="opcion2.disabled = true">
+
+
+        2.-&iquest;Cual es el estado civil de tus padres? <br>
+
+        <input type="radio" name="EstCivilPadre" value="opción1" id="RadioGroup1_0" onClick="opcion2.disabled = true">
         Casados
         <input type="radio" name="EstCivilPadre" value="Divorciados" id="RadioGroup2_1" onclick="opcion2.disabled = true">
         Divorciados
@@ -40,6 +43,8 @@
         Otro 
         <input name="opcion3" type="text" disabled="disabled">  <br>
 
+
+
         3.2.-madre?<br>
         <input type="radio" name="EscMadre" value="opción1" id="RadioGroup1_0" onClick="opcion3y2.disabled = true">
         Primaria
@@ -53,7 +58,9 @@
         Otro 
         <input name="opcion3y2" type="text" disabled="disabled">  <br>
 
-        4.-¿Cuanto es el ingreso econocmico familiar mensual aproximado de tu familia?<br>
+
+
+        4.-&iquest;Cuanto es el ingreso econocmico familiar mensual aproximado de tu familia?<br>
         $<input type="text" name="IngresosMenFam"> <br>
 
         5.-¿Cuantos hermanos son en tu familia incluyéndote?<br>
@@ -104,6 +111,7 @@
         Mal
         <input type="radio" name="Pregunta6y3" value="opción4" id="RadioGroup1_2" onclick="opcion6y3.disabled = true">
         No convivo
+
         <br>
 
         7.-¿Quien sostiene economicamente tus estudios?<br>
@@ -164,6 +172,7 @@
         Cine
         <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_1">
         Conciertos 
+
         <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_2">
         Actividades Culturales
         <input type="checkbox" name="Pasatiempos" value="casilla de verificación " id="CheckboxGroup1_3">
