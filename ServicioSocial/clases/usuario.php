@@ -13,10 +13,10 @@
 class usuario {
     private $usuario;
     private $pass;
-    private $idPersona;
-    private $semestre;
-    
-    
+    private $Email;
+    private $Nombres;
+    private $ApellidoPaterno;
+    private $ApellidoMaterno;
     
     public function getUsuario() {
         return $this->usuario;
@@ -26,29 +26,53 @@ class usuario {
         $this->usuario = $usuario;
     }
 
-    public function getPassword() {
+    public function getPass() {
         return $this->pass;
     }
 
-    public function setPassword($password) {
-        $this->pass = $password;
+    public function setPass($pass) {
+        $this->pass = $pass;
     }
 
-    public function getIdPersona() {
-        return $this->idPersona;
+    public function getEmail() {
+        return $this->Email;
     }
 
-    public function setIdPersona($idPersona) {
-        $this->idPersona = $idPersona;
+    public function setEmail($Email) {
+        $this->Email = $Email;
     }
 
-    public function getSemestre() {
-        return $this->semestre;
+    public function getNombres() {
+        return $this->Nombres;
     }
 
-    public function setSemestre($semestre) {
-        $this->semestre = $semestre;
+    public function setNombres($Nombres) {
+        $this->Nombres = $Nombres;
     }
+
+    public function getApellidoPaterno() {
+        return $this->ApellidoPaterno;
+    }
+
+    public function setApellidoPaterno($ApellidoPaterno) {
+        $this->ApellidoPaterno = $ApellidoPaterno;
+    }
+
+    public function getApellidoMaterno() {
+        return $this->ApellidoMaterno;
+    }
+
+    public function setApellidoMaterno($ApellidoMaterno) {
+        $this->ApellidoMaterno = $ApellidoMaterno;
+    }
+
+
+
+
+    
+    
+
+    
 
 
 

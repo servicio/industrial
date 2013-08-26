@@ -43,6 +43,14 @@ class daoServicio {
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
+    function guardarRegistroDatos(usuario $usuario){
+         $cn = new coneccion();
+        $sql = "INSERT INTO usuarios(usuario, pass, Nombres, ApellidoMaterno,ApellidoPaterno,Email)
+         VALUES('" . $usuario->getUsuario() . "','" . $usuario->getPass() . "','" . $usuario->getNombres() . "','" . $usuario->getApellidoMaterno() . "'
+             ,'" . $usuario->getApellidoPaterno() . "','" . $usuario->getEmail() . "')"; 
+        mysql_query($sql, $cn->Conectarse());
+        $cn->cerrarBd();
+    }
 
 }
 
