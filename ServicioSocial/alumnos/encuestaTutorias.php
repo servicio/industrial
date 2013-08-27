@@ -42,15 +42,15 @@
                 <input name="opcion3" type="text" disabled="disabled"><br>
 
                 3.2.- Madre:<br>
-                <input type="radio" name="EscPadre" value="Primaria" id="RadioGroup4_0" onClick="opcion3y2.disabled = true">
+                <input type="radio" name="EscMadre" value="Primaria" id="RadioGroup4_0" onClick="opcion3y2.disabled = true">
                 Primaria<br>
-                <input type="radio" name="EscPadre" value="Secundaria" id="RadioGroup4_1" onclick="opcion3y2.disabled = true">
+                <input type="radio" name="EscMadre" value="Secundaria" id="RadioGroup4_1" onclick="opcion3y2.disabled = true">
                 Secundaria<br>
-                <input type="radio" name="EscPadre" value="Bachillerato" id="RadioGroup4_2" onclick="opcion3y2.disabled = true">
+                <input type="radio" name="EscMadre" value="Bachillerato" id="RadioGroup4_2" onclick="opcion3y2.disabled = true">
                 Bachillerato<br>
-                <input type="radio" name="EscPadre" value="Profesional" id="RadioGroup4_3" onclick="opcion3y2.disabled = true">
+                <input type="radio" name="EscMadre" value="Profesional" id="RadioGroup4_3" onclick="opcion3y2.disabled = true">
                 Profesional<br> 
-                <input type="radio" name="EscPadre" value="Otro" id="RadioGroup4_4" onclick="opcion3y2.disabled = false">
+                <input type="radio" name="EscMadre" value="Otro" id="RadioGroup4_4" onclick="opcion3y2.disabled = false">
                 Otro (especifica) 
                 <input name="opcion3y2" type="text" disabled="disabled"><br>
 

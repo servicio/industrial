@@ -3,7 +3,7 @@ include '../clases/tutorias.php';
 include '../Dao/daoServicio.php';
 $tutorias = new tutorias();
 $dao = new daoServicio();
-$info = $_GET["LugarViviendo"];
+
 $tutorias->setLugarViviendo($_GET["LugarViviendo"]);
 $tutorias->setEstCivilPadre($_GET["EstCivilPadre"]);
 $tutorias->setEscPadre($_GET["EscPadre"]);
