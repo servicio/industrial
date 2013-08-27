@@ -1,10 +1,23 @@
 <link rel="stylesheet" type="text/css" href="../css/css.css">
 <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap-responsive.css"/>
+
 <script src="../bootsTrap/js/jquery.min.js"></script>
 <script src="../bootsTrap/js/bootstrap.js"></script>
+
+<style>
+    body { 
+        background: url(galeria/Nebula.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
 <body>
     <div class="container">  
-        <div class="span12" style="margin: auto " >
+        <div class="span12" style="margin: auto">
             <img style="width: 5%" src="../imagenes/tec.jpg">
             <div class="bs-docs-example" style="background-color: #0088cc">
                 <ul class="nav nav-pills">
@@ -18,7 +31,6 @@
             </div>
             <div class="row">
                 <div id="medio"class="span12" style="background-color: #e9562b">
-
                 </div>
                 <br>
                 <div class="span12" style="background-color: #e9562b">
@@ -27,8 +39,5 @@
             </div>
         </div>
     </div>
-    <?php
-    include './datosPersonales.php';
-    ?>
-
+    <?php include './datosPersonales.php'; ?>
 </body>

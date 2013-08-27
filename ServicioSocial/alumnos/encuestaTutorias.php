@@ -2,6 +2,8 @@
 <html>
     <link rel="stylesheet" type="text/css" href="..css/css.css">
     <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap-responsive.css"/>
+ 
     <script src="..bootsTrap/js/jquery.min.js"></script>
     <script src="..bootsTrap/js/bootstrap.js"></script>
     <div class="container"> 
