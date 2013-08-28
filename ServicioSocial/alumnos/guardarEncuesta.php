@@ -36,7 +36,7 @@ $tutorias->setMotivo($_GET["Motivo"]);
 $tutorias->setDeporte($_GET["Deporte"]);
 $tutorias->setCualDep($_GET["CualDep"]);
 $tutorias->setFrecuenciaDept($_GET["FrecuenciaDept"]);
-$tutorias->setRealizado($_GET["Realizado"]);
+$tutorias->setRealizado(1);
 $dao->guardarEncuesta($tutorias);
 
 
