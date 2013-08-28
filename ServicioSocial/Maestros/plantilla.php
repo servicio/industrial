@@ -2,7 +2,6 @@
 <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
 <script src="../bootsTrap/js/jquery.min.js"></script>
 <script src="../bootsTrap/js/bootstrap.js"></script>
-<body>
     <div class="container">  
         <div class="span12" style="margin: auto " >
             <img style="width: 5%" src="../imagenes/tec.jpg">
@@ -27,4 +26,3 @@
             </div>
         </div>
     </div>
-</body>
