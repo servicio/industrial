@@ -22,7 +22,7 @@
     <div class="container"> 
         <div class="span12" style="margin: auto">
             <img style="width: 5%" src="../imagenes/tec.jpg">
-            <div class="navbar">
+            <div class="navbar navbar-inverse">
                 <div class="navbar-inner">
                     <div class="container">
 
