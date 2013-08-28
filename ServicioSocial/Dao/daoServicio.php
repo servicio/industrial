@@ -21,7 +21,7 @@ class daoServicio {
 
     function insertarHistorial(historialAcademico $h) {
         $c = new coneccion();
-        $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion, idCurso, cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getIdCurso() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";
+        $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion,cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";
         mysql_query($sqlInsertar, $c->Conectarse());
         $c->cerrarBd();
     }
@@ -40,8 +40,13 @@ class daoServicio {
         $sql = "INSERT INTO datosPersonales(usuario, nombre, apellidoPaterno, apellidoMaterno)
          VALUES('" . $datosP->getUsuario() . "','" . $datosP->getNombre() . "','" . $datosP->getApellidoPaterno() . "'
              ,'" . $datosP->getApellidoMaterno() . "')";
-        mysql_query($sql, $cn->Conectarse());
-        $cn->cerrarBd();
+        try {
+            mysql_query($sql, $cn->Conectarse());
+            $cn->cerrarBd();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            $cn->cerrarBd();
+        }
     }
 
     function guardarRegistroDatos(usuario $usuario) {
