@@ -3,11 +3,12 @@
     <link rel="stylesheet" type="text/css" href="..css/css.css">
     <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" href="estilos.css"/>
  
     <script src="..bootsTrap/js/jquery.min.js"></script>
     <script src="..bootsTrap/js/bootstrap.js"></script>
     <div class="container"> 
-        <div class="span12" style="margin: auto " >
+        <div class="span12" style="margin: auto" >
             <form name="cuestionario" action="guardarEncuesta.php">
                 1.- &iquest;Con qu&iacute;en vives?<br>
                 <input type="radio" name="LugarViviendo" value="Padre" id="RadioGroup1_0" onClick="opcion1.disabled = true">
@@ -290,7 +291,7 @@
                 No <br>
                 23.1.- &iquest;Cu&aacute;l?<br><input name="CualDep" type="text" disabled="disabled">  <br>
                 23.2.- &iquest;Con que frecuencia lo realizas?<br><input name="FrecuenciaDept" type="text" disabled="disabled"><br>
-                <input type="submit" name="guardar" value="Guardar" >
+                <input class="btn btn-primary" type="submit" name="guardar" value="Guardar">
             </form>
         </div>
     </div>
