@@ -10,7 +10,7 @@
     <div class="container" style="background-image: url(galeria/FondotextoV2.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; border-radius: 5px; margin-top: -20px"> 
         <div class="span12" style="margin: auto">
             <form name="cuestionario" action="guardarEncuesta.php" style="margin-left: 50px; margin-top: 50px">
-                <h1>Encuesta</h1>
+                <h3>Encuesta bla bla bla...</h3>
                 <h6>1.- &iquest;Con qu&iacute;en vives?</h6>
                 <input type="radio" name="LugarViviendo" value="Padre" id="RadioGroup1_0" onClick="opcion1.disabled = true">
                 Padre<br>
@@ -28,7 +28,7 @@
                 Divorciados<br>
                 <input type="radio" name="EstCivilPadre" value="Union libre" id="RadioGroup2_2" onclick="opcion2.disabled = true">
                 Uni&oacute;n Libre<br>
-                <input type="radio" name="EstCivilPadre" value="Especifica" id="RadioGroup2_3" onclick="opcion2.disabled = false">
+                <input type="radio" name="EstCivilPadre" value="Otro" id="RadioGroup2_3" onclick="opcion2.disabled = false">
                 Otro (especifica)<input name="opcion2" type="text" disabled="disabled"><br>
 
                 <h6>3.- Que escolaridad tiene tu:</h6>
@@ -58,13 +58,13 @@
                 Otro (especifica) 
                 <input name="opcion3y2" type="text" disabled="disabled"><br>
 
-                4.- &iquest;Cu&aacute;nto es el ingreso ec&oacute;nomico familiar mensual aproximado de tu familia?<br>
-                $<input type="text" name="IngresosMenFam"><br>
+                <h6>4.- &iquest;Cu&aacute;nto es el ingreso ec&oacute;nomico familiar mensual aproximado de tu familia?</h6>
+                <h6>$<input type="text" name="IngresosMenFam"></h6>
 
-                5.- &iquest;Cuantos hermanos/as son en tu familia incluy&eacute;ndote?<br>
+                <h6>5.- &iquest;Cuantos hermanos/as son en tu familia incluy&eacute;ndote?</h6>
                 <input type="text" name="pregunta5"><br>
 
-                6.- &iquest;Con qui&eacute;n platicas cuando tienes un problema personal?<br>
+                <h6>6.- &iquest;Con qui&eacute;n platicas cuando tienes un problema personal?</h6>
                 <input type="radio" name="Pregunta6" value="Padre" id="RadioGroup5_0" onClick="opcion6.disabled = true">
                 Padre<br>
                 <input type="radio" name="Pregunta6" value="Madre" id="RadioGroup5_1" onclick="opcion6.disabled = true">
@@ -76,8 +76,8 @@
                 <input type="radio" name="Pregunta6" value="Otro" id="RadioGroup5_4" onclick="opcion6.disabled = false">
                 Otro (Especifica)<input name="opcion6" type="text" disabled="disabled">  <br>
 
-                7.- Como te llevas con tu:<br>
-                7.1.- Padre<br>
+                <h6>7.- Como te llevas con tu:</h6>
+                <h6>7.1.- Padre</h6>
                 <input type="radio" name="RelacionPadre" value="Bien" id="RadioGroup6_0" onClick="opcion6.disabled = true">
                 Bien<br>
                 <input type="radio" name="RelacionPadre" value="Regular" id="RadioGroup6_1" onclick="opcion6.disabled = true">
@@ -88,7 +88,7 @@
                 No convivo
                 <br>
 
-                7.2.- Madre<br>
+                <h6>7.2.- Madre</h6>
                 <input type="radio" name="RelacionMadre" value="Bien" id="RadioGroup7_0" onClick="opcion6y2.disabled = true">
                 Bien<br>
                 <input type="radio" name="RelacionMadre" value="Regular" id="RadioGroup7_1" onclick="opcion6y2.disabled = true">
@@ -99,7 +99,7 @@
                 No convivo
                 <br>
 
-                8.- &iquest;Quien sostiene econ&oacute;micamente tus estudios?<br>
+                <h6>8.- &iquest;Quien sostiene econ&oacute;micamente tus estudios?</h6>
                 <input type="radio" name="FuenteIngreso" value="Padre" id="RadioGroup9_0" onClick="opcion7.disabled = true">
                 Padre<br>
                 <input type="radio" name="FuenteIngreso" value="Madre" id="RadioGroup9_1" onclick="opcion7.disabled = true">
@@ -111,12 +111,12 @@
                 <input type="radio" name="FuenteIngreso" value="Otro" id="RadioGroup9_4" onclick="opcion7.disabled = false">
                 Otro (Especifica)<input name="opcion7" type="text" disabled="disabled"><br>
 
-                9.- Menciona las escuelas donde has estudiado el bachillerato, indicando los grados estudiados en caso de haber estudiado en m&aacute;s de una escuela.<br>
+                <h6>9.- Menciona las escuelas donde has estudiado el bachillerato, indicando los grados estudiados en caso de haber estudiado en m&aacute;s de una escuela.</h6>
                 <table width="400" border="0" cellspacing="0" cellpadding="5">
                     <tr>
-                        <th width="120" scope="col">Nombre de la escuela</th>
-                        <th width="120" scope="col">Estado donde se ubica</th>
-                        <th width="120" scope="col">Grado cursado</th>
+                        <th width="120" scope="col"><h5>Nombre de la escuela</h5></th>
+                    <th width="120" scope="col"><h5>Estado donde se ubica</h5></th>
+                    <th width="120" scope="col"><h5>Grado cursado</h5></th>
                     </tr>
                     <tr>
                         <td><input type="text" name="textfield" id="textfield"></td>
@@ -135,10 +135,10 @@
                     </tr>
                 </table>
 
-                10.- &iquest;Que materias te gustan m&aacute;s?<br>
+                <h6>10.- &iquest;Que materias te gustan m&aacute;s?</h6>
                 <input type="text" name="HabMaterias"><br>
 
-                11.- &iquest;Realizas otros estudios fuera de tecnol&oacute;gico?<br>
+                <h6>11.- &iquest;Realizas otros estudios fuera de tecnol&oacute;gico?</h6>
                 <input type="radio" name="EstudiosExtTec" value="Si" id="RadioGroup10_0" onClick="CualExtTec.disabled = false">
                 Si (especifica)
                 <!--Cuadro de texto-->
@@ -147,12 +147,15 @@
                 No
                 <br>
 
-                12.- Marca dos actividades que realices como pasatiempo:<br> 
+                <h6>12.- Marca dos actividades que realices como pasatiempo:</h6> 
                 <table width="500"  border="0" cellspacing="0" cellpadding="0">
                     <tr>    
-                        <td><input type="checkbox" name="Pasatiempos" value="Cine" id="CheckboxGroup1_0">Cine</td>
-                        <td><input type="checkbox" name="Pasatiempos" value="Conciertos" id="CheckboxGroup1_1">Conciertos</td> 
-                        <td><input type="checkbox" name="Pasatiempos" value="Actividades Culturales" id="CheckboxGroup1_2">Actividades Culturales</td>
+                        <td><input type="checkbox" name="Pasatiempos" value="Cine" id="CheckboxGroup1_0">
+                            Cine</td>
+                        <td><input type="checkbox" name="Pasatiempos" value="Conciertos" id="CheckboxGroup1_1">
+                            Conciertos</td> 
+                        <td><input type="checkbox" name="Pasatiempos" value="Actividades Culturales" id="CheckboxGroup1_2">
+                            Actividades Culturales</td>
                     </tr>
                     <tr> 
                         <td><input type="checkbox" name="Pasatiempos" value="Bibliotecas" id="CheckboxGroup1_3">
@@ -173,21 +176,21 @@
                 </table>
                 <br>
 
-                13.- &iquest;Trabajas actualmente?<br>
+                <h6>13.- &iquest;Trabajas actualmente?</h6>
                 <input type="radio" name="Trabajas" value="Si" id="RadioGroup11_0" onClick="DondeTrabajas.disabled = false, OcupacionTrab.disabled = false, PorqTrab.disabled = false" >
                 Si<br>
                 <input type="radio" name="Trabajas" value="No" id="RadioGroup11_1" onClick="DondeTrabajas.disabled = true, OcupacionTrab.disabled = true, PorqTrab.disabled = true" >
                 No<br>
-                13.1.- &iquest;Dond&eacute; trabajas?<br>
+                <h6>13.1.- &iquest;Dond&eacute; trabajas?</h6>
                 <input name="DondeTrabajas" type="text" disabled="disabled"><br>
-                13.2.- &iquest;Ocupaci&oacute;n en el trabajo?<br>
+                <h6>13.2.- &iquest;Ocupaci&oacute;n en el trabajo?</h6>
                 <input name="OcupacionTrab" type="text" disabled="disabled"><br>
-                13.3.- &iquest;Cu&aacute;l es el motivo por el cual laboras?<br>
+                <h6>13.3.- &iquest;Cu&aacute;l es el motivo por el cual laboras?</h6>
                 <input name="PorqTrab" type="text" disabled="disabled"><br>
 
 
-                14.- &iquest;Cu&aacute;l es la razon por la que ingresaste al tecnol&oacute;gico?
-                <br><input type="radio" name="IngresastRazTec" value="Porque esta es la escuela que desean mis padres" id="RadioGroup12_0" onClick="opcion13.disabled = true">
+                <h6>14.- &iquest;Cu&aacute;l es la razon por la que ingresaste al tecnol&oacute;gico?</h6>
+                <input type="radio" name="IngresastRazTec" value="Porque esta es la escuela que desean mis padres" id="RadioGroup12_0" onClick="opcion13.disabled = true">
                 Porque esta es la escuela que desean mis padres.<br>
                 <input type="radio" name="IngresastRazTec" value="Porque no es cara la colegiatura" id="RadioGroup12_1" onclick="opcion13.disabled = true">
                 Porque no es cara la colegiatura.<br>
@@ -197,11 +200,11 @@
                 Porque tiene buenos egresados. <br>
                 <input type="radio" name="IngresastRazTec" value="Porque no alcance cupo en otra escuela" id="RadioGroup12_4" onclick="opcion13.disabled = true">
                 Porque no alcance cupo en otra escuela. <br>
-                <input type="radio" name="IngresastRazTec" value="opción5" id="RadioGroup12_5" onclick="opcion13.disabled = false">
+                <input type="radio" name="IngresastRazTec" value="Otro" id="RadioGroup12_5" onclick="opcion13.disabled = false">
                 Otro(Especifica) 
                 <input name="opcion13" type="text" disabled="disabled"><br>
 
-                15.- &iquest;Cu&aacute;les son las razones por la que ingresaste a la carrera?<br>
+                <h6>15.- &iquest;Cu&aacute;les son las razones por la que ingresaste a la carrera?</h6>
                 <input type="radio" name="IngresastRazCar" value="Porque espero ganar mucho dinero con ella" id="RadioGroup13_0" onclick="opcion14.disabled = true">
                 Porque espero ganar mucho dinero con ella.<br> 
                 <input type="radio" name="IngresastRazCar" value="Porque les la carrera que he elegido y me apasiona" id="RadioGroup13_1" onclick="opcion14.disabled = true">
@@ -214,11 +217,11 @@
                 Porque es la carrera que desean mis padres.<br> 
                 <input type="radio" name="IngresastRazCar" value="Porque es la &uacute;nica escuela que da esta carrera" id="RadioGroup13_5" onClick="opcion14.disabled = true">
                 Porque es la &uacute;nica escuela que da esta carrera.<br>
-                <input type="radio" name="IngresastRazCar" value="opción5" id="RadioGroup13_6" onclick="opcion14.disabled = false">
+                <input type="radio" name="IngresastRazCar" value="Otro" id="RadioGroup13_6" onclick="opcion14.disabled = false">
                 Otro (Especifica) 
                 <input name="opcion14" type="text" disabled="disabled">  <br>
 
-                16.- &iquest;Padece alguna alergia?<br>
+                <h6>16.- &iquest;Padece alguna alergia?</h6>
                 <input type="radio" name="Alergias" value="Si" id="RadioGroup14_0" onClick="CualAlergia.disabled = false">
                 Si
                 &iquest;Cu&aacute;l?<input name="CualAlergia" type="text" disabled="disabled"><br>
@@ -226,7 +229,7 @@
                 No
                 <br>
 
-                17.- &iquest;Padece alguna enfermedad cr&oacute;nica?<br>
+                <h6>17.- &iquest;Padece alguna enfermedad cr&oacute;nica?</h6>
                 <input type="radio" name="Cronica" value="Si" id="RadioGroup15_0" onClick="CronicaCual.disabled = false">
                 Si
                 &iquest;Cu&aacute;l?<input name="CronicaCual" type="text" disabled="disabled"><br>
@@ -234,7 +237,7 @@
                 No
                 <br>
 
-                18.- &iquest;Has recibido atenci&oacute;n psicol&oacute;gica?<br>
+                <h6>18.- &iquest;Has recibido atenci&oacute;n psicol&oacute;gica?</h6>
                 <input type="radio" name="AtencionPsi" value="Si" id="RadioGroup16_0" onClick="CualAtencionPsi.disabled = false">
                 Si
                 (especifica de que tipo)<input name="CualAtencionPsi" type="text" disabled="disabled"><br>
@@ -242,7 +245,7 @@
                 No 
                 <br>
 
-                19.- &iquest;D&oacute;nde recibes atenci&oacute;n medica?<br>
+                <h6>19.- &iquest;D&oacute;nde recibes atenci&oacute;n medica?</h6>
                 <input type="radio" name="AtencionMedica" value="IMSS" id="RadioGroup17_0">
                 IMSS<br>
                 <input type="radio" name="AtencionMedica" value="ISSSTE" id="RadioGroup17_1">
@@ -252,21 +255,21 @@
                 <input type="radio" name="AtencionMedica" value="Particular" id="RadioGroup17_3">
                 Particular<br>
 
-                20.- &iquest;Fumas?<br>
+                <h6>20.- &iquest;Fumas?</h6>
                 <input type="radio" name="Fumador" value="Si" id="RadioGroup18_0">
                 Si<br>
                 <input type="radio" name="Fumador" value="No" id="RadioGroup18_1">
                 No 
                 <br>
 
-                21.- &iquest;Consumes bebidas embriagantes?<br>
+                <h6>21.- &iquest;Consumes bebidas embriagantes?</h6>
                 <input type="radio" name="BebidasAlc" value="Si" id="RadioGroup19_0">
                 Si<br>
                 <input type="radio" name="BebidasAlc" value="No" id="RadioGroup19_1">
                 No 
                 <br>
 
-                22.- &iquest;Has tenido problemas legales?<br> 
+                <h6>22.- &iquest;Has tenido problemas legales?</h6> 
                 <input type="radio" name="ProblemLegal" value="Si" id="RadioGroup20_0" onClick="Motivo.disabled = false">
                 Si
                 (especifica el motivo) <input name="Motivo" type="text" disabled="disabled"><br>
@@ -274,13 +277,13 @@
                 No 
                 <br>
 
-                23.- &iquest;Practicas al&uacute;n deporte?<br>
+                <h6>23.- &iquest;Practicas al&uacute;n deporte?</h6>
                 <input type="radio" name="Deporte" value="Si" id="RadioGroup21_0" onClick="CualDep.disabled = false, FrecuenciaDept.disabled = false">
                 Si<br>
                 <input type="radio" name="Deporte" value="No" id="RadioGroup21_1" onclick="CualDep.disabled = true, FrecuenciaDept.disabled = true">
                 No <br>
-                23.1.- &iquest;Cu&aacute;l?<br><input name="CualDep" type="text" disabled="disabled">  <br>
-                23.2.- &iquest;Con que frecuencia lo realizas?<br><input name="FrecuenciaDept" type="text" disabled="disabled"><br>
+                <h6>23.1.- &iquest;Cu&aacute;l?<br><input name="CualDep" type="text" disabled="disabled"></h6>  
+                <h6>23.2.- &iquest;Con que frecuencia lo realizas?<br><input name="FrecuenciaDept" type="text" disabled="disabled"></h6>
                 <input class="btn btn-primary" type="submit" name="guardar" value="Guardar">
             </form>
         </div>
