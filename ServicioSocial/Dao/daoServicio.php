@@ -58,6 +58,13 @@ class daoServicio {
         $cn->cerrarBd();
     }
 
+    function guardarSessionTutorado(sessionTutorias $sesion) {
+        $cn = new coneccion();
+        $sql = "INSERT INTO sesiontutorias(matricula, fecha, descripcionSesion, objetivos, observaciones, tareasAsignadas, numeroSesion)
+            VALUES('" . $sesion->getMatricula() . "','" . $sesion->getFecha() . "','" . $sesion->getDescripcionSesion() . "','" . $sesion->getObjetivos() . "','" . $sesion->getObservaciones() . "','" . $sesion->getTareasAsignadas() . "','" . $sesion->getNumeroSession() . "')";
+        mysql_query($sql, $cn->Conectarse());
+        $cn->cerrarBd();
+    }
 }
 
 ?>

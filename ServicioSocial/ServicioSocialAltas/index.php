@@ -40,7 +40,7 @@ session_start();
                     $('#fin').show('slow');
                     $('#fin').delay("1500");
                     $('#fin').slideUp("slow");
-                    control=0;
+                    control = 0;
                 });
 
                 $('#guardar').click(function() {
@@ -70,7 +70,6 @@ session_start();
                             $(this).load('guardarDatosPersonales.php?nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m);
                             control = 1;
                         }
-
                         $('#exito').show("slow");
                         $('#exito').delay("1500");
                         $('#exito').slideUp("slow");
@@ -83,7 +82,6 @@ session_start();
                         $('#ingreso').prop('selectedIndex', 0);
                         $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
                         $('#tablaMateriasCargadas').show('slow');
-
                     }
                 });
             });
