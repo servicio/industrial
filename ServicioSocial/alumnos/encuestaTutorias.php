@@ -4,13 +4,14 @@
     <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap-responsive.css"/>
     <link rel="stylesheet" type="text/css" href="estilos.css"/>
- 
+
     <script src="..bootsTrap/js/jquery.min.js"></script>
     <script src="..bootsTrap/js/bootstrap.js"></script>
-    <div class="container"> 
-        <div class="span12" style="margin: auto" >
-            <form name="cuestionario" action="guardarEncuesta.php">
-                1.- &iquest;Con qu&iacute;en vives?<br>
+    <div class="container" style="background-image: url(galeria/FondotextoV2.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; border-radius: 5px; margin-top: -20px"> 
+        <div class="span12" style="margin: auto">
+            <form name="cuestionario" action="guardarEncuesta.php" style="margin-left: 50px; margin-top: 50px">
+                <h1>Encuesta</h1>
+                <h6>1.- &iquest;Con qu&iacute;en vives?</h6>
                 <input type="radio" name="LugarViviendo" value="Padre" id="RadioGroup1_0" onClick="opcion1.disabled = true">
                 Padre<br>
                 <input type="radio" name="LugarViviendo" value="Madre" id="RadioGroup1_1" onClick="opcion1.disabled = true">
@@ -20,7 +21,7 @@
                 <input type="radio" name="LugarViviendo" value="Otro" id="RadioGroup1_3" onClick="opcion1.disabled = false">
                 Otro (especifica)<input name="opcion1" type="text" disabled="disabled"> <br>
 
-                2.- &iquest;Cu&aacute;l es el estado civil de tus padres? <br>
+                <h6>2.- &iquest;Cu&aacute;l es el estado civil de tus padres?</h6>
                 <input type="radio" name="EstCivilPadre" value="Casados" id="RadioGroup2_0" onClick="opcion2.disabled = true">
                 Casados<br>
                 <input type="radio" name="EstCivilPadre" value="Divorciados" id="RadioGroup2_1" onclick="opcion2.disabled = true">
@@ -30,8 +31,8 @@
                 <input type="radio" name="EstCivilPadre" value="Especifica" id="RadioGroup2_3" onclick="opcion2.disabled = false">
                 Otro (especifica)<input name="opcion2" type="text" disabled="disabled"><br>
 
-                3.- Que escolaridad tiene tu:<br>
-                3.1.- Padre:<br>
+                <h6>3.- Que escolaridad tiene tu:</h6>
+                <h6>3.1.- Padre:</h6>
                 <input type="radio" name="EscPadre" value="Primaria" id="RadioGroup3_0" onClick="opcion3.disabled = true">
                 Primaria<br>
                 <input type="radio" name="EscPadre" value="Secundaria" id="RadioGroup3_1" onclick="opcion3.disabled = true">
@@ -44,7 +45,7 @@
                 Otro (especifica) 
                 <input name="opcion3" type="text" disabled="disabled"><br>
 
-                3.2.- Madre:<br>
+                <h6>3.2.- Madre:</h6>
                 <input type="radio" name="EscMadre" value="Primaria" id="RadioGroup4_0" onClick="opcion3y2.disabled = true">
                 Primaria<br>
                 <input type="radio" name="EscMadre" value="Secundaria" id="RadioGroup4_1" onclick="opcion3y2.disabled = true">
@@ -284,4 +285,9 @@
             </form>
         </div>
     </div>
+    <footer>
+        <div class="container" style="background-color: blue; border-radius: 5px">
+            <h1>Hola, soy un futuro pie de pagina</h1>
+        </div>
+    </footer>
 </html>
