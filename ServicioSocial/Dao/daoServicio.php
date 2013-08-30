@@ -26,15 +26,18 @@ class daoServicio {
         $datos = mysql_query($sql, $cn->Conectarse());
         $columnas = mysql_affected_rows();
        if ($columnas > 0) {
-            $paso = true;
-        } else {
-            $paso = false;
-        }
-        $cn->cerrarBd();
-        //return $paso;
-   $_SESSION['usuario'] = $usu->getUsuario() ;
-    $_SESSION['estado'] = 'Autenticado'; 
+    session_start();     
+    $_SESSION['usuario'] = $usu->getUsuario() ;
+    $_SESSION['estado'] = 'Autenticado';
      header("Location: encuestaTutorias.php");
+        } else {
+            echo 'mal';
+        }
+        
+   
+    $cn->cerrarBd();
+        //return $paso;
+    
        
         
         

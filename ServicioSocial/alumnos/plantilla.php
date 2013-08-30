@@ -48,7 +48,7 @@
                                 <li><a href="#"><i class="icon-trash"></i>Borrar</a></li>
                                 <li><a href="#"><i class="icon-ban-circle"></i>Banear</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="i"></i>Salir</a></li>
+                                <li><a href="cerrarSesion.php"><i class="i"></i>Salir</a></li>
                             </ul>
                         </div></li>
                     <li class="divider-vertical"></li>
