@@ -82,6 +82,14 @@ class daoServicio {
         $cn->cerrarBd();
     }
 
+    function guardarTutorias(avisosTutor $avisosT) {
+        $cn = new coneccion();
+        $sql = "INSERT INTO avisostutor (titulo,detalles) 
+           VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "')";
+        mysql_query($sql, $cn->Conectarse());
+        $cn->cerrarBD;
+    }
+
     function guardarSessionTutorado(sessionTutorias $sesion) {
         $cn = new coneccion();
         $sql = "INSERT INTO sesiontutorias(matricula, fecha, descripcionSesion, objetivos, observaciones, tareasAsignadas, numeroSesion)

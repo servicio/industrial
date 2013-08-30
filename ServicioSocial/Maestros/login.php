@@ -3,8 +3,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
-        <script src="../bootsTrap/js/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
+        <script src="../bootsTrap2/js/jquery.min.js"></script>
         <script src=../"bootsTrap/js/bootstrap.js"></script>
     </head>
     <script>
