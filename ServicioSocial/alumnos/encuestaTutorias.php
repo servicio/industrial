@@ -298,7 +298,7 @@ if(isset($_SESSION['usuario']) and $_SESSION['estado'] == 'Autenticado')
     </div>
     <footer>
         <div class="container" style="background-color: blue; border-radius: 5px">
-            <h1>Hola, soy un futuro pie de pagina</h1>
+            <h1>Hola, soy un futuro pie de pagina prr!</h1>
         </div>
     </footer>
 </html>
