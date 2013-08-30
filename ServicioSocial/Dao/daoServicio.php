@@ -18,20 +18,41 @@ class daoServicio {
         $cn->cerrarBd();
         return $paso;
     }
-
-    function insertarHistorial(historialAcademico $h) {
+    function  loginGeneral(usuario $usu)
+    {
+         $cn = new coneccion();
+     $sql="  SELECT * FROM usuarios WHERE usuario= '" . $usu->getUsuario() . "' AND pass='" . $usu->getPass() . "'";
+      
+        $datos = mysql_query($sql, $cn->Conectarse());
+        $columnas = mysql_affected_rows();
+       if ($columnas > 0) {
+            $paso = true;
+        } else {
+            $paso = false;
+        }
+        $cn->cerrarBd();
+        //return $paso;
+   $_SESSION['usuario'] = $usu->getUsuario() ;
+    $_SESSION['estado'] = 'Autenticado'; 
+     header("Location: encuestaTutorias.php");
+       
+        
+        
+        
+    }
+                function insertarHistorial(historialAcademico $h) {
         $c = new coneccion();
-        $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion, idCurso, cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getIdCurso() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";
+        $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion,cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";
         mysql_query($sqlInsertar, $c->Conectarse());
         $c->cerrarBd();
     }
 
     function guardarEncuesta(tutorias $t) {
         $c = new coneccion();
-        $sqlguardar = "INSERT INTO TUTORIAS (idTutorias, lugarViviendo, estCivilPadres, escPadre, escMadre, ingresosMenFam, relacionPadre, relacionMadre, fuenteIngreso, habMaterias, estudiosExtTec, cualExtTec, pasatiempos, trabajas, dondeTrabajas, ocupacionTrab, porqTrab, ingresastRazTec, ingresastRazCar, alergias, cualAlergia, cronica, cronicaCual, atencionPsi, cualAtencionPsi, atencionMedica, bebidasAlc, fumador, problemLegal, motivo, deporte, cualDep, frecuenciaDep, realizado) VALUES('" . $t->getLugarViviendo() . "','" . $t->getEstCivilPadre() . "',
-            '" . $t->getEstCivilPadre() . "','" . $t->getEscPadre() . "','" . $t->getEscMadre() . "','" . $t->getIngresosMenFam() . "','" . $t->getRelacionMadre() . "','" . $t->getRelacionPadre() . "','" . $t->getFuenteIngreso() . "','" . $t->getHabMaterias() . "','" . $t->getEstudiosExtTec() . "','" . $t->getCualExtTec() . "','" . $t->getPasatiempos() . "','" . $t->getTrabajas() . "','" . $t->getDondeTrabajas() . "','" . $t->getOcupacionTrab() . "','" . $t->getPorqTrab() . "','" . $t->getIngresastRazTec() . "',
+        $sqlguardar = "INSERT INTO TUTORIAS (lugarViviendo, estCivilPadres, escPadre, escMadre, ingresosMenFam, NumHermanos, PerPlaticar, relacionPadre, relacionMadre, fuenteIngreso, habMaterias, estudiosExtTec, cualExtTec, pasatiempos, trabajas, dondeTrabajas, ocupacionTrab, porqTrab, ingresastRazTec, ingresastRazCar, alergias, cualAlergia, cronica, cronicaCual, atencionPsi, cualAtencionPsi, atencionMedica, bebidasAlc, fumador, problemLegal, motivo, deporte, cualDep, frecuenciaDep, realizado) VALUES('" . $t->getLugarViviendo() . "','" . $t->getEstCivilPadre() . "',
+            '" . $t->getEscPadre() . "','" . $t->getEscMadre() . "','" . $t->getIngresosMenFam() . "','" . $t->getNumHermanos() . "','" . $t->getPerPlaticar() . "','" . $t->getRelacionPadre() . "','" . $t->getRelacionMadre() . "','" . $t->getFuenteIngreso() . "','" . $t->getHabMaterias() . "','" . $t->getEstudiosExtTec() . "','" . $t->getCualExtTec() . "','" . $t->getPasatiempos() . "','" . $t->getTrabajas() . "','" . $t->getDondeTrabajas() . "','" . $t->getOcupacionTrab() . "','" . $t->getPorqTrab() . "','" . $t->getIngresastRazTec() . "',
                 '" . $t->getIngresastRazCar() . "','" . $t->getAlergias() . "','" . $t->getCualAlergia() . "','" . $t->getCronica() . "','" . $t->getCronicaCual() . "','" . $t->getAtencionPsi() . "','" . $t->getCualAtencionPsi() . "','" . $t->getAtencionMedica() . "','" . $t->getBebidasAlc() . "','" . $t->getFumador() . "','" . $t->getProblemLegal() . "','" . $t->getMotivo() . "','" . $t->getDeporte() . "','" . $t->getCualDep() . "','" . $t->getFrecuenciaDept() . "','" . $t->getRealizado() . "')";
-        mysql_query($sqlInsertar, $c->Conectarse());
+        mysql_query($sqlguardar, $c->Conectarse());
         $c->cerrarBd();
     }
 
@@ -40,6 +61,20 @@ class daoServicio {
         $sql = "INSERT INTO datosPersonales(usuario, nombre, apellidoPaterno, apellidoMaterno)
          VALUES('" . $datosP->getUsuario() . "','" . $datosP->getNombre() . "','" . $datosP->getApellidoPaterno() . "'
              ,'" . $datosP->getApellidoMaterno() . "')";
+        try {
+            mysql_query($sql, $cn->Conectarse());
+            $cn->cerrarBd();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            $cn->cerrarBd();
+        }
+    }
+
+    function guardarRegistroDatos(usuario $usuario) {
+        $cn = new coneccion();
+        $sql = "INSERT INTO usuarios(usuario, pass, Nombres, ApellidoMaterno,ApellidoPaterno,Email)
+         VALUES('" . $usuario->getUsuario() . "','" . $usuario->getPass() . "','" . $usuario->getNombres() . "','" . $usuario->getApellidoMaterno() . "'
+             ,'" . $usuario->getApellidoPaterno() . "','" . $usuario->getEmail() . "')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
@@ -52,6 +87,13 @@ class daoServicio {
         $cn->cerrarBD;
     }
 
+    function guardarSessionTutorado(sessionTutorias $sesion) {
+        $cn = new coneccion();
+        $sql = "INSERT INTO sesiontutorias(matricula, fecha, descripcionSesion, objetivos, observaciones, tareasAsignadas, numeroSesion)
+            VALUES('" . $sesion->getMatricula() . "','" . $sesion->getFecha() . "','" . $sesion->getDescripcionSesion() . "','" . $sesion->getObjetivos() . "','" . $sesion->getObservaciones() . "','" . $sesion->getTareasAsignadas() . "','" . $sesion->getNumeroSession() . "')";
+        mysql_query($sql, $cn->Conectarse());
+        $cn->cerrarBd();
+    }
 }
 
 ?>

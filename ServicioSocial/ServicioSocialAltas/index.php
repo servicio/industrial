@@ -40,7 +40,7 @@ session_start();
                     $('#fin').show('slow');
                     $('#fin').delay("1500");
                     $('#fin').slideUp("slow");
-                    control=0;
+                    control = 0;
                 });
 
                 $('#guardar').click(function() {
@@ -70,7 +70,6 @@ session_start();
                             $(this).load('guardarDatosPersonales.php?nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m);
                             control = 1;
                         }
-
                         $('#exito').show("slow");
                         $('#exito').delay("1500");
                         $('#exito').slideUp("slow");
@@ -83,7 +82,6 @@ session_start();
                         $('#ingreso').prop('selectedIndex', 0);
                         $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
                         $('#tablaMateriasCargadas').show('slow');
-
                     }
                 });
             });
@@ -150,25 +148,12 @@ session_start();
 
                     <input id="calificacion" type="text" style="height: 30px; width: 250px" placeholder="Calificacion" name="calificacion"/>
                     <br>
-                    <select id="cursoT"style="width: 250px">
-                        <option value="0">Seleccione el Tipo de Curso</option>
-                        <?php
-                        $sql = "SELECT * FROM curso";
-                        $resultado = mysql_query($sql);
-                        while ($rs = mysql_fetch_array($resultado)) {
-                            ?>
-                            <option value="<?php echo $rs["id"]; ?>"> <?php echo $rs["curso"]; ?></option>
-
-                        <?php } ?>
-                    </select>
-
                     <select id="cursando" style="width: 250px">
                         <option value="0">Cursando</option>
                         <option value="1">Si</option>
                         <option value="2">No</option>
                     </select>
-                    <br>  
-                    <select id="ingreso" style="width: 250px; margin-right:260px">
+                    <select id="ingreso" style="width: 250px">
                         <option value="0">Seleccione el Ingreso</option>
                         <option value="1">1</option>
                         <option value="2">2</option>

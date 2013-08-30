@@ -2888,8 +2888,8 @@ table th[class*="span"],
 
 .caret {
   display: inline-block;
-  width: 0;
-  height: 0;
+  width: 0px;
+  height: 8px;
   vertical-align: top;
   border-top: 4px solid #000000;
   border-right: 4px solid transparent;

@@ -12,12 +12,14 @@
  */
 class tutorias {
 
-    private $idTutorias;
     private $lugarViviendo;
     private $estCivilPadre;
     private $escPadre;
     private $escMadre;
     private $ingresosMenFam;
+    private $NumHermanos;
+    private $PerPlaticar;
+    
     private $relacionPadre;
     private $relacionMadre;
     private $fuenteIngreso;
@@ -48,9 +50,7 @@ class tutorias {
     private $frecuenciaDept;
     private $realizado;
 
-    public function getIdTutorias() {
-        return $this->idTutorias;
-    }
+   
 
     public function setIdTutorias($idTutorias) {
         $this->idTutorias = $idTutorias;
@@ -94,6 +94,22 @@ class tutorias {
 
     public function setIngresosMenFam($ingresosMenFam) {
         $this->ingresosMenFam = $ingresosMenFam;
+    }
+
+    public function getNumHermanos() {
+        return $this->NumHermanos;
+    }
+
+    public function setNumHermanos($NumHermanos) {
+        $this->NumHermanos = $NumHermanos;
+    }
+
+    public function getPerPlaticar() {
+        return $this->PerPlaticar;
+    }
+
+    public function setPerPlaticar($PerPlaticar) {
+        $this->PerPlaticar = $PerPlaticar;
     }
 
     public function getRelacionPadre() {
@@ -327,6 +343,7 @@ class tutorias {
     public function setRealizado($realizado) {
         $this->realizado = $realizado;
     }
+
 
 }
 
