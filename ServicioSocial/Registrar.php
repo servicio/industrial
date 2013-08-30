@@ -5,9 +5,9 @@
 <title>Documento sin título</title>
 </head>
 
-    <link rel="stylesheet" type="text/css" href="bootsTrap/css/bootstrap.css"/>
-        <script src="bootsTrap/js/jquery.min.js"></script>
-        <script src="bootsTrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootsTrap2/css/bootstrap.css"/>
+        <script src="bootsTrap2/js/jquery.min.js"></script>
+        <script src="bootsTrap2/js/bootstrap.js"></script>
     
     
 <body>

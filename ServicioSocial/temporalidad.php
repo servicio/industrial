@@ -1,4 +1,4 @@
-<script type="text/javascript" src="bootsTrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="bootsTrap2/js/jquery.min.js"></script>
 <script>
     function  recargar() {
         $(document).ready(function() {

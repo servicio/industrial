@@ -1,10 +1,15 @@
 <link rel="stylesheet" type="text/css" href="../css/css.css">
 <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="../bootsTrap2/css"/>
+<link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
+<link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" type="text/css" href="estilos.css"/>
 
 <script src="../bootsTrap2/js/jquery.min.js"></script>
 <script src="../bootsTrap2/js/bootstrap.js"></script>
+
 <style>
     body{ 
         background: url(galeria/BackgrundV7.png)  center center fixed; 
@@ -19,7 +24,10 @@
     <title>Portal de Alumnos Ing. Industrial</title>
 </head>
 <header>
-    <div class="container"  style="height: 200px; border-radius: 5px; background-image: url(galeria/HeaderBETA.png); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
+    <div class="container"  style="height: 200px;
+         border-radius: 5px; background-image: url(galeria/HeaderBETA.png);
+         -webkit-background-size: cover;
+         -moz-background-size: cover; -o-background-size: cover; background-size: cover">
         <div style="text-align: center">
             <h1>Instituto Tecnol&oacutegico de M&eacuterida</h1>
             <h3>Portal</h3>
@@ -69,9 +77,3 @@
                 </div>
             </div>
         </div>
-    </div>
-    <?php include './datosPersonales.php'; ?>
-</header>
-<body>
-</body>
-
