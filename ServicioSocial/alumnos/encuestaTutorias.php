@@ -1,4 +1,11 @@
-<?php include './plantilla.php'; ?>
+<?php
+session_start(); 
+
+if(isset($_SESSION['usuario']) and $_SESSION['estado'] == 'Autenticado') 
+{ 
+    include './plantilla.php'; 
+    ?>
+ 
 <html>
     <link rel="stylesheet" type="text/css" href="..css/css.css">
     <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
@@ -62,18 +69,18 @@
                 <h6>$<input type="text" name="IngresosMenFam"></h6>
 
                 <h6>5.- &iquest;Cuantos hermanos/as son en tu familia incluy&eacute;ndote?</h6>
-                <input type="text" name="pregunta5"><br>
+                <input type="text" name="NumHermanos"><br>
 
                 <h6>6.- &iquest;Con qui&eacute;n platicas cuando tienes un problema personal?</h6>
-                <input type="radio" name="Pregunta6" value="Padre" id="RadioGroup5_0" onClick="opcion6.disabled = true">
+                <input type="radio" name="PerPlaticar" value="Padre" id="RadioGroup5_0" onClick="opcion6.disabled = true">
                 Padre<br>
-                <input type="radio" name="Pregunta6" value="Madre" id="RadioGroup5_1" onclick="opcion6.disabled = true">
+                <input type="radio" name="PerPlaticar" value="Madre" id="RadioGroup5_1" onclick="opcion6.disabled = true">
                 Madre<br> 
-                <input type="radio" name="Pregunta6" value="Ambos" id="RadioGroup5_2" onclick="opcion6.disabled = true">
+                <input type="radio" name="PerPlaticar" value="Ambos" id="RadioGroup5_2" onclick="opcion6.disabled = true">
                 Ambos<br>
-                <input type="radio" name="Pregunta6" value="Hermanos" id="RadioGroup5_3" onclick="opcion6.disabled = true">
+                <input type="radio" name="PerPlaticar" value="Hermanos" id="RadioGroup5_3" onclick="opcion6.disabled = true">
                 Hermanos<br> 
-                <input type="radio" name="Pregunta6" value="Otro" id="RadioGroup5_4" onclick="opcion6.disabled = false">
+                <input type="radio" name="PerPlaticar" value="Otro" id="RadioGroup5_4" onclick="opcion6.disabled = false">
                 Otro (Especifica)<input name="opcion6" type="text" disabled="disabled">  <br>
 
                 <h6>7.- Como te llevas con tu:</h6>
@@ -294,3 +301,14 @@
         </div>
     </footer>
 </html>
+
+ <?php   // Lo dejas entrar a la pagina 
+} 
+else 
+{   
+       // Usuario que no se ha logueado 
+       echo "No tienes permiso para entrar a esta pagina"; 
+       exit(); 
+}  
+
+?>

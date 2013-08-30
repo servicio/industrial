@@ -8,11 +8,9 @@ $confirmar=$_GET["confirmar"];
 $email=$_GET["Email"];
 $confirmarEmail=$_GET["confirmarEmail"];
         
-if ($contrasenia==$confirmar && $email==$confirmarEmail ) {
-    
-
-
-$guardar ->setUsuario($_GET["usuario"]);
+if ($contrasenia==$confirmar  ) {
+   if($email==$confirmarEmail){
+       $guardar ->setUsuario($_GET["usuario"]);
 $guardar ->setPass($_GET["contrasenia"]);
 $guardar ->setNombres($_GET["nombres"]);
 $guardar ->setApellidoPaterno($_GET["ApellidoPaterno"]);
@@ -20,11 +18,30 @@ $guardar ->setApellidoMaterno($_GET["ApellidoMaterno"]);
 $guardar ->setEmail($_GET["Email"]);
 
 $dao ->guardarRegistroDatos($guardar);
+
+  ?>
+<script language="javascript">
+alert("vientos");
+
+</script>
+<?php
+        header ("Location:plantilla.php"); 
+   } 
+   else{
+        ?>
+<script language="javascript">
+alert("Estas mal pendejo");
+</script>
+<?php
+   }
+
+
+
 }
 else{
    ?>
 <script language="javascript">
-alert("Estas mal pendejo");
+alert("Estas remal pendejo");
 </script>
 <?php
 }

@@ -9,6 +9,7 @@ $tutorias->setLugarViviendo($_GET["LugarViviendo"]);
 if ($tutorias->getLugarViviendo() == "Otro") {
     $tutorias->setLugarViviendo($_GET["opcion1"]);
 }
+
 $tutorias->setEstCivilPadre($_GET["EstCivilPadre"]);
 if ($tutorias->getEstCivilPadre() == "Otro") {
     $tutorias->setEstCivilPadre($_GET["opcion2"]);
@@ -28,6 +29,14 @@ $tutorias->setFuenteIngreso($_GET["FuenteIngreso"]);
 if ($tutorias->getFuenteIngreso() == "Otro") {
     $tutorias->setFuenteIngreso($_GET["opcion7"]);
 }
+$tutorias->setNumHermanos($_GET["NumHermanos"]);
+
+
+$tutorias->setPerPlaticar($_GET["PerPlaticar"]);
+if ($tutorias->getPerPlaticar() == "Otro") {
+    $tutorias->setPerPlaticar($_GET["opcion6"]);
+}
+
 $tutorias->setHabMaterias($_GET["HabMaterias"]);
 $tutorias->setEstudiosExtTec($_GET["EstudiosExtTec"]);
 $tutorias->setCualExtTec($_GET["CualExtTec"]);
