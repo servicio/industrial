@@ -43,7 +43,17 @@ class daoServicio {
         
         
     }
-                function insertarHistorial(historialAcademico $h) {
+    function consultaMaterias(matricula $prr){
+        $cn = new coneccion();
+        $sql = "SELECT * FROM materias";
+$result = mysql_query($sql);
+while($row = mysql_fetch_assoc($result)){
+echo $row['tu-campo'];
+}
+
+        $cn->cerrarBd();
+    }
+            function insertarHistorial(historialAcademico $h) {
         $c = new coneccion();
         $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion,cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";
         mysql_query($sqlInsertar, $c->Conectarse());
@@ -97,6 +107,31 @@ class daoServicio {
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
+    function mostrarTabla($arreglo2D){
+        
+        
+  	 if(isset($arreglo2D)){
+  	 	echo '<table border="1">';
+  	 	echo '<tr>';
+  	 	    //encabezados. 
+  	 	    //Usar el primer renglon de la tabla para obtener los encabezados
+  	 	    $renglon =  $arreglo2D[0]; 
+  	 	    foreach($renglon as $campo=>$valor){
+  	 	    	echo "<th> $campo </th>";
+  	 	    }
+  	 	echo '</tr>';
+  	 	//Recorrer todos los renglones
+  	 	foreach($arreglo2D as $renglon)
+  	 	{	
+  	 	   echo "<tr>";
+           foreach($renglon as $campo=>$valor){
+           	   echo "<td> $valor </td>";
+           }   	 	  
+  	 	   echo "</tr>";
+  	 	}
+  	 	echo "</table>";
+  	 }
+   }
 }
 
 ?>

@@ -62,7 +62,7 @@
                         <li class="divider-vertical"></li>
                         <li><a href="">Creditos Extra</a> </li>
                         <li class="divider-vertical"></li>
-                        <li><a href="">Creacion de grupos</a> </li>
+                        <li><a href="cargaMaterias.php">Creacion de grupos</a> </li>
                         <li class="divider-vertical"></li>
                         <li><a href="">Tutorias</a> </li>
                     </ul>
