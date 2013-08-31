@@ -1,25 +1,22 @@
 <?php
 session_start();
-session_destroy();
 if (isset($_SESSION['usuario']) and $_SESSION['estado'] == 'Autenticado') {
-    echo 'Usuario: ' . $_SESSION['usuario'];
+    $_SESSION['usuario'];
     include './plantilla.php';
     ?>
-
     <html>
-        <link rel="stylesheet" type="text/css" href="..css/css.css">
-        <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
-        <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap-responsive.css"/>
-        <link rel="stylesheet" type="text/css" href="estilos.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="../css/css.css">
+        <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
 
-        <script src="..bootsTrap/js/jquery.min.js"></script>
-        <script src="..bootsTrap/js/bootstrap.js"></script>
+        <script src="../bootsTrap2/js/jquery.min.js"></script>
+        <script src="../bootsTrap2/js/bootstrap.js"></script>
 
         <style>
             table {
                 width: 50%;
                 font-size: 0.9em;
-
             }
             table caption {
                 color: #555;
@@ -353,8 +350,14 @@ if (isset($_SESSION['usuario']) and $_SESSION['estado'] == 'Autenticado') {
             </div>
         </div>
         <footer>
-            <div class="container" style="background-color: black; border-radius: 0px 0px 5px 5px">
-                <h1>Hola, soy un futuro pie de pagina.</h1>
+            <div class="container" style="margin-bottom: 20px; background-color: black; border-radius: 0px 0px 5px 5px">
+                <div style="text-align: center; color: white">
+                    <br>
+                    Coordinacion de la carrera de Ing. Industrial<br>
+                    Tel. x-xx-xx-x, Ext. xxxxx y x-xx-xx-x.<br/> 
+                    E-mail: xxxxxxxx@xxxxx.com
+                    <br><br>
+                </div>
             </div>
         </footer>
     </html>
