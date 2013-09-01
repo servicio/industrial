@@ -4,7 +4,24 @@ include '../DaoConnection/coneccion.php';
 
 class daoServicio {
 
-    function verificacion_de_ingreso(usuario $u) {
+    function consultaMaterias(materias $m){
+        $cn=  new coneccion();
+        $paso = false;
+       $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario=\'$m')";
+        $datos = mysql_query($sql, $cn->Conectarse());
+       
+     while ($fila = mysql_fetch_array($sql, $cn)) 
+  {
+    $arreglo;     
+    $m->setMateria($fila["Materia"]);
+    $m->setId($fila["Id"]);
+    $m->setSemestre($fila["Semestre"]);
+    $arreglo[$m];
+}
+        $cn->cerrarBd();
+        return $arreglo;
+    }
+            function verificacion_de_ingreso(usuario $u) {
         $cn = new coneccion();
         $paso = false;
         $sql = "SELECT * FROM usuarios WHERE usuario='" . $u->getUsuario() . "' AND pass='" . $u->getPassword() . "'";
@@ -43,16 +60,7 @@ class daoServicio {
         
         
     }
-    function consultaMaterias(matricula $prr){
-        $cn = new coneccion();
-        $sql = "SELECT * FROM materias";
-$result = mysql_query($sql);
-while($row = mysql_fetch_assoc($result)){
-echo $row['tu-campo'];
-}
-
-        $cn->cerrarBd();
-    }
+    
             function insertarHistorial(historialAcademico $h) {
         $c = new coneccion();
         $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion,cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";

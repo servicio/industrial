@@ -1,6 +1,6 @@
 <?php
  session_start();
-session_destroy();
+
 if(isset($_SESSION['usuario']) and $_SESSION['estado'] == 'Autenticado') 
 { 
     echo 'Usuario: '.$_SESSION['usuario'];
