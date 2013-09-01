@@ -5,16 +5,14 @@
 //{ 
 //    echo 'Usuario: '.$_SESSION['usuario'];
     include './plantilla.php'; 
-    include '../DaoConnection/coneccion.php';
+//    include '../DaoConnection/coneccion.php';
     include '../clases/materias.php';
-include '../Dao/daoServicio.php';
+    include '../Dao/daoServicio.php';
 $dao = new daoServicio();
  $algo="e09080264";
-
- 
-
  $materias = new materias();
- $materias = $dao->consultaMaterias($algo);
+ 
+ $materias = $dao->consultaMaterias($algo, $materias);
     
  foreach ($materias as $valor){
      echo $valor;

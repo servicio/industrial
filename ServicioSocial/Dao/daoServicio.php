@@ -4,18 +4,19 @@ include '../DaoConnection/coneccion.php';
 
 class daoServicio {
 
-    function consultaMaterias(materias $m){
+    function consultaMaterias($matricula, materias $m){
+//        $m = new materias();
         $cn=  new coneccion();
         $paso = false;
-       $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario=\'$m')";
+       $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula')";
         $datos = mysql_query($sql, $cn->Conectarse());
        
-     while ($fila = mysql_fetch_array($sql, $cn)) 
+     while ($fila = mysql_fetch_array($datos)) 
   {
     $arreglo;     
-    $m->setMateria($fila["Materia"]);
-    $m->setId($fila["Id"]);
-    $m->setSemestre($fila["Semestre"]);
+    $m->setMateria($fila[0]);
+    $m->setId($fila[1]);
+    $m->setSemestre($fila[2]);
     $arreglo[$m];
 }
         $cn->cerrarBd();
