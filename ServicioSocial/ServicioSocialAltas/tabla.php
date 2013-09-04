@@ -1,4 +1,5 @@
 <?php
+
 include '../DaoConnection/coneccion.php';
 $matricula = $_GET["matricula"];
 $cn = new coneccion();
@@ -14,6 +15,7 @@ echo "
  <th style='width:100px'>Aprobado</th>
  <th style='width:100px'>Calificación</th>
  <th style='width:100px'>Cursando</th>
+  <th style='width:100px'>Ingreso</th>
  </thead>
 
 ";
@@ -24,6 +26,7 @@ while ($rs = mysql_fetch_array($datos)) {
         <td><center>" . $rs["acredito"] . "</center></td>
         <td><center>" . $rs["calificacion"] . "</center></td>
         <td><center>" . $rs["cursando"] . "</center></td>
+        <td><center>" . $rs["ingresoCursado"] . "</center></td>
         </tr>";
 }
 echo"</table>";

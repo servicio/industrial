@@ -13,13 +13,26 @@ session_start();
             $(document).ready(function() {
                 var control = 0;
                 $('#tablaMateriasCargadas').hide();
+                $('#exito').hide();
+                $('#fracaso').hide();
+                $('#fin').hide();
+                $('#materia').hide();
+                $('#especialidad').hide();
                 $('#modal').click(function() {
                     $('#myModal').modal('show', function() {
                     });
                 });
-                $('#exito').hide();
-                $('#fracaso').hide();
-                $('#fin').hide();
+                $('#ingreso').change(function() {
+                    var ingraso = $('#ingreso').val();
+                    if (ingraso > 6) {
+                        $('#materia').show('slow');
+                        $('#especialidad').show('slow');
+                    }
+                    else {
+                        $('#materia').hide('slow');
+                        $('#especialidad').hide('slow');
+                    }
+                });
                 $('#especialidad').change(function() {
                     var especialidad = $('#especialidad').val();
                     $('#materia').load('cargaMaterias.php?id=' + especialidad);
@@ -52,36 +65,43 @@ session_start();
                     var Tcurso = $('#cursoT').val();
                     var cursando = $('#cursando').val();
                     var ingr = $('#ingreso').val();
-
+                    var materias = $('#materiasComunes').val();
 //                    ---------datosPersonales------------------
-
                     var nombre = $('#nombre').val();
                     var apellidoP = $('#apellidoP').val();
                     var apellidoM = $('#apellidoM').val();
 
-                    if (m == "" || espe == 0 || mat == 0 || acred == 0 || calif == "" || Tcurso == 0 || cursando == 0 || ingr == 0) {
+                    if (m == "" || acred == 0 || Tcurso == 0 || cursando == 0 || ingr == 0) {
                         $('#fracaso').slideDown("slow");
                         $('#fracaso').delay("1500");
                         $('#fracaso').slideUp("slow");
                     }
                     else {
-                        $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr);
+                        if (cursando == 1) {
+                            $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
+                            $('#exito').show("slow");
+                            $('#exito').delay("1500");
+                            $('#exito').slideUp("slow");
+                            $('#cursando').prop('selectedIndex', 0);
+                            $('#especialidad').prop('selectedIndex', 0);
+                            $('#materia').prop('selectedIndex', 0);
+                            $('#acreditacion').prop('selectedIndex', 0);
+                            $('#calificacion').val('');
+                            $('#cursoT').prop('selectedIndex', 0);
+                            $('#ingreso').prop('selectedIndex', 0);
+                            $('#materiasComunes').prop('selectedIndex', 0);
+                            $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
+                            $('#tablaMateriasCargadas').show('slow');
+                        }
+                        else {
+                            $('#fracaso').slideDown("slow");
+                            $('#fracaso').delay("1500");
+                            $('#fracaso').slideUp("slow");
+                        }
                         if (control == 0) {
                             $(this).load('guardarDatosPersonales.php?nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m);
                             control = 1;
                         }
-                        $('#exito').show("slow");
-                        $('#exito').delay("1500");
-                        $('#exito').slideUp("slow");
-                        $('#cursando').prop('selectedIndex', 0);
-                        $('#especialidad').prop('selectedIndex', 0);
-                        $('#materia').prop('selectedIndex', 0);
-                        $('#acreditacion').prop('selectedIndex', 0);
-                        $('#calificacion').val('');
-                        $('#cursoT').prop('selectedIndex', 0);
-                        $('#ingreso').prop('selectedIndex', 0);
-                        $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
-                        $('#tablaMateriasCargadas').show('slow');
                     }
                 });
             });
@@ -90,7 +110,7 @@ session_start();
 
     <body style="background-color:  #e5e5e5">
     <center>
-        <div style="width: 960px; background-color: white; height: auto">
+        <div style="width: 960px; background-color: white;">
             <br>
             <fieldset style="border-radius: 10px">
                 <center>
@@ -115,7 +135,33 @@ session_start();
                     <br>
                     <br>
                     <br>
+                    <select id="ingreso" style="width: 250px; margin-right: 250px; ">
+                        <option value="0">Seleccione el Ingreso</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                    </select> 
                     <br>
+                    <select id="materiasComunes" style="margin-right: 250px; width: 250px">
+                        <option value="0">Selecione una Materia</option>
+                        <?php
+                        $sqlMateriasTronco = "select * from materias where idEspecialidad=0";
+                        $datosMaterias = mysql_query($sqlMateriasTronco, $coneccion->Conectarse());
+                        while ($rs = mysql_fetch_array($datosMaterias)) {
+                            ?>
+                            <option value="<?php echo $rs[0] ?>"><?php echo utf8_encode($rs["materia"]); ?></option>
+                        <?php } ?>
+                    </select>
                     <br>
                     <select id="especialidad" style="width: 250px">
                         <option value="0">Seleccione la Especialidad</option>
@@ -153,22 +199,6 @@ session_start();
                         <option value="1">Si</option>
                         <option value="2">No</option>
                     </select>
-                    <select id="ingreso" style="width: 250px">
-                        <option value="0">Seleccione el Ingreso</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                    </select> 
                 </center>
             </fieldset>
             <br>

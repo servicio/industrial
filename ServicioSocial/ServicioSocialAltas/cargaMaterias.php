@@ -11,9 +11,9 @@ if ($id == 0) {
 
 
     if ($id == 1) {
-        $sql = "SELECt * FROM materias WHERE idEspecialidad <>2";
+        $sql = "SELECt * FROM materias WHERE idEspecialidad = 1";
     } else if ($id == 2) {
-        $sql = "SELECt * FROM materias WHERE idEspecialidad <>1";
+        $sql = "SELECt * FROM materias WHERE idEspecialidad =2";
     }
     $datos = mysql_query($sql, $cn->Conectarse());
     echo "<select name='materia' id='materia'  style='width: 250px'>";
