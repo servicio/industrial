@@ -33,6 +33,7 @@ include './plantilla.php';
                             </td>
                         </tr>
                         <!------------------------------------------------------------------------------------------------>
+                        <!------------------------------------------------------------------------------------------------>
                         <tr>
                             <td class="formulario">
                                 <h5>Segundo documento:</h5>
@@ -44,9 +45,59 @@ include './plantilla.php';
                                 <input type="submit" class="btn btn-primary" name="" value="Enviar" id="">
                             </td>
                         </tr>
+                        <!------------------------------------------------------------------------------------------------>
+                        <tr>
+                            <td class="formulario">
+                                <h5>Tercer documento:</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="btn-group">
+                                <input type="file" name="" id="" accept="application/pdf" title="Buscar Archivo">
+                                <input type="submit" class="btn btn-primary" name="" value="Enviar" id="">
+                            </td>
+                        </tr>
+                        <!------------------------------------------------------------------------------------------------>
+                        <!------------------------------------------------------------------------------------------------>
+                        <tr>
+                            <td class="formulario">
+                                <h5>Cuerto documento:</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="btn-group">
+                                <input type="file" name="" id="" accept="application/pdf" title="Buscar Archivo">
+                                <input type="submit" class="btn btn-primary" name="" value="Enviar" id="">
+                            </td>
+                        </tr>
+                        <!------------------------------------------------------------------------------------------------>
+                        <!------------------------------------------------------------------------------------------------>
+                        <tr>
+                            <td class="formulario">
+                                <h5>Quinto documento:</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="btn-group">
+                                <input type="file" name="" id="" accept="application/pdf" title="Buscar Archivo">
+                                <input type="submit" class="btn btn-primary" name="" value="Enviar" id="">
+                            </td>
+                        </tr>
+                        <!------------------------------------------------------------------------------------------------>
                     </tbody>
                 </table>
             </form>
         </div>
     </div>
+    <footer>
+        <div class="container" style="margin-bottom: 20px; background-color: black; border-radius: 0px 0px 5px 5px">
+            <div style="text-align: center; color: white">
+                <br>
+                Coordinacion de la carrera de Ing. Industrial<br>
+                Tel. x-xx-xx-x, Ext. xxxxx y x-xx-xx-x.<br/> 
+                E-mail: xxxxxxxx@xxxxx.com
+                <br><br>
+            </div>
+        </div>
+    </footer>
 </html>
