@@ -40,8 +40,10 @@ echo "<tr>";
 
 foreach($renglon as $campo=>$valor){
 echo "<td> $valor </td>";
-echo $valor;                        }
-echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=\"$campo->\"id\" \" </td>";
+if($campo=="id"){
+				 $prr=$valor;
+				 }                      }
+echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=\"$prr \" </td>";
 echo "</tr>";
                                          }
 echo "</table>";
