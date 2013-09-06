@@ -1,26 +1,34 @@
+
 <?php
 
 include '../DaoConnection/coneccion.php';
-
+  
 class daoServicio {
+    
+ 
+    
 
+    
     function consultaMaterias($matricula, materias $m){
 //        $m = new materias();
         $cn=  new coneccion();
         $paso = false;
-       $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula')";
-        $datos = mysql_query($sql, $cn->Conectarse());
-       
-     while ($fila = mysql_fetch_array($datos)) 
-  {
-    $arreglo;     
-    $m->setMateria($fila[0]);
-    $m->setId($fila[1]);
-    $m->setSemestre($fila[2]);
-    $arreglo[$m];
-}
+       $sql = "SELECT Materia, tiempos,semestre FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula') ORDER BY semestre ASC LIMIT 0,6";
+        $consulta = mysql_query($sql, $cn->Conectarse());
+       $registro= array();
+       if($consulta != false){
+       while( $renglon=mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+   	  	    $registro[] = $renglon;
+   	     }
+              mysql_free_result($consulta);
+       }
+
         $cn->cerrarBd();
-        return $arreglo;
+        return $registro;
+    }
+   
+    function TablaConsulta($registro){
+        
     }
             function verificacion_de_ingreso(usuario $u) {
         $cn = new coneccion();
