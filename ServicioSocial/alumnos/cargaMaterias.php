@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../css/css.css">
         <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
-
+         
         <script src="../bootsTrap2/js/jquery.min.js"></script>
         <script src="../bootsTrap2/js/bootstrap.js"></script>
 <?php
@@ -22,13 +22,13 @@ $dao = new daoServicio();
  
  
  
- echo "<form name=\"materias\" action=\"cambioMaterias.php\">"; 
+ echo "<form name=\"materias\" method=\"POST\" action=\"cambioMaterias.php\">"; 
  $arreglo2D = $dao->consultaMaterias($algo, $materias);
   
  echo '<table border="1" class="table table-bordered table-striped">';
 echo '<tr>';
 $renglon = $arreglo2D[0];
-echo "<th> </th>";
+
 
 foreach($renglon as $campo=>$valor){
 echo "<th> $campo </th>";
@@ -40,10 +40,11 @@ echo "<tr>";
 
 foreach($renglon as $campo=>$valor){
 echo "<td> $valor </td>";
-if($campo=="id"){
+if($campo=="Materia"){
 				 $prr=$valor;
-				 }                      }
-echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=\"$prr \" </td>";
+				 }   
+                                 echo $prr;}
+echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=<?php echo $prr; ?> </td>";
 echo "</tr>";
                                          }
 echo "</table>";
