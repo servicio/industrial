@@ -20,22 +20,29 @@ $cn->cerrarBd();
         <div class="container">
             <?php include './plantillaEncabezado.php'; ?>
             <center>
-                <div   class="span12"  style="margin: auto; background-color: white; margin-top: -20px">
+                <div    class="span12"  style="overflow-y: scroll; height: 335px;  margin: auto; background-color: white; margin-top: -20px">
                     <?php
-                    echo '<table border=1">';
+                    //echo '<table>';
                     while ($row = mysql_fetch_array($datos)) {
+                        echo "<div
+                            >
+                            <h3>" 
+                                . $row["titulo"] . 
+                            "</h3>
+                                </div>
+                            <br/>";
 
-                        echo "<div style='text-align: left; margin-left: 150px;'><h3>" . $row["titulo"] . "</h3></div><br>";
-
-                        echo "<div style=''>" . $row["detalles"] . "</div><br>";
-
-                        echo '<hr size="3" noshade size="5" width="75%;"';
+                        echo "<div>"
+                                .$row["detalles"] . "
+                              </div>
+                                ";
                     }
                     ?>
 
                 </div>
             </center>
-            <?php include './plantillaFooter.php'; ?>
         </div>
+
     </body>
 </html>
+<?php include './plantillaFooter.php'; ?>
