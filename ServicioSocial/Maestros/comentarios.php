@@ -7,25 +7,13 @@
         <script src="../bootsTrap/js/bootstrap.min.js"></script>-->
         <script>
             $(document).ready(function() {
-
                 $('#guardar').click(function() {
-//                    var titulo = $('#titulo').val();
-//                    var detalles = $('#detalles').val();
-//                    alert(detalles);
-//                    $(this).load("guardar.php?titulo=" + titulo + "&detalle=" + detalles);
                     var datos = 'titulo=' + $('#titulo').val() +
                             '&detalle=' + $('#detalles').val();
                     $.get('guardar.php', datos, function() {
                         alert("Datos Agregados");
                     });
-
-
-
-
-
-
                 });
-
             });
         </script>
     </head>
