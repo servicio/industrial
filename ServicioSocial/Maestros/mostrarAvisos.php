@@ -3,8 +3,8 @@ include '../DaoConnection/coneccion.php';
 
 $cn = new coneccion();
 $sql = "SELECT * FROM avisostutor ORDER BY id DESC LIMIT 20";
-mysql_query($sql, $cn->Conectarse());
-$cn->cerrarBD;
+$datos = mysql_query($sql, $cn->Conectarse());
+$cn->cerrarBd();
 ?>
 
 <html>
@@ -16,27 +16,21 @@ $cn->cerrarBD;
         <script src=../"bootsTrap/js/bootstrap.js"></script>
     </head>
     <body>
+        
         <div class="container">
             <?php include './plantillaEncabezado.php'; ?>
             <center>
                 <div   class="span12"  style="margin: auto; background-color: white; margin-top: -20px">
-                    <h1>AVISOS</h1>
-                    
                     <?php
-                    $result = mysql_query($sql);
-                    $numero = 0;
-                    echo '<table border=1, width="300px;">';
-                    while ($row = mysql_fetch_array($result)) {
+                    echo '<table border=1">';
+                    while ($row = mysql_fetch_array($datos)) {
 
-                        echo "<tr><td><font face=\"verdana\">" .
-                        $row["titulo"] . "</font></td></tr>";
+                        echo "<div style='text-align: left; margin-left: 150px;'><h3>" . $row["titulo"] . "</h3></div><br>";
 
-                        echo "<tr><td><font face=\"verdana\">" .
-                        $row["detalles"] . "</font></td>";
+                        echo "<div style=''>" . $row["detalles"] . "</div><br>";
 
-                        $numero++;
+                        echo '<hr size="3" noshade size="5" width="75%;"';
                     }
-                    echo "</td></tr></table>";
                     ?>
 
                 </div>

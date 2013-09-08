@@ -2,19 +2,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-<!--        <script type="text/javascript" src="../bootsTrap/js/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="../bootsTrap/css/bootstrap.css"/>
-        <script src="../bootsTrap/js/bootstrap.min.js"></script>-->
         <script>
             $(document).ready(function() {
-
                 $('#guardar').click(function() {
-                    var titulo = $('#titulo').val();
-                    var detalles = $('#detalles').val();
-                    $(this).load("guardar.php?titulo=" + titulo + "&detalle=" + detalles);
-//                    $(this).load("guardar.php?detalles="+detalles); 
+                    var datos = 'titulo=' + $('#titulo').val() +
+                            '&detalle=' + $('#detalles').val();
+                    $.get('guardar.php', datos, function() {
+                        alert("Datos Agregados");
+                    });
                 });
-
             });
         </script>
     </head>
