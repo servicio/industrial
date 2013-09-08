@@ -125,7 +125,8 @@ class daoServicio {
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBD;
     }
-
+    
+   
     function guardarSessionTutorado(sessionTutorias $sesion) {
         $cn = new coneccion();
         $sql = "INSERT INTO sesiontutorias(matricula, fecha, descripcionSesion, objetivos, observaciones, tareasAsignadas, numeroSesion)

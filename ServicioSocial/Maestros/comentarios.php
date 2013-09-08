@@ -12,6 +12,7 @@
                     var titulo = $('#titulo').val();
                     var detalles = $('#detalles').val();
                     $(this).load("guardar.php?titulo=" + titulo + "&detalle=" + detalles);
+//                    $(this).load("guardar.php?detalles="+detalles); 
                 });
 
             });
