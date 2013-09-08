@@ -9,9 +9,21 @@
             $(document).ready(function() {
 
                 $('#guardar').click(function() {
-                    var titulo = $('#titulo').val();
-                    var detalles = $('#detalles').val();
-                    $(this).load("guardar.php?titulo=" + titulo + "&detalle=" + detalles);
+//                    var titulo = $('#titulo').val();
+//                    var detalles = $('#detalles').val();
+//                    alert(detalles);
+//                    $(this).load("guardar.php?titulo=" + titulo + "&detalle=" + detalles);
+                    var datos = 'titulo=' + $('#titulo').val() +
+                            '&detalle=' + $('#detalles').val();
+                    $.get('guardar.php', datos, function() {
+                        alert("Datos Agregados");
+                    });
+
+
+
+
+
+
                 });
 
             });

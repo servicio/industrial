@@ -1,49 +1,46 @@
 
 <?php
-
 session_start();
 include '../DaoConnection/coneccion.php';
-  
+
 class daoServicio {
-    
- 
-    function consultaMateriascambio($matricula, $materias){
-      $cn=  new coneccion();
+
+    function consultaMateriascambio($matricula, $materias) {
+        $cn = new coneccion();
         $paso = false;
-        $sql = "SELECT Materia, tiempos,semestre FROM materias WHERE materias.Materia NOT IN (SELECT Materia FROM historial where usuario='$matricula' &&) ORDER BY semestre ASC LIMIT 0,6";  
-         $consulta = mysql_query($sql, $cn->Conectarse());
-       $registro= array();
-       if($consulta != false){
-       while( $renglon=mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-   	  	    $registro[] = $renglon;
-   	     }
-              mysql_free_result($consulta);
-       }
+        $sql = "SELECT Materia, tiempos,semestre FROM materias WHERE materias.Materia NOT IN (SELECT Materia FROM historial where usuario='$matricula' &&) ORDER BY semestre ASC LIMIT 0,6";
+        $consulta = mysql_query($sql, $cn->Conectarse());
+        $registro = array();
+        if ($consulta != false) {
+            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+                $registro[] = $renglon;
+            }
+            mysql_free_result($consulta);
+        }
 
         $cn->cerrarBd();
         return $registro;
     }
 
-    
-    function consultaMaterias($matricula, materias $m){
+    function consultaMaterias($matricula, materias $m) {
 //        $m = new materias();
         $cn = new coneccion();
         $paso = false;
-       $sql = "SELECT Materia, tiempos,semestre FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula') ORDER BY semestre ASC LIMIT 0,6";
+        $sql = "SELECT Materia, tiempos,semestre FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula') ORDER BY semestre ASC LIMIT 0,6";
         $consulta = mysql_query($sql, $cn->Conectarse());
-       $registro= array();
-       if($consulta != false){
-       while( $renglon=mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-   	  	    $registro[] = $renglon;
-   	     }
-              mysql_free_result($consulta);
-       }
+        $registro = array();
+        if ($consulta != false) {
+            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+                $registro[] = $renglon;
+            }
+            mysql_free_result($consulta);
+        }
 
         $cn->cerrarBd();
         return $registro;
     }
-   
-    function TablaConsulta($registro){
+
+    function TablaConsulta($registro) {
         
     }
 
@@ -157,6 +154,19 @@ class daoServicio {
             }
             echo "</table>";
         }
+    }
+
+    function dameNumeroSession($matricula) {
+        $cn = new coneccion();
+        $numeroSession = 0;
+        $sql = "SELECT count(*) as numeroSession from sesiontutorias where matricula ='$matricula';";
+        $datos = mysql_query($sql, $cn->Conectarse());
+        while ($rs = mysql_fetch_array($datos)) {
+            $numeroSession = $rs["numeroSession"];
+        }
+        $numeroSession+=1;
+        $cn->cerrarBd();
+        return $numeroSession;
     }
 
 }
