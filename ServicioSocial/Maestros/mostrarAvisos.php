@@ -16,7 +16,7 @@ $cn->cerrarBd();
         <script src=../"bootsTrap/js/bootstrap.js"></script>
     </head>
     <body>
-        
+
         <div class="container">
             <?php include './plantillaEncabezado.php'; ?>
             <center>
