@@ -1,10 +1,15 @@
 <?php
 session_start();
 include '../DaoConnection/coneccion.php';
+
 $usuario = $_SESSION['Usuario'];
 $id = $_SESSION["idMaestroSession"];
 $nombreMaestro = $_SESSION["nombreMaestro"];
+if ($usuario == null) {
+    header('Location: login.php');
+}
 $cn = new coneccion();
+
 ?>
 <html>
     <head>
