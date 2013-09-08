@@ -20,10 +20,10 @@ $dao = new daoServicio();
  
  
  
- 
- 
- echo "<form name=\"materias\" method=\"POST\" action=\"cambioMaterias.php\">"; 
  $arreglo2D = $dao->consultaMaterias($algo, $materias);
+ 
+ echo "<form name=\"materias\" method=\"post\" action=\"cambioMaterias.php\">"; 
+ 
   
  echo '<table border="1" class="table table-bordered table-striped">';
 echo '<tr>';
@@ -44,7 +44,7 @@ if($campo=="Materia"){
 				 $prr=$valor;
 				 }   
                                  echo $prr;}
-echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=<?php echo $prr; ?> </td>";
+echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=\"$prr;\" </td>";
 echo "</tr>";
                                          }
 echo "</table>";
