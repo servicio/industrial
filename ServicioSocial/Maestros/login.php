@@ -1,9 +1,7 @@
 <?php
-session_start();
-$usuarioSession = $_SESSION['Usuario'];
-if ($usuarioSession != null) {
-    header('Location: index.php');
-}
+include './validacionseSession.php';
+$validacion = new validacionseSession();
+$validacion->verificacionSession();
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,9 +19,6 @@ if ($usuarioSession != null) {
                 var usua = $('#usuario').val();
                 var pass = $('#pass').val();
                 $('#error').load('verificacionLogin.php?usua=' + usua + '&pass=' + pass);
-//                $('#error').slideDown("slow");
-//                $('#error').delay("1500");
-//                $('#error').slideUp("slow");
             });
         });
     </script>
