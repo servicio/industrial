@@ -26,16 +26,17 @@ $cn->cerrarBd();
                     while ($row = mysql_fetch_array($datos)) {
                         echo "<div
                             >
-                            <h3>" 
-                                . $row["titulo"] . 
-                            "</h3>
+                            <h3>"
+                        . $row["titulo"] .
+                        "</h3>
                                 </div>
-                            <br/>";
+                            ";
 
                         echo "<div>"
-                                .$row["detalles"] . "
+                        . $row["detalles"] . "
                               </div>
-                                ";
+                              <br/>                                
+                              ";
                     }
                     ?>
 
