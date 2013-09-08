@@ -1,9 +1,13 @@
 <?php
 session_start();
-include '../DaoConnection/coneccion.php';
+include '../Dao/daoServicio.php';
+$daoServicio = new daoServicio();
 $usuario = $_SESSION['Usuario'];
 $id = $_SESSION["idMaestroSession"];
 $nombreMaestro = $_SESSION["nombreMaestro"];
+if ($usuario == null) {
+    header('Location: login.php');
+}
 $cn = new coneccion();
 ?>
 <html>
@@ -28,6 +32,11 @@ $cn = new coneccion();
                         alert("Datos Agregados");
                     });
                 });
+                
+                $('#usuarios').change(function (){
+                    $var = $('#usuarios').val();
+                    
+                });
 
             });
         </script>
@@ -50,12 +59,13 @@ $cn = new coneccion();
                         $datos = mysql_query($sql, $cn->Conectarse());
                         while ($rs = mysql_fetch_array($datos)) {
                             ?>
-                        <option value="<?php // echo $rs["matricula"];?>"><?php echo $rs["Nombre"]. "&nbsp;". $rs["apellidoPaterno"]."&nbsp;". $rs["apellidoMaterno"];?></option>
+                            <option value="<?php echo $rs["matricula"]; ?>"><?php echo $rs["Nombre"] . "&nbsp;" . $rs["apellidoPaterno"] . "&nbsp;" . $rs["apellidoMaterno"]; ?></option>
                         <?php }
-                        $cn->cerrarBd()?>
+                        $cn->cerrarBd()
+                        ?>
                     </select>
                 </div>
-                <div id="numeroSesion" style="float: right">Session #:</div>
+                <div id="numeroSesion" style="float: right; margin-right:40px"><strong>Session #:<?php echo $numero = $daoServicio->dameNumeroSession(); ?></strong></div>
                 <br><br><br>
                 <div data-spy="scroll">
 

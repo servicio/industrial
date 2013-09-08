@@ -47,9 +47,11 @@
                 <!-- Everything you want hidden at 940px or less, place within here -->
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li><a href="">Avisos</a> </li>
+                        <li><a href="comentarios.php">Avisos</a> </li>
                         <li class="divider-vertical"></li>
                         <li><a href="reporteSession.php">Session de Tutorias</a> </li>
+                        <li class="divider-vertical"></li>
+                        <li><a href="notasAlumnos.php">Notas Alumnos</a> </li>
                         <li class="divider-vertical"></li>
                         <li><a href="cerrarSesion.php">Cerrar Sessión</a> </li>
                     </ul>

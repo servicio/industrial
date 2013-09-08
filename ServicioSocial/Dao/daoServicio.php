@@ -1,6 +1,5 @@
 
 <?php
-
 session_start();
 include '../DaoConnection/coneccion.php';
 
@@ -167,6 +166,19 @@ class daoServicio {
     }
 
     //<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->   
+    function dameNumeroSession($matricula) {
+        $cn = new coneccion();
+        $numeroSession = 0;
+        $sql = "SELECT count(*) as numeroSession from sesiontutorias where matricula ='$matricula';";
+        $datos = mysql_query($sql, $cn->Conectarse());
+        while ($rs = mysql_fetch_array($datos)) {
+            $numeroSession = $rs["numeroSession"];
+        }
+        $numeroSession+=1;
+        $cn->cerrarBd();
+        return $numeroSession;
+    }
+
 }
 
 ?>
