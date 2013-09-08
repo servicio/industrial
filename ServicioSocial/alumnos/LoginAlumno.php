@@ -1,39 +1,48 @@
+<?php
+include './validacionseSessionAlumnos.php';
+$validacion = new validacionseSessionAlumnos();
+$validacion->verificacionSessionAlumnos();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="../css/css.css">
         <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
-        <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
-
         <script src="../bootsTrap2/js/jquery.min.js"></script>
-        <script src="../bootsTrap2/js/bootstrap.js"></script>
+        <script src=../"bootsTrap/js/bootstrap.js"></script>
     </head>
-<!--    <script>
+    <script>
         $(document).ready(function() {
-           $('#error').hide(); 
+            $('#error').hide();
             $('#verificacion').click(function() {
                 var usua = $('#usuario').val();
                 var pass = $('#pass').val();
-                $('#error').load('VerificaLogin.php?usua=' + usua + '&pass=' + pass);
+                $('#error').load('verificacionLogin.php?usua=' + usua + '&pass=' + pass);
             });
         });
-    </script>-->
+    </script>
     <body>
-    <center>
-        <br><br><br><br><br><br><br>
-
-        <h1 style="color:#56ae56 "> Inicio de Sesión</h1>
-        <br>
-        <form name="alguno" action="VerificaLogin.php" method="get">
-            <input id="usuario" name="usuario" type="text" placeholder="Usuario">
-            <br>
-            <input id="pass" type="text" name="pass" placeholder="pass">
-            <br>
-            <button id="verificacion" type="submit" class="btn btn-primary"> <i class="icon-ok">&nbsp;</i>&nbsp;&nbsp;Iniciar</button>
-        </form>
-    </div>
-</center>
-</body>
+        <div class="container">
+            <?php include './plantilla.php'; ?>
+            <center>
+                <div class="span12"  style="margin: auto; background-color: white; margin-top: -20px">
+                    <div id="error" style="height: 35px" class="alert-error">
+                        Ingrese el <Strong>Usuario y Contraseña</Strong> correcta
+                    </div>
+                    <br>
+                    <input id="usuario" type="text" placeholder="Usuario">
+                    <br>
+                    <input id="pass" type="password" placeholder="Contraseña">
+                    <br>
+                    <button id="verificacion" type="submit" class="btn btn-primary"> <i class="icon-ok">&nbsp;</i>&nbsp;&nbsp;Iniciar</button>
+                    <button id="verificacion" type="submit" class="btn btn-danger"> <i class="icon-remove">&nbsp;</i>&nbsp;&nbsp;Cancelar</button>
+                    <br>
+                    <br>
+                </div>
+            </center>
+            <?php include './plantillaFooter.php'; ?>
+        </div>
+    </body>
 </html>
+

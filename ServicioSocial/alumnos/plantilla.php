@@ -1,3 +1,5 @@
+
+
 <link rel="stylesheet" type="text/css" href="../css/css.css">
 <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
@@ -44,11 +46,11 @@
                             <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> Usuario</a>
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="icon-pencil"></i> Editar</a></li>
+<!--                                <li><a href="#"><i class="icon-pencil"></i> Editar</a></li>
                                 <li><a href="#"><i class="icon-trash"></i>Borrar</a></li>
                                 <li><a href="#"><i class="icon-ban-circle"></i>Banear</a></li>
-                                <li class="divider"></li>
-                                <li><a href="cerrarSesion.php"><i class="i"></i>Salir</a></li>
+                                <li class="divider"></li>-->
+                                <li><a href="cerrarSesion.php"><i class="icon-remove"></i>Salir</a></li>
                             </ul>
                         </div></li>  
                     <li class="divider-vertical"></li>
@@ -61,11 +63,11 @@
                     <ul class="nav">
                         <li><a href="">Calificaciones</a> </li>
                         <li class="divider-vertical"></li>
-                        <li><a href="">Creditos Extra</a> </li>
+                        <li><a href="cargaArchivos.php">Creditos Extra</a> </li>
                         <li class="divider-vertical"></li>
                         <li><a href="cargaMaterias.php">Creacion de grupos</a> </li>
                         <li class="divider-vertical"></li>
-                        <li><a href="">Tutorias</a> </li>
+                        <li><a href="encuestaTutorias.php">Tutorias</a> </li>
                     </ul>
                 </div>
             </div>

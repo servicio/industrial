@@ -19,6 +19,7 @@ if ($_REQUEST['guardaarchivo'] != null) {
     }
 }
 ?>
+
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/css.css">
@@ -44,15 +45,7 @@ if ($_REQUEST['guardaarchivo'] != null) {
             </form>
         </div>
     </div>
-    <footer>
-        <div class="container" style="margin-bottom: 20px; background-color: black; border-radius: 0px 0px 5px 5px">
-            <div style="text-align: center; color: white">
-                <br>
-                Coordinacion de la carrera de Ing. Industrial<br>
-                Tel. x-xx-xx-x, Ext. xxxxx y x-xx-xx-x.<br/> 
-                E-mail: xxxxxxxx@xxxxx.com
-                <br><br>
-            </div>
-        </div>
-    </footer>
 </html>
+<?php
+include './plantillaFooter.php';
+?>
