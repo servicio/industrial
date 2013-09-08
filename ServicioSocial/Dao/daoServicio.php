@@ -1,33 +1,38 @@
 <?php
 
+session_start();
 include '../DaoConnection/coneccion.php';
 
 class daoServicio {
 
-    function consultaMaterias($matricula, materias $m){
+    function consultaMaterias($matricula, materias $m) {
 //        $m = new materias();
-        $cn=  new coneccion();
+        $cn = new coneccion();
         $paso = false;
-       $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula')";
+        $sql = "SELECT * FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula')";
         $datos = mysql_query($sql, $cn->Conectarse());
-       
-     while ($fila = mysql_fetch_array($datos)) 
-  {
-    $arreglo;     
-    $m->setMateria($fila[0]);
-    $m->setId($fila[1]);
-    $m->setSemestre($fila[2]);
-    $arreglo[$m];
-}
+
+        while ($fila = mysql_fetch_array($datos)) {
+            $arreglo;
+            $m->setMateria($fila[0]);
+            $m->setId($fila[1]);
+            $m->setSemestre($fila[2]);
+            $arreglo[$m];
+        }
         $cn->cerrarBd();
         return $arreglo;
     }
-            function verificacion_de_ingreso(usuario $u) {
+
+    function verificacion_de_ingreso(usuario $u) {
         $cn = new coneccion();
         $paso = false;
-        $sql = "SELECT * FROM usuarios WHERE usuario='" . $u->getUsuario() . "' AND pass='" . $u->getPassword() . "'";
+        $sql = "SELECT * FROM usuarios WHERE usuario='" . $u->getUsuario() . "' AND pass='" . $u->getPass() . "'";
         $datos = mysql_query($sql, $cn->Conectarse());
         $columnas = mysql_affected_rows();
+        while ($rs = mysql_fetch_array($datos)) {
+            $_SESSION["idMaestroSession"] = $rs["id"];
+            $_SESSION["nombreMaestro"] = $rs["Nombre"] . "&nbsp;" . $rs["ApellidoPaterno"] . "&nbsp;" . $rs["ApellidoMaterno"];
+        }
         if ($columnas > 0) {
             $paso = true;
         } else {
@@ -36,33 +41,26 @@ class daoServicio {
         $cn->cerrarBd();
         return $paso;
     }
-    function  loginGeneral(usuario $usu)
-    {
-         $cn = new coneccion();
-     $sql="  SELECT * FROM usuarios WHERE usuario= '" . $usu->getUsuario() . "' AND pass='" . $usu->getPass() . "'";
-      
+
+    function loginGeneral(usuario $usu) {
+        $cn = new coneccion();
+        $sql = "  SELECT * FROM usuarios WHERE usuario= '" . $usu->getUsuario() . "' AND pass='" . $usu->getPass() . "'";
+
         $datos = mysql_query($sql, $cn->Conectarse());
         $columnas = mysql_affected_rows();
-       if ($columnas > 0) {
-    session_start();     
-    $_SESSION['usuario'] = $usu->getUsuario() ;
-    $_SESSION['estado'] = 'Autenticado';
-     header("Location: encuestaTutorias.php");
+        if ($columnas > 0) {
+            session_start();
+            $_SESSION['usuario'] = $usu->getUsuario();
+            $_SESSION['estado'] = 'Autenticado';
+            header("Location: encuestaTutorias.php");
         } else {
             echo 'mal';
         }
-        
-   
-    $cn->cerrarBd();
+        $cn->cerrarBd();
         //return $paso;
-    
-       
-        
-        
-        
     }
-    
-            function insertarHistorial(historialAcademico $h) {
+
+    function insertarHistorial(historialAcademico $h) {
         $c = new coneccion();
         $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion,cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";
         mysql_query($sqlInsertar, $c->Conectarse());
@@ -83,13 +81,8 @@ class daoServicio {
         $sql = "INSERT INTO datosPersonales(usuario, nombre, apellidoPaterno, apellidoMaterno)
          VALUES('" . $datosP->getUsuario() . "','" . $datosP->getNombre() . "','" . $datosP->getApellidoPaterno() . "'
              ,'" . $datosP->getApellidoMaterno() . "')";
-        try {
-            mysql_query($sql, $cn->Conectarse());
-            $cn->cerrarBd();
-        } catch (Exception $e) {
-            echo $e->getMessage();
-            $cn->cerrarBd();
-        }
+        mysql_query($sql, $cn->Conectarse());
+        $cn->cerrarBd();
     }
 
     function guardarRegistroDatos(usuario $usuario) {
@@ -116,31 +109,32 @@ class daoServicio {
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
-    function mostrarTabla($arreglo2D){
-        
-        
-  	 if(isset($arreglo2D)){
-  	 	echo '<table border="1">';
-  	 	echo '<tr>';
-  	 	    //encabezados. 
-  	 	    //Usar el primer renglon de la tabla para obtener los encabezados
-  	 	    $renglon =  $arreglo2D[0]; 
-  	 	    foreach($renglon as $campo=>$valor){
-  	 	    	echo "<th> $campo </th>";
-  	 	    }
-  	 	echo '</tr>';
-  	 	//Recorrer todos los renglones
-  	 	foreach($arreglo2D as $renglon)
-  	 	{	
-  	 	   echo "<tr>";
-           foreach($renglon as $campo=>$valor){
-           	   echo "<td> $valor </td>";
-           }   	 	  
-  	 	   echo "</tr>";
-  	 	}
-  	 	echo "</table>";
-  	 }
-   }
+
+    function mostrarTabla($arreglo2D) {
+
+
+        if (isset($arreglo2D)) {
+            echo '<table border="1">';
+            echo '<tr>';
+            //encabezados. 
+            //Usar el primer renglon de la tabla para obtener los encabezados
+            $renglon = $arreglo2D[0];
+            foreach ($renglon as $campo => $valor) {
+                echo "<th> $campo </th>";
+            }
+            echo '</tr>';
+            //Recorrer todos los renglones
+            foreach ($arreglo2D as $renglon) {
+                echo "<tr>";
+                foreach ($renglon as $campo => $valor) {
+                    echo "<td> $valor </td>";
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+        }
+    }
+
 }
 
 ?>

@@ -77,7 +77,7 @@ session_start();
                         $('#fracaso').slideUp("slow");
                     }
                     else {
-                        if (cursando == 1) {
+                        if (cursando > 0) {
                             $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
                             $('#exito').show("slow");
                             $('#exito').delay("1500");
@@ -98,6 +98,7 @@ session_start();
                             $('#fracaso').delay("1500");
                             $('#fracaso').slideUp("slow");
                         }
+                        alert(control)
                         if (control == 0) {
                             $(this).load('guardarDatosPersonales.php?nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m);
                             control = 1;
@@ -124,13 +125,11 @@ session_start();
                         <strong>Usuario Finalizado</strong>
                     </div>
                     <legend>Datos Alumnos</legend>
-                    <form method="post" style="float: left; margin-left: 220px">
                         <input id="matricula" style="width: 250px; padding: 15px;" type="text" placeholder="Matricula..." name="matricula"/>
                         <input id="nombre" type="text" style="width: 250px; padding: 15px;" placeholder="Nombre" />
                         <br>
                         <input id="apellidoP"type="text" style="width: 250px; padding: 15px;"  placeholder="Apellido Paterno"/>
                         <input id="apellidoM" type="text" style="width: 250px; padding: 15px;" placeholder="ApellidoMaterno"/>
-                    </form>
                     <br>
                     <br>
                     <br>
