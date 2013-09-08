@@ -1,13 +1,13 @@
 <?php
 session_start();
 include '../Dao/daoServicio.php';
+include './validacionseSession.php';
+$validacion = new validacionseSession();
+$validacion->verificacionDeLogue();
 $daoServicio = new daoServicio();
-$usuario = $_SESSION['Usuario'];
 $id = $_SESSION["idMaestroSession"];
 $nombreMaestro = $_SESSION["nombreMaestro"];
-if ($usuario == null) {
-    header('Location: login.php');
-}
+
 $cn = new coneccion();
 ?>
 <html>

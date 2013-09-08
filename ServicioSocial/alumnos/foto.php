@@ -27,15 +27,15 @@
 //                    '<label>Descripcion </label><input type="text" name="des" id="des"/>' +
 //                    '<input type="submit" name="button" id="button" value="Enviar" /></form>'
 //                    ;
-                    // reset camera for another shot
-                    webcam.reset();
+            // reset camera for another shot
+            webcam.reset();
 
         }
         else
             alert("PHP Error: " + msg);
     }
 </script>
-<div align="left" id="cuadro_camara">    
+<div align="center" id="cuadro_camara">    
 
     <form>
 <!--        <input type=button value="Configurar" onClick="webcam.configure()" class="btn btn-danger">
@@ -48,9 +48,9 @@
         &nbsp;&nbsp;
         <input type=button value="Cancelar" onClick="webcam.reset()" class="btn btn-warning">
     </form>
-    <div id="visualizacionCamara">
+    <div id="visualizacionCamara" style="padding-top: 5%">
         <script language="JavaScript">
-    document.write(webcam.get_html(250, 280));//dimensiones de la camara
+    document.write(webcam.get_html(250, 250));//dimensiones de la camara
         </script>
     </div>
     <div style="float: right" id="upload_results" class="formulario" > </div>
