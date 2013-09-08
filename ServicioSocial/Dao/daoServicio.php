@@ -156,6 +156,16 @@ class daoServicio {
         }
     }
 
+//<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->
+    function guardaArchivos(cargaArchivos $cargar) {
+        $cn = new coneccion();
+        $sql = "INSERT INTO cargaarchivos (usuario,ubicacion) 
+           VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "')";
+        mysql_query($sql, $cn->Conectarse());
+        $cn->cerrarBD;
+    }
+
+    //<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->   
     function dameNumeroSession($matricula) {
         $cn = new coneccion();
         $numeroSession = 0;
