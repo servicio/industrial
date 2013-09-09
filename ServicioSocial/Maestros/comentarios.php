@@ -10,14 +10,16 @@ include './plantillaEncabezado.php';
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
         <script>
             $(document).ready(function() {
+                $('#titulo').val('');
+                $('#detalles').val('');
                 $('#exito').hide();
                 $('#error').hide();
                 $('#guardar').click(function() {
-                    var titulo = $('#titulo').val();
-                    var detalle = $('#detalles').val();
                     var datos = 'titulo=' + $('#titulo').val() +
                             '&detalle=' + $('#detalles').val();
-                    if (titulo == null || detalle == null) {
+                    var titulo = $('#titulo').val();
+                    var detalle = $('#detalles').val();
+                    if (titulo == '' && detalle == '') {
                         $('#error').slideDown('slow');
                         $('#error').delay('1500');
                         $('#error').slideUp('slow');
@@ -39,10 +41,10 @@ include './plantillaEncabezado.php';
         <div class="container">
             <div class="span12"  style="margin: auto; background-color: white; margin-top: -20px">
                 <div  id="exito" style="height: 35px" class="alert-info">
-                    <strong>Nuevos Avisos Disponibles</strong>
+                    <center> <strong>Nuevos Avisos Disponibles</strong></center>
                 </div>
-                <div  id="error" style="height: 35px" class="alert-info">
-                    <strong>Nuevos Avisos Disponibles</strong>
+                <div  id="error" style="height: 35px" class="alert-danger">
+                    <center> <strong>Llene todos los campos</strong></center>
                 </div>
                 <br>
                 <center>
