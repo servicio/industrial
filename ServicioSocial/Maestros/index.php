@@ -32,11 +32,13 @@ $cn->cerrarBd();
                                 <br> <br>
                             ";
 
-                        echo "<center>
-                                <div>"
-                        . $row["detalles"] . "
-                                 </div>
-                              </center>
+               echo "<center>
+                            <div style='width:60%'>
+                                <p align='justify'>"
+                                    . $row["detalles"] . "
+                                </p>
+                            </div>
+                     </center>
                               <br/>                                
                               ";
                     }
