@@ -24,17 +24,19 @@ $cn->cerrarBd();
                     <?php
                     //echo '<table>';
                     while ($row = mysql_fetch_array($datos)) {
-                        echo "<div
-                            >
+                        echo "<div style='float:left ; margin-left: 100px'>
                             <h3>"
                         . $row["titulo"] .
                         "</h3>
                                 </div>
+                                <br> <br>
                             ";
 
-                        echo "<div>"
+                        echo "<center>
+                                <div>"
                         . $row["detalles"] . "
-                              </div>
+                                 </div>
+                              </center>
                               <br/>                                
                               ";
                     }
