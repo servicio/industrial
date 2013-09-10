@@ -10,46 +10,21 @@
 //if(isset($_SESSION['usuario']) and $_SESSION['estado'] == 'Autenticado') 
 //{ 
 //    echo 'Usuario: '.$_SESSION['usuario'];
-    include './plantilla.php'; 
+    //include './plantilla.php'; 
 //    include '../DaoConnection/coneccion.php';
     include '../clases/materias.php';
     include '../Dao/daoServicio.php';
 $dao = new daoServicio();
- $algo="e09080264";
+ $algo="prr";
  $materias = new materias();
  
  
  
- $arreglo2D = $dao->consultaMaterias($algo, $materias);
+$arreglo2D = $dao->consultaMateriasObligatorias($algo); 
+
+$dao->tablatemporalcargadas($arreglo2D); 
  
- echo "<form name=\"materias\" method=\"post\" action=\"cambioMaterias.php\">"; 
  
-  
- echo '<table border="1" class="table table-bordered table-striped">';
-echo '<tr>';
-$renglon = $arreglo2D[0];
-
-
-foreach($renglon as $campo=>$valor){
-echo "<th> $campo </th>";
-                                   }
-echo '<tr>';
-
-foreach($arreglo2D as $renglon)         {
-echo "<tr>";
-
-foreach($renglon as $campo=>$valor){
-echo "<td> $valor </td>";
-if($campo=="Materia"){
-				 $prr=$valor;
-				 }   
-                                 echo $prr;}
-echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=\"$prr;\" </td>";
-echo "</tr>";
-                                         }
-echo "</table>";
-echo "<input type=\"submit\" class=\"btn btn-primary\"  name=\"guardar\" value=\"Guardar\">"; 
-echo "</form>"; 
             // Lo dejas entrar a la pagina 
 ////} 
 //else 
