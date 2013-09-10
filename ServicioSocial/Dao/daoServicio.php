@@ -5,6 +5,37 @@ session_start();
 include '../DaoConnection/coneccion.php';
 
 class daoServicio {
+    function consultatablaseleccionar($matricula){
+        $cn = new coneccion();
+        $sql="select* from temporalcargadas ";
+        $consulta = mysql_query($sql, $cn->Conectarse());
+        $registro = array();
+        if ($consulta != false) {
+            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+                $registro[] = $renglon;
+            }
+            mysql_free_result($consulta);
+        }
+
+        $cn->cerrarBd();
+        return $registro;
+        }
+    function consultatablaObligadas($matricula){
+        $cn = new coneccion();
+        $sql="select* from temporalseleccionar ";
+        $consulta = mysql_query($sql, $cn->Conectarse());
+        $registro = array();
+        if ($consulta != false) {
+            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+                $registro[] = $renglon;
+            }
+            mysql_free_result($consulta);
+        }
+
+        $cn->cerrarBd();
+        return $registro;
+        }    
+            
 function tablatemporalcargadas($materias){
     
    $cn = new coneccion();
@@ -27,29 +58,59 @@ function tablatemporalcargadas($materias){
        if(($materia && $semestre)!= ""){
            $sql="INSERT INTO temporalcargadas (materias, semestre) VALUES ('$materia',' $semestre') ";      
      mysql_query($sql, $cn->Conectarse());
+     $cn->cerrarBd();
            $materia="";
            $semestre="";
        }
     
    
-        $cn->cerrarBd(); 
+         
         $paso=false;
        }
        
    }
    
    //ejecuto la sentencia
-   mysql_query($sql);
+   
     
 }
 
 function tablatemporalSeleccionar($materias){
     
+   $cn = new coneccion();
    //setencia sql para crear la tabla
-   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
+   $renglon=$materias[0];
+   
+   $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
+   mysql_query($sql,$cn->Conectarse());
+   foreach($materias as $renglon)         {
+       
+       foreach($renglon as $campo=>$valor){
+     if ($campo=="materia"){
+         $materia=$valor;
+         
+     }
+       if ($campo=="semestre"){
+           $semestre=$valor; 
+           
+       }
+       if(($materia && $semestre)!= ""){
+           $sql="INSERT INTO temporalseleccionar (materias, semestre) VALUES ('$materia',' $semestre') ";      
+     mysql_query($sql, $cn->Conectarse());
+     $cn->cerrarBd(); 
+           $materia="";
+           $semestre="";
+       }
+    
+   
+        
+        $paso=false;
+       }
+       
+   }
+   
    //ejecuto la sentencia
-   mysql_query($sql);
-    $cn->cerrarBd();
+   
 }
     
     function consultaMateriasObligatorias($matricula) {
@@ -68,10 +129,10 @@ function tablatemporalSeleccionar($materias){
         $cn->cerrarBd();
         return $registro;
     }
-    function consultaMateriasObligatorias($matricula) {
+    function consultaMateriasSeleccionadas($matricula) {
         $cn = new coneccion();
         $paso = false;
-        $sql = "SELECT m.materia, m.semestre FROM historial h, materias m where h.usuario = '$matricula' and h.idAcreditacion = 1 and h.calificacion < 70 and m.id = h.idMateria";
+        $sql = "SELECT m.materia, m.semestre FROM materias m,historial h WHERE idAcreditacion <=2 and h.calificacion > 70 and m.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula' )";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -85,25 +146,7 @@ function tablatemporalSeleccionar($materias){
         return $registro;
     }
 
-    function consultaMateriasSeleccionar($matricula, materias $m) {
-//        $m = new materias();
-        $cn = new coneccion();
-        $paso = false;
-        $sql = "SELECT materia,semestre \n"
-    . "FROM materias\n"
-    . "WHERE id NOT IN (SELECT idMateria FROM historial where usuario=\'prr\' and calificacion < 70)";
-        $consulta = mysql_query($sql, $cn->Conectarse());
-        $registro = array();
-        if ($consulta != false) {
-            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-                $registro[] = $renglon;
-            }
-            mysql_free_result($consulta);
-        }
-
-        $cn->cerrarBd();
-        return $registro;
-    }
+   
 
     function TablaConsulta($registro) {
         
@@ -215,7 +258,7 @@ echo "<tr>";
 
 foreach($renglon as $campo=>$valor){
 echo "<td> $valor </td>";
-if($campo=="Materia"){
+if($campo=="materias"){
 				 $prr=$valor;
 				 }   
                                  echo $prr;}
@@ -225,6 +268,7 @@ echo "</tr>";
 echo "</table>";
 echo "<input type=\"submit\" class=\"btn btn-primary\"  name=\"guardar\" value=\"Guardar\">"; 
 echo "</form>"; 
+
 
        
     }
