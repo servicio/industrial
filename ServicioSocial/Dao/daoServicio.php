@@ -68,12 +68,30 @@ function tablatemporalSeleccionar($materias){
         $cn->cerrarBd();
         return $registro;
     }
+    function consultaMateriasObligatorias($matricula) {
+        $cn = new coneccion();
+        $paso = false;
+        $sql = "SELECT m.materia, m.semestre FROM historial h, materias m where h.usuario = '$matricula' and h.idAcreditacion = 1 and h.calificacion < 70 and m.id = h.idMateria";
+        $consulta = mysql_query($sql, $cn->Conectarse());
+        $registro = array();
+        if ($consulta != false) {
+            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+                $registro[] = $renglon;
+            }
+            mysql_free_result($consulta);
+        }
 
-    function consultaMaterias($matricula, materias $m) {
+        $cn->cerrarBd();
+        return $registro;
+    }
+
+    function consultaMateriasSeleccionar($matricula, materias $m) {
 //        $m = new materias();
         $cn = new coneccion();
         $paso = false;
-        $sql = "SELECT Materia, tiempos,semestre FROM materias WHERE materias.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula') ORDER BY semestre ASC LIMIT 0,6";
+        $sql = "SELECT materia,semestre \n"
+    . "FROM materias\n"
+    . "WHERE id NOT IN (SELECT idMateria FROM historial where usuario=\'prr\' and calificacion < 70)";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
