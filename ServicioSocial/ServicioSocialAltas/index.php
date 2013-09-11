@@ -98,10 +98,11 @@ session_start();
                             $('#fracaso').delay("1500");
                             $('#fracaso').slideUp("slow");
                         }
-                        alert(control)
                         if (control == 0) {
-                            $(this).load('guardarDatosPersonales.php?nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m);
-                            control = 1;
+                            var informacion = 'nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m;
+                            $.get('guardarDatosPersonales.php', informacion, function() {
+                             control = 1;
+                        });
                         }
                     }
                 });

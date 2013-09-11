@@ -1,20 +1,38 @@
-<?php include './plantillaEncabezado.php'; ?>
+<?php
+session_start();
+include './validacionseSession.php';
+$vali = new validacionseSession();
+$vali->verificacionDeLogue();
+include './plantillaEncabezado.php';
+?>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
         <script>
             $(document).ready(function() {
+                $('#titulo').val('');
+                $('#detalles').val('');
                 $('#exito').hide();
+                $('#error').hide();
                 $('#guardar').click(function() {
                     var datos = 'titulo=' + $('#titulo').val() +
                             '&detalle=' + $('#detalles').val();
-                    $.get('guardar.php', datos, function() {
-                        $('#titulo').val('');
-                        $('#detalles').val('');
-                        $('#exito').slideDown('slow');
-                        $('#exito').delay('1500');
-                        $('#exito').slideUp('slow');
-                    });
+                    var titulo = $('#titulo').val();
+                    var detalle = $('#detalles').val();
+                    if (titulo == '' && detalle == '') {
+                        $('#error').slideDown('slow');
+                        $('#error').delay('1500');
+                        $('#error').slideUp('slow');
+                    }
+                    else {
+                        $.get('guardar.php', datos, function() {
+                            $('#titulo').val('');
+                            $('#detalles').val('');
+                            $('#exito').slideDown('slow');
+                            $('#exito').delay('1500');
+                            $('#exito').slideUp('slow');
+                        });
+                    }
                 });
             });
         </script>
@@ -23,7 +41,10 @@
         <div class="container">
             <div class="span12"  style="margin: auto; background-color: white; margin-top: -20px">
                 <div  id="exito" style="height: 35px" class="alert-info">
-                    <strong>Nuevos Avisos Disponibles</strong>
+                    <center> <strong>Nuevos Avisos Disponibles</strong></center>
+                </div>
+                <div  id="error" style="height: 35px" class="alert-danger">
+                    <center> <strong>Llene todos los campos</strong></center>
                 </div>
                 <br>
                 <center>
