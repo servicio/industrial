@@ -9,7 +9,7 @@ if ($_REQUEST['guardaarchivo'] != null) {
 
     if (is_uploaded_file($ruta)) {
         if (copy($ruta, $ubicacion)) {
-            echo"Se ha cargado el archivo correctamente";
+//            echo"Se ha cargado el archivo correctamente";
             $cargar = new cargaArchivos();
             $cargando = new daoServicio();
             $cargar->setHubicacion($ubicacion);
