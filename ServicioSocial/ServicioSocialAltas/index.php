@@ -3,6 +3,21 @@ include '../DaoConnection/coneccion.php';
 $coneccion = new coneccion();
 session_start();
 ?>
+<style>
+   #matricula{  
+text-transform: capitalize;  
+}  
+#nombre{  
+text-transform: capitalize;  
+}  
+#apellidoM{  
+text-transform: capitalize;  
+}  
+#apellidoP{  
+text-transform: capitalize;  
+}  
+</style>
+ 
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
@@ -10,11 +25,15 @@ session_start();
         <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
         <script src="../bootsTrap2/js/bootstrap.min.js"></script>
         <script>
+
+
             $(document).ready(function() {
                 var control = 0;
                 $('#tablaMateriasCargadas').hide();
                 $('#exito').hide();
                 $('#fracaso').hide();
+                $('#malmatri').hide();
+                $('#malcalif').hide();
                 $('#fin').hide();
                 $('#materia').hide();
                 $('#especialidad').hide();
@@ -57,6 +76,7 @@ session_start();
                 });
 
                 $('#guardar').click(function() {
+
                     var m = $('#matricula').val();
                     var espe = $('#especialidad').val();
                     var mat = $('#materia').val();
@@ -66,11 +86,14 @@ session_start();
                     var cursando = $('#cursando').val();
                     var ingr = $('#ingreso').val();
                     var materias = $('#materiasComunes').val();
+                    //validar campos
+                   
+
 //                    ---------datosPersonales------------------
                     var nombre = $('#nombre').val();
                     var apellidoP = $('#apellidoP').val();
                     var apellidoM = $('#apellidoM').val();
-
+                    
                     if (m == "" || acred == 0 || Tcurso == 0 || cursando == 0 || ingr == 0) {
                         $('#fracaso').slideDown("slow");
                         $('#fracaso').delay("1500");
@@ -78,7 +101,20 @@ session_start();
                     }
                     else {
                         if (cursando > 0) {
-                            $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
+                        if ($("#matricula").val().length != 9) {
+                        $('#malmatri').slideDown("slow");
+                        $('#malmatri').delay("1500");
+                        $('#malmatri').slideUp("slow");
+                        return false;
+
+                    }else {
+                        if (calif < 0 || calif > 100) {
+                        $('#malcalif').slideDown("slow");
+                        $('#malcalif').delay("1500");
+                        $('#malcalif').slideUp("slow");
+                    }
+                    else {
+                       $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
                             $('#exito').show("slow");
                             $('#exito').delay("1500");
                             $('#exito').slideUp("slow");
@@ -91,7 +127,11 @@ session_start();
                             $('#ingreso').prop('selectedIndex', 0);
                             $('#materiasComunes').prop('selectedIndex', 0);
                             $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
-                            $('#tablaMateriasCargadas').show('slow');
+                            $('#tablaMateriasCargadas').show('slow'); 
+                    }
+                    }
+                   
+                            
                         }
                         else {
                             $('#fracaso').slideDown("slow");
@@ -101,8 +141,8 @@ session_start();
                         if (control == 0) {
                             var informacion = 'nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m;
                             $.get('guardarDatosPersonales.php', informacion, function() {
-                             control = 1;
-                        });
+                                control = 1;
+                            });
                         }
                     }
                 });
@@ -116,21 +156,28 @@ session_start();
             <br>
             <fieldset style="border-radius: 10px">
                 <center>
+                   
                     <div id="fracaso" class="alert alert-error">
                         <strong>Llene todos los campos Correspondientes</strong>
                     </div>
                     <div id="exito" class="alert alert-success">
                         <strong>Datos Gurdados</strong>
                     </div>
+                     <div id="malmatri" class="alert alert-error">
+                        <strong>La matricula tiene al menos 9 caracteres </strong>
+                    </div>
+                    <div id="malcalif" class="alert alert-error">
+                        <strong>la calificacion debe ser de 0 a 100</strong>
+                    </div>
                     <div id="fin" class="alert alert-success">
                         <strong>Usuario Finalizado</strong>
                     </div>
                     <legend>Datos Alumnos</legend>
-                        <input id="matricula" style="width: 250px; padding: 15px;" type="text" placeholder="Matricula..." name="matricula"/>
-                        <input id="nombre" type="text" style="width: 250px; padding: 15px;" placeholder="Nombre" />
-                        <br>
-                        <input id="apellidoP"type="text" style="width: 250px; padding: 15px;"  placeholder="Apellido Paterno"/>
-                        <input id="apellidoM" type="text" style="width: 250px; padding: 15px;" placeholder="ApellidoMaterno"/>
+                    <input id="matricula" style="width: 250px; padding: 15px;" type="text" placeholder="Matricula..." name="matricula"/>
+                    <input id="nombre" type="text" style="width: 250px; padding: 15px;" placeholder="Nombre" />
+                    <br>
+                    <input id="apellidoP"type="text" style="width: 250px; padding: 15px;"  placeholder="Apellido Paterno"/>
+                    <input id="apellidoM" type="text" style="width: 250px; padding: 15px;" placeholder="ApellidoMaterno"/>
                     <br>
                     <br>
                     <br>
