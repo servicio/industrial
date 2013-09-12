@@ -1,7 +1,5 @@
-
 <?php
 
-session_start();
 include '../DaoConnection/coneccion.php';
 
 class daoServicio {
@@ -208,8 +206,8 @@ function tablatemporalSeleccionar($materias){
     function guardarAlumnos(datosPersonales $datosP) {
         $cn = new coneccion();
         $sql = "INSERT INTO datosPersonales(usuario, nombre, apellidoPaterno, apellidoMaterno)
-         VALUES('" . $datosP->getUsuario() . "','" . $datosP->getNombre() . "','" . $datosP->getApellidoPaterno() . "'
-             ,'" . $datosP->getApellidoMaterno() . "')";
+         VALUES('" . ucwords(strtolower($datosP->getUsuario())) . "','" . ucwords(strtolower($datosP->getNombre())) . "','" . ucwords(strtolower($datosP->getApellidoPaterno())) . "'
+             ,'" . ucwords(strtolower($datosP->getApellidoMaterno())) . "')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
@@ -284,3 +282,4 @@ function tablatemporalSeleccionar($materias){
 }
 
 ?>
+

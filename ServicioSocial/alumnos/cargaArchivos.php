@@ -9,7 +9,7 @@ if ($_REQUEST['guardaarchivo'] != null) {
 
     if (is_uploaded_file($ruta)) {
         if (copy($ruta, $ubicacion)) {
-            echo"Se ha cargado el archivo correctamente";
+//            echo"Se ha cargado el archivo correctamente";
             $cargar = new cargaArchivos();
             $cargando = new daoServicio();
             $cargar->setHubicacion($ubicacion);
@@ -42,7 +42,23 @@ if ($_REQUEST['guardaarchivo'] != null) {
                     <input type="file" name="buscaarchivo" accept="application/pdf" title="Buscar Archivo">
                     <input type="submit" name="guardaarchivo" value="Enviar" class="btn btn-primary">
                 </div>
+
+                <!-------------------------------------------------------------->
+                <?php
+                if ($gestor = opendir('subidas')) {
+                    echo "<ul>";
+                    while (false !== ($arch = readdir($gestor))) {
+                        if ($arch != "." && $arch != "..") {
+                            echo "<li><a href=\"subidas/" . $arch . "\" class=\"linkli\">" . $arch . "</a></li>\n";
+                        }
+                    }
+                    closedir($gestor);
+                    echo "</ul>";
+                }
+                ?>
+                <!-------------------------------------------------------------->
             </form>
+
         </div>
     </div>
 </html>

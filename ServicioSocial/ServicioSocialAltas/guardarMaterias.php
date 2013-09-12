@@ -20,13 +20,15 @@ $historial->setCursando($_GET["cursando"]);
 $historial->setIngresoCursando($_GET["ingreso"]);
 $verifica=$dao->consultavalidar($historial);
 if($verifica != null){
-   echo " 
-                <script language=’JavaScript’> 
-                alert(‘mal!! prr!! plop!’); 
-                </script>";
+    
+              ?>
+<script language="javascript">
+alert("La materia ya existe en los registros");
+</script>
+<?php
     
 }else{
-    echo ":(";
+    
    $dao->insertarHistorial($historial); 
 }
 
