@@ -1,8 +1,6 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+include './validacionseSessionAlumnos.php';
+$sesion = new validacionseSessionAlumnos();
+$sesion->verificacionDeLogueAlumnos();
 ?>
-ya hay session abierta
+Hola Mundo

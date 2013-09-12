@@ -7,8 +7,8 @@ $usuario = new usuario();
 $dServicio = new daoServicio();
 $usuario->setUsuario($_GET["usua"]);
 $usuario->setPass($_GET["pass"]);
-$paso = $dServicio->verificacion_de_ingreso($usuario);
-if ($paso == false) {
+$valido =  $dServicio->accesoAlumnos($usuario);
+if ($valido == false) {
     echo '
 <div  id="error" style="height: 35px" class="alert-error">
   Ingrese el <Strong>Usuario y Contraseña</Strong> correcta
@@ -21,7 +21,7 @@ if ($paso == false) {
          </script>
             ";
 } else {
-    $_SESSION["Usuario"] = $usuario->getUsuario();
+    $_SESSION["UsuarioAlumno"] = $usuario->getUsuario();
     echo "
         <script>
              document.location.href='plantilla.php';

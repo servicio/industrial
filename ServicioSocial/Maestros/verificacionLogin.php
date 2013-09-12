@@ -7,6 +7,7 @@ $usuario = new usuario();
 $dServicio = new daoServicio();
 $usuario->setUsuario($_GET["usua"]);
 $usuario->setPass($_GET["pass"]);
+
 $paso = $dServicio->verificacion_de_ingreso($usuario);
 if ($paso == false) {
     echo '
