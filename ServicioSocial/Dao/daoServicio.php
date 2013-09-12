@@ -1,13 +1,12 @@
 <?php
 
-session_start();
 include '../DaoConnection/coneccion.php';
 
 class daoServicio {
 
     function consultatablaseleccionar($matricula) {
         $cn = new coneccion();
-        $sql = "select* from temporalcargadas ";
+        $sql="select* from temporalseleccionar ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -23,7 +22,7 @@ class daoServicio {
 
     function consultatablaObligadas($matricula) {
         $cn = new coneccion();
-        $sql = "select* from temporalseleccionar ";
+        $sql="select* from temporalcargadas ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -35,39 +34,72 @@ class daoServicio {
 
         $cn->cerrarBd();
         return $registro;
-    }
+        }    
+            
+function tablatemporalcargadas($materias){
+    
+   $cn = new coneccion();
+   //setencia sql para crear la tabla
+   $renglon=$materias[0];
+   
+   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
+   mysql_query($sql,$cn->Conectarse());
+   foreach($materias as $renglon)         {
+       
+       foreach($renglon as $campo=>$valor){
+     if ($campo=="materia"){
+         $materia=$valor;
+         
+     }
+       if ($campo=="semestre"){
+           $semestre=$valor; 
+           
+       }
+       if(($materia && $semestre)!= ""){
+           $sql="INSERT INTO temporalcargadas (materias, semestre) VALUES ('$materia',' $semestre') ";      
+     mysql_query($sql, $cn->Conectarse());
+     $cn->cerrarBd();
+           $materia="";
+           $semestre="";
+       }
+    
+   
+         
+        $paso=false;
+       }
+       
+   }
+   
+   //ejecuto la sentencia
+   
+    
+}
 
-    function tablatemporalcargadas($materias) {
-
-        $cn = new coneccion();
-        //setencia sql para crear la tabla
-        $renglon = $materias[0];
-
-        $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
-        mysql_query($sql, $cn->Conectarse());
-        foreach ($materias as $renglon) {
-
-            foreach ($renglon as $campo => $valor) {
-                if ($campo == "materia") {
-                    $materia = $valor;
-                }
-                if ($campo == "semestre") {
-                    $semestre = $valor;
-                }
-                if (($materia && $semestre) != "") {
-                    $sql = "INSERT INTO temporalcargadas (materias, semestre) VALUES ('$materia',' $semestre') ";
-                    mysql_query($sql, $cn->Conectarse());
-                    $cn->cerrarBd();
-                    $materia = "";
-                    $semestre = "";
-                }
-
-
-                $paso = false;
-            }
-        }
-        //ejecuto la sentencia
-    }
+//        $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
+//        mysql_query($sql, $cn->Conectarse());
+//        foreach ($materias as $renglon) {
+//
+//            foreach ($renglon as $campo => $valor) {
+//                if ($campo == "materia") {
+//                    $materia = $valor;
+//                }
+//                if ($campo == "semestre") {
+//                    $semestre = $valor;
+//                }
+//                if (($materia && $semestre) != "") {
+//                    $sql = "INSERT INTO temporalcargadas (materias, semestre) VALUES ('$materia',' $semestre') ";
+//                    mysql_query($sql, $cn->Conectarse());
+//                    $cn->cerrarBd();
+//                    $materia = "";
+//                    $semestre = "";
+//                }
+//
+//
+//                $paso = false;
+//            }
+//        }
+//        //ejecuto la sentencia
+//    }
 
     function tablatemporalSeleccionar($materias) {
 
@@ -132,43 +164,11 @@ class daoServicio {
             }
             mysql_free_result($consulta);
         }
-    }
-
-//    function consultaMateriasObligatorias($matricula) {
-//        $cn = new coneccion();
-//        $paso = false;
-//        $sql = "SELECT m.materia, m.semestre FROM historial h, materias m where h.usuario = '$matricula' and h.idAcreditacion = 1 and h.calificacion < 70 and m.id = h.idMateria";
-//        $consulta = mysql_query($sql, $cn->Conectarse());
-//        $registro = array();
-//        if ($consulta != false) {
-//            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-//                $registro[] = $renglon;
-//            }
-//            mysql_free_result($consulta);
-//        }
-//
-//        $cn->cerrarBd();
-//        return $registro;
-//    }
-
-    function consultaMateriasSeleccionar($matricula, materias $m) {
-//        $m = new materias();
-        $cn = new coneccion();
-        $paso = false;
-        $sql = "SELECT materia,semestre \n"
-                . "FROM materias\n"
-                . "WHERE id NOT IN (SELECT idMateria FROM historial where usuario=\'prr\' and calificacion < 70)";
-        $consulta = mysql_query($sql, $cn->Conectarse());
-        $registro = array();
-        if ($consulta != false) {
-            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-                $registro[] = $renglon;
-            }
-            mysql_free_result($consulta);
-        }
-
         $cn->cerrarBd();
         return $registro;
+    }
+    function TablaConsulta($registro) {
+        
     }
 
     function verificacion_de_ingreso(usuario $u) {
@@ -242,8 +242,8 @@ class daoServicio {
     function guardarAlumnos(datosPersonales $datosP) {
         $cn = new coneccion();
         $sql = "INSERT INTO datosPersonales(usuario, nombre, apellidoPaterno, apellidoMaterno)
-         VALUES('" . $datosP->getUsuario() . "','" . $datosP->getNombre() . "','" . $datosP->getApellidoPaterno() . "'
-             ,'" . $datosP->getApellidoMaterno() . "')";
+         VALUES('" . ucwords(strtolower($datosP->getUsuario())) . "','" . ucwords(strtolower($datosP->getNombre())) . "','" . ucwords(strtolower($datosP->getApellidoPaterno())) . "'
+             ,'" . ucwords(strtolower($datosP->getApellidoMaterno())) . "')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
@@ -273,51 +273,7 @@ class daoServicio {
         $cn->cerrarBd();
     }
 
-    function mostrarTabla($arreglo2D) {
-        echo "<form name=\"materias\" method=\"post\" action=\"cambioMaterias.php\">";
-
-
-        echo '<table border="1" class="table table-bordered table-striped">';
-        echo '<tr>';
-        $renglon = $arreglo2D[0];
-
-
-        foreach ($renglon as $campo => $valor) {
-            echo "<th> $campo </th>";
-        }
-        echo '<tr>';
-        foreach ($renglon as $campo => $valor) {
-            echo "<td> $valor </td>";
-            if ($campo == "materias") {
-                $prr = $valor;
-            }
-            echo $prr;
-        }
-        echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=\"$prr;\" </td>";
-        echo "</tr>";
-
-
-        echo "</table>";
-        echo "<input type=\"submit\" class=\"btn btn-primary\"  name=\"guardar\" value=\"Guardar\">";
-        echo "</form>";
-
-        foreach ($arreglo2D as $renglon) {
-            echo "<tr>";
-
-            foreach ($renglon as $campo => $valor) {
-                echo "<td> $valor </td>";
-                if ($campo == "Materia") {
-                    $prr = $valor;
-                }
-                echo $prr;
-            }
-            echo "<td><input type=\"checkbox\" name=\"alguno[]\" value=\"$prr;\" </td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-        echo "<input type=\"submit\" class=\"btn btn-primary\"  name=\"guardar\" value=\"Guardar\">";
-        echo "</form>";
-    }
+    
 
 //<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->
     function guardaArchivos(cargaArchivos $cargar) {
@@ -341,7 +297,24 @@ class daoServicio {
         $cn->cerrarBd();
         return $numeroSession;
     }
+    function consultavalidar (historialAcademico $h) {
+        $cn = new coneccion();
+        $sql = "SELECT * FROM historial WHERE usuario='" . $h->getMatricula() . "'and idMateria='" . $h->getId_materia() . "'";
+        $consulta = mysql_query($sql, $cn->Conectarse());
+        $registro = array();
+        if ($consulta != false) {
+            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+                $registro[] = $renglon;
+            }
+            mysql_free_result($consulta);
+        }
+
+        $cn->cerrarBd();
+        return $registro;
+    }
 
 }
 
+
 ?>
+
