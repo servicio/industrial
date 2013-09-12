@@ -18,7 +18,19 @@ $historial->setCalificacion($_GET["calificacion"]);
 $historial->setIdCurso($_GET["tipoCurso"]);
 $historial->setCursando($_GET["cursando"]);
 $historial->setIngresoCursando($_GET["ingreso"]);
-$dao->insertarHistorial($historial);
+$verifica=$dao->consultavalidar($historial);
+if($verifica != null){
+   echo " 
+                <script language=’JavaScript’> 
+                alert(‘mal!! prr!! plop!’); 
+                </script>";
+    
+}else{
+    echo ":(";
+   $dao->insertarHistorial($historial); 
+}
+
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.

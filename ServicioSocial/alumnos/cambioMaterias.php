@@ -8,11 +8,7 @@ $dao = new daoServicio();
 
 
 ?>
-<script>
- 
-  
- 
-</script>
+
 <div style="background: #0072c6">
 
     <?php
@@ -40,7 +36,8 @@ $dao = new daoServicio();
             }
             
         }
-        echo "<td><input  type=\"checkbox\" name=\"alguno[]\" id=\"aceptado\" value=\"$prr;\" </td>";
+        echo "<td><a>prr</a></td>";
+        echo "<td><a href=\"\">prr2</a></td>";
         echo "</tr>";
     }
     echo "</table>";

@@ -263,6 +263,23 @@ function tablatemporalSeleccionar($materias){
         $cn->cerrarBd();
         return $numeroSession;
     }
+    function consultavalidar (historialAcademico $h) {
+        $cn = new coneccion();
+        
+      
+        $sql = "SELECT * FROM historial WHERE usuario='" . $h->getMatricula() . "'and idMateria='" . $h->getId_materia() . "'";
+        $consulta = mysql_query($sql, $cn->Conectarse());
+        $registro = array();
+        if ($consulta != false) {
+            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
+                $registro[] = $renglon;
+            }
+            mysql_free_result($consulta);
+        }
+
+        $cn->cerrarBd();
+        return $registro;
+    }
 
 }
 
