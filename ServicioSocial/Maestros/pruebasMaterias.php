@@ -1,21 +1,17 @@
+<?php include './plantillaEncabezado.php';?>
 <html>
     <head>
-        <script type="text/javascript" src="bootsTrap2/js/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('#guardar').click(function() {
-                    //            var checkboxValues = new Array();
-                    alert("entro");
+                    var checkboxValues = new Array();
                     //recorremos todos los checkbox seleccionados con .each
                     $('input[name="orderBox[]"]:checked').each(function() {
                         //$(this).val() es el valor del checkbox correspondiente
                         checkboxValues.push($(this).val());
                     });
-
+                    alert(checkboxValues.length);
                 });
-
-
-
                 //        $('#materiasDisponibles').load('cargarMateriasFaltantes.php');
                 //        $('#check').on("change", function() {
                 //            $('#check').each(function() {
@@ -42,5 +38,5 @@
     <br>
     <input id="orderBox5" type="checkbox" name="orderBox[]" value="5" />5
     <br>
-    <input type="submit" value="Guardar" id="guardar "/>
+    <input type="submit" value="Guardar" id="guardar" class="btn btn-info"/>
 </html>

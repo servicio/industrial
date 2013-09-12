@@ -1,10 +1,4 @@
 <?php
-//session_start();
-//include './validacionseSession.php';
-//$validacion = new validacionseSession();
-//$validacion->verificacionDeLogue();
-//$id = $_SESSION["idMaestroSession"];
-//$nombreMaestro = $_SESSION["nombreMaestro"];
 include './plantilla.php';
 ?>
 

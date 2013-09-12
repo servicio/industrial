@@ -1,5 +1,10 @@
-
 <?php
+
+session_start();
+include '../DaoConnection/coneccion.php';
+
+
+
 
 session_start();
 include '../DaoConnection/coneccion.php';
@@ -284,3 +289,4 @@ function tablatemporalSeleccionar($materias){
 }
 
 ?>
+
