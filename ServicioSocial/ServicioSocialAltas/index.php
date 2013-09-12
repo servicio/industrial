@@ -4,20 +4,20 @@ $coneccion = new coneccion();
 session_start();
 ?>
 <style>
-   #matricula{  
-text-transform: capitalize;  
-}  
-#nombre{  
-text-transform: capitalize;  
-}  
-#apellidoM{  
-text-transform: capitalize;  
-}  
-#apellidoP{  
-text-transform: capitalize;  
-}  
+    #matricula{  
+        text-transform: capitalize;  
+    }  
+    #nombre{  
+        text-transform: capitalize;  
+    }  
+    #apellidoM{  
+        text-transform: capitalize;  
+    }  
+    #apellidoP{  
+        text-transform: capitalize;  
+    }  
 </style>
- 
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
@@ -26,12 +26,27 @@ text-transform: capitalize;
         <script src="../bootsTrap2/js/bootstrap.min.js"></script>
         <script>
 
+            function justNumbers(e)
+            {
+                var keynum = window.event ? window.event.keyCode : e.which;
+                if ((keynum == 8) || (keynum == 46))
+                    return true;
 
+                return /\d/.test(String.fromCharCode(keynum));
+            }
+function val(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+    if (tecla==8) return true;
+    patron =/[A-Za-z\s]/;
+    te = String.fromCharCode(tecla);
+    return patron.test(te);
+}
             $(document).ready(function() {
                 var control = 0;
                 $('#tablaMateriasCargadas').hide();
                 $('#exito').hide();
                 $('#fracaso').hide();
+                $('#mal').hide();
                 $('#malmatri').hide();
                 $('#malcalif').hide();
                 $('#fin').hide();
@@ -87,13 +102,14 @@ text-transform: capitalize;
                     var ingr = $('#ingreso').val();
                     var materias = $('#materiasComunes').val();
                     //validar campos
-                   
+
+
 
 //                    ---------datosPersonales------------------
                     var nombre = $('#nombre').val();
                     var apellidoP = $('#apellidoP').val();
                     var apellidoM = $('#apellidoM').val();
-                    
+
                     if (m == "" || acred == 0 || Tcurso == 0 || cursando == 0 || ingr == 0) {
                         $('#fracaso').slideDown("slow");
                         $('#fracaso').delay("1500");
@@ -101,37 +117,37 @@ text-transform: capitalize;
                     }
                     else {
                         if (cursando > 0) {
-                        if ($("#matricula").val().length != 9) {
-                        $('#malmatri').slideDown("slow");
-                        $('#malmatri').delay("1500");
-                        $('#malmatri').slideUp("slow");
-                        return false;
+                            if ($("#matricula").val().length != 9) {
+                                $('#malmatri').slideDown("slow");
+                                $('#malmatri').delay("1500");
+                                $('#malmatri').slideUp("slow");
+                                return false;
 
-                    }else {
-                        if (calif < 0 || calif > 100) {
-                        $('#malcalif').slideDown("slow");
-                        $('#malcalif').delay("1500");
-                        $('#malcalif').slideUp("slow");
-                    }
-                    else {
-                       $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
-                            $('#exito').show("slow");
-                            $('#exito').delay("1500");
-                            $('#exito').slideUp("slow");
-                            $('#cursando').prop('selectedIndex', 0);
-                            $('#especialidad').prop('selectedIndex', 0);
-                            $('#materia').prop('selectedIndex', 0);
-                            $('#acreditacion').prop('selectedIndex', 0);
-                            $('#calificacion').val('');
-                            $('#cursoT').prop('selectedIndex', 0);
-                            $('#ingreso').prop('selectedIndex', 0);
-                            $('#materiasComunes').prop('selectedIndex', 0);
-                            $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
-                            $('#tablaMateriasCargadas').show('slow'); 
-                    }
-                    }
-                   
-                            
+                            } else {
+                                if (calif < 0 || calif > 100) {
+                                    $('#malcalif').slideDown("slow");
+                                    $('#malcalif').delay("1500");
+                                    $('#malcalif').slideUp("slow");
+                                }
+                                else {
+                                    $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
+                                    $('#exito').show("slow");
+                                    $('#exito').delay("1500");
+                                    $('#exito').slideUp("slow");
+                                    $('#cursando').prop('selectedIndex', 0);
+                                    $('#especialidad').prop('selectedIndex', 0);
+                                    $('#materia').prop('selectedIndex', 0);
+                                    $('#acreditacion').prop('selectedIndex', 0);
+                                    $('#calificacion').val('');
+                                    $('#cursoT').prop('selectedIndex', 0);
+                                    $('#ingreso').prop('selectedIndex', 0);
+                                    $('#materiasComunes').prop('selectedIndex', 0);
+                                    $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
+                                    $('#tablaMateriasCargadas').show('slow');
+                                }
+                            }
+
+
                         }
                         else {
                             $('#fracaso').slideDown("slow");
@@ -156,14 +172,16 @@ text-transform: capitalize;
             <br>
             <fieldset style="border-radius: 10px">
                 <center>
-                   
+                    <div id="mal" class="alert alert-error">
+                        <strong>Llene todos los campos Correspondientes</strong>
+                    </div>
                     <div id="fracaso" class="alert alert-error">
                         <strong>Llene todos los campos Correspondientes</strong>
                     </div>
                     <div id="exito" class="alert alert-success">
                         <strong>Datos Gurdados</strong>
                     </div>
-                     <div id="malmatri" class="alert alert-error">
+                    <div id="malmatri" class="alert alert-error">
                         <strong>La matricula tiene al menos 9 caracteres </strong>
                     </div>
                     <div id="malcalif" class="alert alert-error">
@@ -174,10 +192,10 @@ text-transform: capitalize;
                     </div>
                     <legend>Datos Alumnos</legend>
                     <input id="matricula" style="width: 250px; padding: 15px;" type="text" placeholder="Matricula..." name="matricula"/>
-                    <input id="nombre" type="text" style="width: 250px; padding: 15px;" placeholder="Nombre" />
+                    <input id="nombre" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;" placeholder="Nombre" />
                     <br>
-                    <input id="apellidoP"type="text" style="width: 250px; padding: 15px;"  placeholder="Apellido Paterno"/>
-                    <input id="apellidoM" type="text" style="width: 250px; padding: 15px;" placeholder="ApellidoMaterno"/>
+                    <input id="apellidoP" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;"  placeholder="Apellido Paterno"/>
+                    <input id="apellidoM" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;" placeholder="ApellidoMaterno"/>
                     <br>
                     <br>
                     <br>
@@ -239,7 +257,7 @@ text-transform: capitalize;
                         ?>
                     </select>
 
-                    <input id="calificacion" type="text" style="height: 30px; width: 250px" placeholder="Calificacion" name="calificacion"/>
+                    <input id="calificacion" onkeypress="return justNumbers(event);"  type="text" style="height: 30px; width: 250px" placeholder="Calificacion" name="calificacion"/>
                     <br>
                     <select id="cursando" style="width: 250px">
                         <option value="0">Cursando</option>
