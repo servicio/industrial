@@ -4,22 +4,35 @@ include '../DaoConnection/coneccion.php';
 
 class daoServicio {
     
-    function Intercambiomaterias($materia,$control){
+    function Intercambiomaterias($matricula,$materia,$semestre,$control){
         $cn=new coneccion();
         if($control=="aceptar"){
-    $sql="INSERT INTO temporalcargadas( materias, semestre ) 
+    $sql="INSERT INTO temporalcargadas( matricula,materias, semestre ) 
 VALUES (
-'$materia', 1
+'$matricula','$materia', '$semestre'
 )"; 
      mysql_query($sql, $cn->Conectarse());
+     $sql = "DELETE FROM temporalseleccionar where materias = '$materia' and matricula= '$matricula'";
+     mysql_query($sql, $cn->Conectarse());
      $cn->cerrarBd(); 
-     
+     return;
+}
+    if($control=="cancelar"){
+    $sql="INSERT INTO temporalseleccionar( matricula ,materias , semestre ) 
+VALUES (
+'$matricula','$materia', '$semestre'
+)"; 
+     mysql_query($sql, $cn->Conectarse());
+      $sql = "DELETE FROM temporalcargadas where materias = '$materia' and matricula= '$matricula'";
+     mysql_query($sql, $cn->Conectarse());
+     $cn->cerrarBd(); 
+     return;
 }
         
     }
     function consultatablaseleccionar($matricula){
         $cn = new coneccion();
-        $sql="select* from temporalseleccionar ";
+        $sql="select materias,semestre from temporalseleccionar ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -34,7 +47,7 @@ VALUES (
         }
     function consultatablaObligadas($matricula){
         $cn = new coneccion();
-        $sql="select* from temporalcargadas ";
+        $sql="select materias,semestre from temporalcargadas ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -48,13 +61,13 @@ VALUES (
         return $registro;
         }    
             
-function tablatemporalcargadas($materias){
+function tablatemporalcargadas($materias, $matricula){
     
    $cn = new coneccion();
    //setencia sql para crear la tabla
    $renglon=$materias[0];
    
-   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
+   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY,matricula varchar(20), materias varchar(20),semestre varchar(20))";
    mysql_query($sql,$cn->Conectarse());
    foreach($materias as $renglon)         {
        
@@ -68,7 +81,7 @@ function tablatemporalcargadas($materias){
            
        }
        if(($materia && $semestre)!= ""){
-           $sql="INSERT INTO temporalcargadas (materias, semestre) VALUES ('$materia',' $semestre') ";      
+           $sql="INSERT INTO temporalcargadas (matricula, materias, semestre) VALUES ('$matricula','$materia',' $semestre') ";      
      mysql_query($sql, $cn->Conectarse());
      $cn->cerrarBd();
            $materia="";
@@ -87,13 +100,13 @@ function tablatemporalcargadas($materias){
     
 }
 
-function tablatemporalSeleccionar($materias){
+function tablatemporalSeleccionar($materias, $matricula){
     
    $cn = new coneccion();
    //setencia sql para crear la tabla
    $renglon=$materias[0];
    
-   $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
+   $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, matricula varchar(20),materias varchar(20),semestre varchar(20))";
    mysql_query($sql,$cn->Conectarse());
    foreach($materias as $renglon)         {
        
@@ -107,7 +120,7 @@ function tablatemporalSeleccionar($materias){
            
        }
        if(($materia && $semestre)!= ""){
-           $sql="INSERT INTO temporalseleccionar (materias, semestre) VALUES ('$materia',' $semestre') ";      
+           $sql="INSERT INTO temporalseleccionar (matricula, materias, semestre) VALUES ('$matricula','$materia',' $semestre') ";      
      mysql_query($sql, $cn->Conectarse());
      $cn->cerrarBd(); 
            $materia="";
