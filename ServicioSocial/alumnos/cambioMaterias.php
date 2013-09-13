@@ -6,8 +6,13 @@ include '../Dao/daoServicio.php';
 $matricula = "prr";
 $dao = new daoServicio();
 
-
+function validar ($valor){
+if($valor!= null){
+    alert("Welcome!!!");
+}}
 ?>
+
+
 
 <div style="background: #0072c6">
 
@@ -36,8 +41,8 @@ $dao = new daoServicio();
             }
             
         }
-        echo "<td><a>prr</a></td>";
-        echo "<td><a href=\"\">prr2</a></td>";
+        
+        echo "<a id=\"myLink\" title=\"Click to do something\" href=\"#\" onclick=\"MyFunction();return false;\">link text</a>";
         echo "</tr>";
     }
     echo "</table>";
@@ -54,7 +59,7 @@ $dao = new daoServicio();
 
     <?php
     $arreglo2D = $dao->consultatablaseleccionar($matricula);
-   echo "<form name=\"materias\" method=\"post\" action=\"cambioMaterias.php\">";
+  
 
 
     echo '<table border="1" class="table table-bordered table-striped">';
@@ -77,12 +82,13 @@ $dao = new daoServicio();
             }
             
         }
-        echo "<td><input id=\"aceptar\" type=\"checkbox\" name=\"alguno[]\" value=\"$prr;\" </td>";
+        
+        echo "<td><a  href=\"proceso.php?algo=$prr&aceptar=aceptar\" >link text</a></td>";
         echo "</tr>";
     }
     echo "</table>";
 
-    echo "</form>";
+ 
 ?>
 
 

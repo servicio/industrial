@@ -3,6 +3,20 @@
 include '../DaoConnection/coneccion.php';
 
 class daoServicio {
+    
+    function Intercambiomaterias($materia,$control){
+        $cn=new coneccion();
+        if($control=="aceptar"){
+    $sql="INSERT INTO temporalcargadas( materias, semestre ) 
+VALUES (
+'$materia', 1
+)"; 
+     mysql_query($sql, $cn->Conectarse());
+     $cn->cerrarBd(); 
+     
+}
+        
+    }
     function consultatablaseleccionar($matricula){
         $cn = new coneccion();
         $sql="select* from temporalseleccionar ";
