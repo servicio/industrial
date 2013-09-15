@@ -13,11 +13,17 @@ $cn = new coneccion();
 if ($_REQUEST['guardaarchivo'] != null) {
     $nombre = $_FILES['buscaarchivo']['name'];
     $ruta = $_FILES['buscaarchivo']['tmp_name'];
+    $tamañoarchivo = $_FILES['buscaarchivo']['size'];
+    $tamañomaximo = 200000;
     $ubicacion = "../alumnos/subidas/" . $nombre;
 
-    if (is_uploaded_file($ruta)) {
+    if (is_uploaded_file($ruta) && $tamañoarchivo >= $tamañomaximo) {
+        echo "Archivo muy grnade<BR>";
+        echo "El tamaÑo de tu archivo = " . $tamañoarchivo;
+        echo " K";
+    } else {
+//        if (is_uploaded_file($ruta)) {
         if (copy($ruta, $ubicacion)) {
-//            echo"Se ha cargado el archivo correctamente";
             $cargar = new cargaArchivos();
             $cargando = new daoServicio();
             $cargar->setHubicacion($ubicacion);
@@ -25,6 +31,7 @@ if ($_REQUEST['guardaarchivo'] != null) {
             $cargar->setNombreArchivo($nombre);
             $cargando->guardaArchivos($cargar);
         }
+//        }
     }
 }
 ?>
@@ -39,13 +46,12 @@ if ($_REQUEST['guardaarchivo'] != null) {
         <div class="span12" style="margin: auto">
             <form name="subearchivos" action="cargaArchivos.php" method="post" enctype="multipart/form-data" style="margin-left: 50px; margin-top: 50px">
                 <h3>Sube tus documentos...</h3>
-                <h5>Primer documento:</h5>
                 <div class="btn-group">
-                    <input type="file" name="buscaarchivo" accept="application/pdf" title="Buscar Archivo">
+                    <input type="file" name="buscaarchivo" size="200" accept="application/pdf" title="Buscar Archivo">
                     <input type="submit" name="guardaarchivo" value="Enviar" class="btn btn-primary">
                 </div>
 
-                <!-------------------------------------------------------------->
+                <!-----------------------Mostrar archivos subidos--------------------------------------->
                 <?php
                 $sql = "SELECT * FROM cargaarchivos WHERE usuario='$usuario'";
                 $datos = mysql_query($sql, $cn->Conectarse());
