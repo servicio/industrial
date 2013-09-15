@@ -1,16 +1,15 @@
 
+
+
+
 <?php
 //include './plantilla.php'; 
 include '../clases/materias.php';
 include '../Dao/daoServicio.php';
 $matricula = "prr";
 $dao = new daoServicio();
-
-function validar ($valor){
-if($valor!= null){
-    alert("Welcome!!!");
-}}
 ?>
+
 
 
 
@@ -39,10 +38,13 @@ if($valor!= null){
             if ($campo == "materias") {
                 $prr = $valor;
             }
+            if ($campo == "semestre") {
+                $plop = $valor;
+            }
             
         }
         
-        echo "<a id=\"myLink\" title=\"Click to do something\" href=\"#\" onclick=\"MyFunction();return false;\">link text</a>";
+         echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar\" >link text</a></td>";
         echo "</tr>";
     }
     echo "</table>";
@@ -80,10 +82,12 @@ if($valor!= null){
             if ($campo == "materias") {
                 $prr = $valor;
             }
-            
+            if ($campo == "semestre") {
+                $plop = $valor;
+            }
         }
         
-        echo "<td><a  href=\"proceso.php?algo=$prr&aceptar=aceptar\" >link text</a></td>";
+        echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar\" >link text</a></td>";
         echo "</tr>";
     }
     echo "</table>";

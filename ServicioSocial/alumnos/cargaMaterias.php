@@ -22,11 +22,11 @@ $dao = new daoServicio();
  
 $arreglo2D = $dao->consultaMateriasObligatorias($algo); 
 
-$dao->tablatemporalcargadas($arreglo2D); 
+$dao->tablatemporalcargadas($arreglo2D,$algo); 
 
 $arreglox = $dao->consultaMateriasSeleccionadas($algo);
 
-$dao->tablatemporalSeleccionar($arreglox); 
+$dao->tablatemporalSeleccionar($arreglox,$algo); 
  
  ?><script>
              location.href='cambioMaterias.php';
