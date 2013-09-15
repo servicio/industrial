@@ -281,8 +281,8 @@ function tablatemporalSeleccionar($materias, $matricula){
 //<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->
     function guardaArchivos(cargaArchivos $cargar) {
         $cn = new coneccion();
-        $sql = "INSERT INTO cargaarchivos (usuario,ubicacion) 
-           VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "')";
+        $sql = "INSERT INTO cargaarchivos (usuario,ubicacion,nombre) 
+           VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "','".$cargar->getNombreArchivo()."')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBD;
     }

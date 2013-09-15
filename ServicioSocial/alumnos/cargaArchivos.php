@@ -1,7 +1,15 @@
 <?php
+session_start();
+include './validacionseSessionAlumnos.php';
+$validacion = new validacionseSessionAlumnos();
+$validacion->verificacionDeLogueAlumnos();
+
+$usuario = $_SESSION["UsuarioAlumno"];
 include './plantilla.php';
 include '../Dao/daoServicio.php';
 include '../clases/cargaArchivos.php';
+
+$cn = new coneccion();
 if ($_REQUEST['guardaarchivo'] != null) {
     $nombre = $_FILES['buscaarchivo']['name'];
     $ruta = $_FILES['buscaarchivo']['tmp_name'];
@@ -13,7 +21,8 @@ if ($_REQUEST['guardaarchivo'] != null) {
             $cargar = new cargaArchivos();
             $cargando = new daoServicio();
             $cargar->setHubicacion($ubicacion);
-            $cargar->setUsuario("16237213");
+            $cargar->setUsuario($usuario);
+            $cargar->setNombreArchivo($nombre);
             $cargando->guardaArchivos($cargar);
         }
     }
@@ -38,20 +47,15 @@ if ($_REQUEST['guardaarchivo'] != null) {
 
                 <!-------------------------------------------------------------->
                 <?php
-                if ($gestor = opendir('subidas')) {
-                    echo "<ul>";
-                    while (false !== ($arch = readdir($gestor))) {
-                        if ($arch != "." && $arch != "..") {
-                            echo "<li><a href=\"subidas/" . $arch . "\" class=\"linkli\">" . $arch . "</a></li>\n";
-                        }
-                    }
-                    closedir($gestor);
-                    echo "</ul>";
+                $sql = "SELECT * FROM cargaarchivos WHERE usuario='$usuario'";
+                $datos = mysql_query($sql, $cn->Conectarse());
+                while ($rs = mysql_fetch_array($datos)) {
+                    echo "<li><a target='_blank' href='" . $rs[2] . "'</a>" . $rs[3] . "</li>\n";
                 }
+                $cn->cerrarBd();
                 ?>
                 <!-------------------------------------------------------------->
             </form>
-
         </div>
     </div>
 </html>
