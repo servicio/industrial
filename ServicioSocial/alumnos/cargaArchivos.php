@@ -45,7 +45,7 @@ if ($_REQUEST['guardaarchivo'] != null) {
     <div class="container" style="background-image: url(galeria/fondotextofinal.png);-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; margin-top: -20px">
         <div class="span12" style="margin: auto">
             <form name="subearchivos" action="cargaArchivos.php" method="post" enctype="multipart/form-data" style="margin-left: 50px; margin-top: 50px">
-                <h3>Sube tus documentos...</h3>
+                <h3>Tamaño maximo de los archivos: 200kb</h3>
                 <div class="btn-group">
                     <input type="file" name="buscaarchivo" size="200" accept="application/pdf" title="Buscar Archivo">
                     <input type="submit" name="guardaarchivo" value="Enviar" class="btn btn-primary">
