@@ -1,4 +1,5 @@
 <?php
+include './plantilla.php';
 include './validacionseSessionAlumnos.php';
 $validacion = new validacionseSessionAlumnos();
 $validacion->verificacionSessionAlumnos();
@@ -8,9 +9,6 @@ $validacion->verificacionSessionAlumnos();
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
-        <script src="../bootsTrap2/js/jquery.min.js"></script>
-        <script src=../"bootsTrap/js/bootstrap.js"></script>
     </head>
     <script>
         $(document).ready(function() {
@@ -24,7 +22,7 @@ $validacion->verificacionSessionAlumnos();
     </script>
     <body>
         <div class="container">
-            <?php include './plantilla.php'; ?>
+
             <center>
                 <div class="span12"  style="margin: auto; background-color: white; margin-top: -20px">
                     <div id="error" style="height: 35px" class="alert-error">
@@ -41,8 +39,9 @@ $validacion->verificacionSessionAlumnos();
                     <br>
                 </div>
             </center>
-            <?php include './plantillaFooter.php'; ?>
+
         </div>
     </body>
 </html>
+<?php include './plantillaFooter.php'; ?>
 
