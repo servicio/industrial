@@ -20,15 +20,7 @@
     <title>Portal de Alumnos Ing. Industrial</title>
 </head>
 <header style="margin-top: 30px">
-    <div class="container"  style="height: 200px; background-image: url(galeria/tester.png); border-radius: 5px; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
-        <img class="img" src="galeria/logo.png" style="width: 250px; position: absolute; top: 10px"/>
-        <div style="text-align: left; margin-left: 250px; margin-top: 30px">
-            <h1 style="color: white; margin-bottom: -15px"><span style="background-color: steelblue">Instituto Tecnol&oacutegico de M&eacuterida</span></h1>
-            <h3 style="color: white; margin-bottom: -15px"><span style="background-color: steelblue">Portal de Alumnos</span></h3>
-            <h4><span style="color: white; background-color: steelblue">Ingenieria Industrial</span></h4> 
-            <p style="color: white; font-family: monospace">"Bienvenidos al portal de alumnos de la carrera de ingeniería industrial"</p>
-        </div>
-    </div>
+    <div class="container"  style="background-image: url(galeria/header.png); background-size: 100% 100%; height: 35%; border-radius: 5px"></div>
     <div class="container"> 
         <div class="navbar navbar-inverse">
             <div class="navbar-inner">
@@ -46,10 +38,10 @@
                             <a class="btn btn-primary" href="#"><i class="icon-user icon-white"></i> Usuario</a>
                             <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-<!--                                <li><a href="#"><i class="icon-pencil"></i> Editar</a></li>
+                                <li><a href="#"><i class="icon-pencil"></i> Editar</a></li>
                                 <li><a href="#"><i class="icon-trash"></i>Borrar</a></li>
                                 <li><a href="#"><i class="icon-ban-circle"></i>Banear</a></li>
-                                <li class="divider"></li>-->
+                                <li class="divider"></li>
                                 <li><a href="cerrarSesion.php"><i class="icon-remove"></i>Salir</a></li>
                             </ul>
                         </div></li>  
@@ -57,12 +49,11 @@
                     <li class="active"><a>Portal Alumnos</a></li>
                     <li class="divider-vertical"></li>
                     <li><a href="#myModal" data-toggle="modal">Regitro de Usuario</a> </li>
+                    <li><a href="">Calificaciones</a> </li>
                 </ul>
                 <!-- Everything you want hidden at 940px or less, place within here -->
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li><a href="">Calificaciones</a> </li>
-                        <li class="divider-vertical"></li>
                         <li><a href="cargaArchivos.php">Creditos Extra</a> </li>
                         <li class="divider-vertical"></li>
                         <li><a href="cargaMaterias.php">Creacion de grupos</a> </li>

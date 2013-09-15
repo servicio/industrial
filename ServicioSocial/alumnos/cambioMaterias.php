@@ -1,13 +1,17 @@
 
+
+
+
 <?php
 //include './plantilla.php'; 
 include '../clases/materias.php';
 include '../Dao/daoServicio.php';
 $matricula = "prr";
 $dao = new daoServicio();
-
-
 ?>
+
+
+
 
 <div style="background: #0072c6">
 
@@ -34,10 +38,13 @@ $dao = new daoServicio();
             if ($campo == "materias") {
                 $prr = $valor;
             }
+            if ($campo == "semestre") {
+                $plop = $valor;
+            }
             
         }
-        echo "<td><a>prr</a></td>";
-        echo "<td><a href=\"\">prr2</a></td>";
+        
+         echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar\" >link text</a></td>";
         echo "</tr>";
     }
     echo "</table>";
@@ -54,7 +61,7 @@ $dao = new daoServicio();
 
     <?php
     $arreglo2D = $dao->consultatablaseleccionar($matricula);
-   echo "<form name=\"materias\" method=\"post\" action=\"cambioMaterias.php\">";
+  
 
 
     echo '<table border="1" class="table table-bordered table-striped">';
@@ -75,14 +82,17 @@ $dao = new daoServicio();
             if ($campo == "materias") {
                 $prr = $valor;
             }
-            
+            if ($campo == "semestre") {
+                $plop = $valor;
+            }
         }
-        echo "<td><input id=\"aceptar\" type=\"checkbox\" name=\"alguno[]\" value=\"$prr;\" </td>";
+        
+        echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar\" >link text</a></td>";
         echo "</tr>";
     }
     echo "</table>";
 
-    echo "</form>";
+ 
 ?>
 
 

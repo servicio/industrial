@@ -36,23 +36,18 @@
     }
 </script>
 <div align="center" id="cuadro_camara">    
-
+    <div id="visualizacionCamara" style="padding-top: 5%">
+        <script language="JavaScript">
+            document.write(webcam.get_html(250, 250));//dimensiones de la camara
+        </script>
+    </div>
     <form>
-<!--        <input type=button value="Configurar" onClick="webcam.configure()" class="btn btn-danger">
-        &nbsp;&nbsp;-->
+        <br>
         <input type=button value="Tomar foto" onClick="webcam.freeze()" class="btn btn-info">
         &nbsp;&nbsp;
         <input type=button value="Guardar " onClick="do_upload()"  name="dato" class="btn btn-success"/>
-
-
         &nbsp;&nbsp;
         <input type=button value="Cancelar" onClick="webcam.reset()" class="btn btn-warning">
     </form>
-    <div id="visualizacionCamara" style="padding-top: 5%">
-        <script language="JavaScript">
-    document.write(webcam.get_html(250, 250));//dimensiones de la camara
-        </script>
-    </div>
-    <div style="float: right" id="upload_results" class="formulario" > </div>
-    <br />
+    <div style="float: right" id="upload_results" class="formulario"></div>
 </div>
