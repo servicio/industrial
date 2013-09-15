@@ -34,65 +34,72 @@ $dao = new daoServicio();
         echo "<tr>";
 
         foreach ($renglon as $campo => $valor) {
-            echo "<td> $valor </td>";
+            if ($campo !== "obligatoria" ) {
+                
+                
+                echo "<td> $valor </td>";
+        }
+            
+                if($campo == "obligatoria"){
+                    $obligatoria=$valor;
+                }
             if ($campo == "materias") {
                 $prr = $valor;
             }
             if ($campo == "semestre") {
                 $plop = $valor;
             }
-            
         }
-        
-         echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar\" >link text</a></td>";
+if($campo == "obligatoria" && $obligatoria!=1){
+        echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar&obligatoria=$obligatoria\" >link text</a></td>";
+}
         echo "</tr>";
     }
     echo "</table>";
-         echo "<input type=\"submit\" class=\"btn btn-primary\"  name=\"guardar\" value=\"Guardar\">";
+    echo "<input type=\"submit\" class=\"btn btn-primary\"  name=\"guardar\" value=\"Guardar\">";
 
     echo "</form>";
-   
-   
-?>
+    ?>
 
 
 </div>
 <div style="background: #72e487">
 
-    <?php
-    $arreglo2D = $dao->consultatablaseleccionar($matricula);
-  
+<?php
+$arreglo2D = $dao->consultatablaseleccionar($matricula);
 
 
-    echo '<table border="1" class="table table-bordered table-striped">';
-    echo '<tr>';
-    $renglon = $arreglo2D[0];
 
+echo '<table border="1" class="table table-bordered table-striped">';
+echo '<tr>';
+$renglon = $arreglo2D[0];
+
+
+foreach ($renglon as $campo => $valor) {
+    echo "<th> $campo </th>";
+}
+echo '<tr>';
+
+foreach ($arreglo2D as $renglon) {
+    echo "<tr>";
 
     foreach ($renglon as $campo => $valor) {
-        echo "<th> $campo </th>";
-    }
-    echo '<tr>';
-
-    foreach ($arreglo2D as $renglon) {
-        echo "<tr>";
-
-        foreach ($renglon as $campo => $valor) {
-            echo "<td> $valor </td>";
-            if ($campo == "materias") {
-                $prr = $valor;
-            }
-            if ($campo == "semestre") {
-                $plop = $valor;
-            }
+        echo "<td> $valor </td>";
+        if ($campo == "materias") {
+            $prr = $valor;
         }
-        
-        echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar\" >link text</a></td>";
-        echo "</tr>";
+        if ($campo == "semestre") {
+            $plop = $valor;
+        }
+        if ($campo == "obligatoria") {
+            $obligatoria = $valor;
+        }
     }
-    echo "</table>";
 
- 
+    echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar&obligatoria=$obligatoria\" >link text</a></td>";
+    echo "</tr>";
+}
+echo "</table>";
 ?>
 
 

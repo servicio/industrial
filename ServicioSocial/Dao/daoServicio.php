@@ -4,12 +4,12 @@ include '../DaoConnection/coneccion.php';
 
 class daoServicio {
     
-    function Intercambiomaterias($matricula,$materia,$semestre,$control){
+    function Intercambiomaterias($matricula,$materia,$semestre,$control, $obligatorias){
         $cn=new coneccion();
         if($control=="aceptar"){
-    $sql="INSERT INTO temporalcargadas( matricula,materias, semestre ) 
+    $sql="INSERT INTO temporalcargadas( matricula,materias, semestre, obligatoria ) 
 VALUES (
-'$matricula','$materia', '$semestre'
+'$matricula','$materia', '$semestre','$obligatorias'
 )"; 
      mysql_query($sql, $cn->Conectarse());
      $sql = "DELETE FROM temporalseleccionar where materias = '$materia' and matricula= '$matricula'";
@@ -18,7 +18,7 @@ VALUES (
      return;
 }
     if($control=="cancelar"){
-    $sql="INSERT INTO temporalseleccionar( matricula ,materias , semestre ) 
+    $sql="INSERT INTO temporalseleccionar( matricula ,materias , semestre, obligatoria ) 
 VALUES (
 '$matricula','$materia', '$semestre'
 )"; 
@@ -32,7 +32,7 @@ VALUES (
     }
     function consultatablaseleccionar($matricula){
         $cn = new coneccion();
-        $sql="select materias,semestre from temporalseleccionar ";
+        $sql="select materias,semestre,obligatoria from temporalseleccionar order by semestre asc  ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -47,7 +47,7 @@ VALUES (
         }
     function consultatablaObligadas($matricula){
         $cn = new coneccion();
-        $sql="select materias,semestre from temporalcargadas ";
+        $sql="select materias,semestre,obligatoria from temporalcargadas order by semestre asc  ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -67,7 +67,7 @@ function tablatemporalcargadas($materias, $matricula){
    //setencia sql para crear la tabla
    $renglon=$materias[0];
    
-   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY,matricula varchar(20), materias varchar(20),semestre varchar(20))";
+   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY,matricula varchar(20), materias varchar(20),semestre varchar(20), obligatoria int(1))";
    mysql_query($sql,$cn->Conectarse());
    foreach($materias as $renglon)         {
        
@@ -81,7 +81,7 @@ function tablatemporalcargadas($materias, $matricula){
            
        }
        if(($materia && $semestre)!= ""){
-           $sql="INSERT INTO temporalcargadas (matricula, materias, semestre) VALUES ('$matricula','$materia',' $semestre') ";      
+           $sql="INSERT INTO temporalcargadas (matricula, materias, semestre, obligatoria) VALUES ('$matricula','$materia',' $semestre', 1) ";      
      mysql_query($sql, $cn->Conectarse());
      $cn->cerrarBd();
            $materia="";
@@ -106,7 +106,7 @@ function tablatemporalSeleccionar($materias, $matricula){
    //setencia sql para crear la tabla
    $renglon=$materias[0];
    
-   $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, matricula varchar(20),materias varchar(20),semestre varchar(20))";
+   $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, matricula varchar(20),materias varchar(20),semestre varchar(20),obligatoria int(1))";
    mysql_query($sql,$cn->Conectarse());
    foreach($materias as $renglon)         {
        
@@ -120,7 +120,7 @@ function tablatemporalSeleccionar($materias, $matricula){
            
        }
        if(($materia && $semestre)!= ""){
-           $sql="INSERT INTO temporalseleccionar (matricula, materias, semestre) VALUES ('$matricula','$materia',' $semestre') ";      
+           $sql="INSERT INTO temporalseleccionar (matricula, materias, semestre, obligatoria) VALUES ('$matricula','$materia',' $semestre',2) ";      
      mysql_query($sql, $cn->Conectarse());
      $cn->cerrarBd(); 
            $materia="";
