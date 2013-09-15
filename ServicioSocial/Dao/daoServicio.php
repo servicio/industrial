@@ -6,7 +6,7 @@ class daoServicio {
 
     function consultatablaseleccionar($matricula) {
         $cn = new coneccion();
-        $sql="select* from temporalseleccionar ";
+        $sql = "select* from temporalseleccionar ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -22,7 +22,7 @@ class daoServicio {
 
     function consultatablaObligadas($matricula) {
         $cn = new coneccion();
-        $sql="select* from temporalcargadas ";
+        $sql = "select* from temporalcargadas ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -34,46 +34,41 @@ class daoServicio {
 
         $cn->cerrarBd();
         return $registro;
-        }    
-            
-function tablatemporalcargadas($materias){
-    
-   $cn = new coneccion();
-   //setencia sql para crear la tabla
-   $renglon=$materias[0];
-   
-   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
-   mysql_query($sql,$cn->Conectarse());
-   foreach($materias as $renglon)         {
-       
-       foreach($renglon as $campo=>$valor){
-     if ($campo=="materia"){
-         $materia=$valor;
-         
-     }
-       if ($campo=="semestre"){
-           $semestre=$valor; 
-           
-       }
-       if(($materia && $semestre)!= ""){
-           $sql="INSERT INTO temporalcargadas (materias, semestre) VALUES ('$materia',' $semestre') ";      
-     mysql_query($sql, $cn->Conectarse());
-     $cn->cerrarBd();
-           $materia="";
-           $semestre="";
-       }
-    
-   
-         
-        $paso=false;
-       }
-       
-   }
-   
-   //ejecuto la sentencia
-   
-    
-}
+    }
+
+    function tablatemporalcargadas($materias) {
+
+        $cn = new coneccion();
+        //setencia sql para crear la tabla
+        $renglon = $materias[0];
+
+        $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
+        mysql_query($sql, $cn->Conectarse());
+        foreach ($materias as $renglon) {
+
+            foreach ($renglon as $campo => $valor) {
+                if ($campo == "materia") {
+                    $materia = $valor;
+                }
+                if ($campo == "semestre") {
+                    $semestre = $valor;
+                }
+                if (($materia && $semestre) != "") {
+                    $sql = "INSERT INTO temporalcargadas (materias, semestre) VALUES ('$materia',' $semestre') ";
+                    mysql_query($sql, $cn->Conectarse());
+                    $cn->cerrarBd();
+                    $materia = "";
+                    $semestre = "";
+                }
+
+
+
+                $paso = false;
+            }
+        }
+
+        //ejecuto la sentencia
+    }
 
 //        $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, materias varchar(20),semestre varchar(20))";
 //        mysql_query($sql, $cn->Conectarse());
@@ -167,6 +162,7 @@ function tablatemporalcargadas($materias){
         $cn->cerrarBd();
         return $registro;
     }
+
     function TablaConsulta($registro) {
         
     }
@@ -273,8 +269,6 @@ function tablatemporalcargadas($materias){
         $cn->cerrarBd();
     }
 
-    
-
 //<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->
     function guardaArchivos(cargaArchivos $cargar) {
         $cn = new coneccion();
@@ -297,7 +291,8 @@ function tablatemporalcargadas($materias){
         $cn->cerrarBd();
         return $numeroSession;
     }
-    function consultavalidar (historialAcademico $h) {
+
+    function consultavalidar(historialAcademico $h) {
         $cn = new coneccion();
         $sql = "SELECT * FROM historial WHERE usuario='" . $h->getMatricula() . "'and idMateria='" . $h->getId_materia() . "'";
         $consulta = mysql_query($sql, $cn->Conectarse());
@@ -313,8 +308,16 @@ function tablatemporalcargadas($materias){
         return $registro;
     }
 
+    function verificacionInsertarPrecarga($usuario) {
+        $paso = false;
+        $sql = "SELECT * FROM precarga WHERE usuario = '$usuario'";
+        $datos = mysql_affected_rows();
+        if ($datos > 0) {
+            $paso = true;
+        }
+        return $paso;
+    }
+
 }
-
-
 ?>
 

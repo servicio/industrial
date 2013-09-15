@@ -10,6 +10,7 @@
                         //$(this).val() es el valor del checkbox correspondiente
                         checkboxValues.push($(this).val());
                     });
+                    alert(checkboxValues.length);
                     var MateriasA = JSON.stringify(checkboxValues);
 //                    var ajaxData = { myArray: JSON.stringify(myArray) };
                     $.ajax({
