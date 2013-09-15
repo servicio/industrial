@@ -5,14 +5,14 @@ session_start();
 class validacionseSessionAlumnos {
 
     function verificacionDeLogueAlumnos() {
-        $usuario = $_SESSION['Usuario'];
+        $usuario = $_SESSION['UsuarioAlumno'];
         if ($usuario == null) {
             header('Location: LoginAlumno.php');
         }
     }
 
     function verificacionSessionAlumnos() {
-        $usuarioSession = $_SESSION['Usuario'];
+        $usuarioSession = $_SESSION['UsuarioAlumno'];
         if ($usuarioSession != null) {
             header('Location: index.php');
         }

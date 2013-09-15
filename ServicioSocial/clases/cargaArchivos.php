@@ -15,6 +15,7 @@ class cargaArchivos {
     private $id;
     private $usuario;
     private $ubicacion;
+    private $nombreArchivo;
 
     public function getId() {
         return $this->id;
@@ -38,6 +39,22 @@ class cargaArchivos {
 
     public function setHubicacion($hubicacion) {
         $this->ubicacion = $hubicacion;
+    }
+
+    public function getUbicacion() {
+        return $this->ubicacion;
+    }
+
+    public function setUbicacion($ubicacion) {
+        $this->ubicacion = $ubicacion;
+    }
+
+    public function getNombreArchivo() {
+        return $this->nombreArchivo;
+    }
+
+    public function setNombreArchivo($nombreArchivo) {
+        $this->nombreArchivo = $nombreArchivo;
     }
 
     //put your code here

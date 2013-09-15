@@ -44,8 +44,9 @@ VALUES (
 
         $cn->cerrarBd();
         return $registro;
-        }
-    function consultatablaObligadas($matricula){
+    }
+
+    function consultatablaObligadas($matricula) {
         $cn = new coneccion();
         $sql="select materias,semestre,obligatoria from temporalcargadas order by semestre asc  ";
         $consulta = mysql_query($sql, $cn->Conectarse());
@@ -154,6 +155,7 @@ function tablatemporalSeleccionar($materias, $matricula){
         $cn->cerrarBd();
         return $registro;
     }
+
     function consultaMateriasSeleccionadas($matricula) {
         $cn = new coneccion();
         $paso = false;
@@ -166,12 +168,9 @@ function tablatemporalSeleccionar($materias, $matricula){
             }
             mysql_free_result($consulta);
         }
-
         $cn->cerrarBd();
         return $registro;
     }
-
-   
 
     function TablaConsulta($registro) {
         
@@ -187,6 +186,21 @@ function tablatemporalSeleccionar($materias, $matricula){
             $_SESSION["idMaestroSession"] = $rs["id"];
             $_SESSION["nombreMaestro"] = $rs["Nombre"] . "&nbsp;" . $rs["ApellidoPaterno"] . "&nbsp;" . $rs["ApellidoMaterno"];
         }
+        if ($columnas > 0) {
+            $paso = true;
+        } else {
+            $paso = false;
+        }
+        $cn->cerrarBd();
+        return $paso;
+    }
+
+    function accesoAlumnos(usuario $u) {
+        $cn = new coneccion();
+        $paso = false;
+        $sql = "SELECT * FROM usuarios WHERE usuario='" . $u->getUsuario() . "' AND pass='" . $u->getPass() . "'";
+        mysql_query($sql, $cn->Conectarse());
+        $columnas = mysql_affected_rows();
         if ($columnas > 0) {
             $paso = true;
         } else {
@@ -264,13 +278,11 @@ function tablatemporalSeleccionar($materias, $matricula){
         $cn->cerrarBd();
     }
 
-    
-
 //<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->
     function guardaArchivos(cargaArchivos $cargar) {
         $cn = new coneccion();
-        $sql = "INSERT INTO cargaarchivos (usuario,ubicacion) 
-           VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "')";
+        $sql = "INSERT INTO cargaarchivos (usuario,ubicacion,nombre) 
+           VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "','".$cargar->getNombreArchivo()."')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBD;
     }
@@ -288,10 +300,9 @@ function tablatemporalSeleccionar($materias, $matricula){
         $cn->cerrarBd();
         return $numeroSession;
     }
-    function consultavalidar (historialAcademico $h) {
+
+    function consultavalidar(historialAcademico $h) {
         $cn = new coneccion();
-        
-      
         $sql = "SELECT * FROM historial WHERE usuario='" . $h->getMatricula() . "'and idMateria='" . $h->getId_materia() . "'";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
@@ -306,7 +317,16 @@ function tablatemporalSeleccionar($materias, $matricula){
         return $registro;
     }
 
-}
+    function verificacionInsertarPrecarga($usuario) {
+        $paso = false;
+        $sql = "SELECT * FROM precarga WHERE usuario = '$usuario'";
+        $datos = mysql_affected_rows();
+        if ($datos > 0) {
+            $paso = true;
+        }
+        return $paso;
+    }
 
+}
 ?>
 

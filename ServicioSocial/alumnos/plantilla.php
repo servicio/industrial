@@ -6,6 +6,8 @@
 
 <script src="../bootsTrap2/js/jquery.min.js"></script>
 <script src="../bootsTrap2/js/bootstrap.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
     body{ 
         background: url(galeria/backgroundfinal.png)  center center fixed; 
@@ -14,15 +16,13 @@
         -o-background-size: cover;
         background-size: cover;
     }
-
 </style>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Portal de Alumnos Ing. Industrial</title>
 </head>
 <header style="margin-top: 30px">
-    <div class="container"  style="height: 200px; background-image: url(galeria/header.png); border-radius: 5px; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
-    </div>
+    <div class="container"  style="background-image: url(galeria/header.png); background-size: 100% 100%; height: 35%; border-radius: 5px"></div>
     <div class="container"> 
         <div class="navbar navbar-inverse">
             <div class="navbar-inner">

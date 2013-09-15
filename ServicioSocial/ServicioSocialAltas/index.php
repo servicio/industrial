@@ -34,13 +34,14 @@ session_start();
 
                 return /\d/.test(String.fromCharCode(keynum));
             }
-function val(e) {
-    tecla = (document.all) ? e.keyCode : e.which;
-    if (tecla==8) return true;
-    patron =/[A-Za-z\s]/;
-    te = String.fromCharCode(tecla);
-    return patron.test(te);
-}
+            function val(e) {
+                tecla = (document.all) ? e.keyCode : e.which;
+                if (tecla == 8)
+                    return true;
+                patron = /[A-Za-z\s]/;
+                te = String.fromCharCode(tecla);
+                return patron.test(te);
+            }
             $(document).ready(function() {
                 var control = 0;
                 $('#tablaMateriasCargadas').hide();
@@ -130,20 +131,23 @@ function val(e) {
                                     $('#malcalif').slideUp("slow");
                                 }
                                 else {
-                                    $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
-                                    $('#exito').show("slow");
-                                    $('#exito').delay("1500");
-                                    $('#exito').slideUp("slow");
-                                    $('#cursando').prop('selectedIndex', 0);
-                                    $('#especialidad').prop('selectedIndex', 0);
-                                    $('#materia').prop('selectedIndex', 0);
-                                    $('#acreditacion').prop('selectedIndex', 0);
-                                    $('#calificacion').val('');
-                                    $('#cursoT').prop('selectedIndex', 0);
-                                    $('#ingreso').prop('selectedIndex', 0);
-                                    $('#materiasComunes').prop('selectedIndex', 0);
-                                    $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
-                                    $('#tablaMateriasCargadas').show('slow');
+                                    var informacion = 'matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias;
+                                    $.get('guardarMaterias.php', informacion, function() {
+                                        $('#exito').show("slow");
+                                        $('#exito').delay("1500");
+                                        $('#exito').slideUp("slow");
+                                        $('#cursando').prop('selectedIndex', 0);
+                                        $('#especialidad').prop('selectedIndex', 0);
+                                        $('#materia').prop('selectedIndex', 0);
+                                        $('#acreditacion').prop('selectedIndex', 0);
+                                        $('#calificacion').val('');
+                                        $('#cursoT').prop('selectedIndex', 0);
+                                        $('#ingreso').prop('selectedIndex', 0);
+                                        $('#materiasComunes').prop('selectedIndex', 0);
+                                        $('#tablaMateriasCargadas').load('tabla.php?matricula=' + m);
+                                        $('#tablaMateriasCargadas').show('slow');
+                                    });
+//                                    $(this).load('guardarMaterias.php?matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias);
                                 }
                             }
 
