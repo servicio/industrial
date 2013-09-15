@@ -1,10 +1,11 @@
 <?php
 session_start();
-include './plantilla.php';
 include './validacionseSessionAlumnos.php';
-include '../Dao/daoServicio.php';
 $validacion = new validacionseSessionAlumnos();
 $validacion->verificacionDeLogueAlumnos();
+include './plantilla.php';
+
+include '../Dao/daoServicio.php';
 ?>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
