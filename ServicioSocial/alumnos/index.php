@@ -1,8 +1,14 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+include './plantilla.php';
 ?>
-ya hay session abierta
+<html>
+    <link rel="stylesheet" type="text/css" href="../css/css.css">
+    <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
+
+    <script src="../bootsTrap2/js/jquery.min.js"></script>
+    <script src="../bootsTrap2/js/bootstrap.js"></script>
+</html>
+<?php
+include './plantillaFooter.php';
+?>
