@@ -49,8 +49,16 @@ class tutorias {
     private $cualDep;
     private $frecuenciaDept;
     private $realizado;
+    private $usuario;
+    
+    public function getUsuario() {
+        return $this->usuario;
+    }
 
-   
+    public function setUsuario($usuario) {
+        $this->usuario = $usuario;
+    }
+
 
     public function setIdTutorias($idTutorias) {
         $this->idTutorias = $idTutorias;
