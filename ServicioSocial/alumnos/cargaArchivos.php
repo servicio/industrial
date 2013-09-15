@@ -19,15 +19,8 @@ if ($_REQUEST['guardaarchivo'] != null) {
     }
 }
 ?>
-
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/css.css">
-    <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
-
-    <script src="../bootsTrap2/js/jquery.min.js"></script>
-    <script src="../bootsTrap2/js/bootstrap.js"></script>
     <script src="../bootsTrap2/js/bootstrap.file-input.js"></script>
     <script>$(document).ready(function() {
             $('input[type=file]').bootstrapFileInput();

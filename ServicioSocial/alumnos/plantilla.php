@@ -6,6 +6,8 @@
 
 <script src="../bootsTrap2/js/jquery.min.js"></script>
 <script src="../bootsTrap2/js/bootstrap.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
     body{ 
         background: url(galeria/backgroundfinal.png)  center center fixed; 
