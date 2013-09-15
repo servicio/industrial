@@ -4,7 +4,6 @@ include './validacionseSessionAlumnos.php';
 $validacion = new validacionseSessionAlumnos();
 $validacion->verificacionDeLogueAlumnos();
 include './plantilla.php';
-
 include '../Dao/daoServicio.php';
 ?>
 <html>
