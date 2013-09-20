@@ -3,36 +3,37 @@
 include '../DaoConnection/coneccion.php';
 
 class daoServicio {
-    
-    function Intercambiomaterias($matricula,$materia,$semestre,$control, $obligatorias){
-        $cn=new coneccion();
-        if($control=="aceptar"){
-    $sql="INSERT INTO temporalcargadas( matricula,materias, semestre, obligatoria ) 
-VALUES (
-'$matricula','$materia', '$semestre','$obligatorias'
-)"; 
-     mysql_query($sql, $cn->Conectarse());
-     $sql = "DELETE FROM temporalseleccionar where materias = '$materia' and matricula= '$matricula'";
-     mysql_query($sql, $cn->Conectarse());
-     $cn->cerrarBd(); 
-     return;
-}
-    if($control=="cancelar"){
-    $sql="INSERT INTO temporalseleccionar( matricula ,materias , semestre, obligatoria ) 
-VALUES (
-'$matricula','$materia', '$semestre'
-)"; 
-     mysql_query($sql, $cn->Conectarse());
-      $sql = "DELETE FROM temporalcargadas where materias = '$materia' and matricula= '$matricula'";
-     mysql_query($sql, $cn->Conectarse());
-     $cn->cerrarBd(); 
-     return;
-}
-        
-    }
-    function consultatablaseleccionar($matricula){
+
+    function Intercambiomaterias($matricula, $materia, $semestre, $control, $obligatorias, $idMateria) {
         $cn = new coneccion();
-        $sql="select materias,semestre,obligatoria from temporalseleccionar order by semestre asc  ";
+        $fecha = date("Y-m-d");
+        if ($control == "aceptar") {
+            $sql = "INSERT INTO temporalcargadas( matricula,materias, semestre, obligatoria, idMateria, fecha ) 
+VALUES (
+'$matricula','$materia', '$semestre','$obligatorias','$idMateria','$fecha'
+)";
+            mysql_query($sql, $cn->Conectarse());
+            $sql = "DELETE FROM temporalseleccionar where materias = '$materia' and matricula= '$matricula'";
+            mysql_query($sql, $cn->Conectarse());
+            $cn->cerrarBd();
+            return;
+        }
+        if ($control == "cancelar") {
+                    $sql2 = "INSERT INTO temporalseleccionar( matricula,materias, semestre, obligatoria, idMateria ) 
+VALUES (
+'$matricula','$materia', '$semestre','$obligatorias','$idMateria'
+)";
+            mysql_query($sql2, $cn->Conectarse());
+            $sql2 = "DELETE FROM temporalcargadas where materias = '$materia' and matricula= '$matricula'";
+            mysql_query($sql2, $cn->Conectarse());
+            $cn->cerrarBd();
+            return;
+        }
+    }
+
+    function consultatablaseleccionar($matricula) {
+        $cn = new coneccion();
+        $sql = "select materias,semestre,obligatoria, idMateria from temporalseleccionar order by semestre asc  ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -48,7 +49,7 @@ VALUES (
 
     function consultatablaObligadas($matricula) {
         $cn = new coneccion();
-        $sql="select materias,semestre,obligatoria from temporalcargadas order by semestre asc  ";
+        $sql = "select materias,semestre,obligatoria,idMateria from temporalcargadas order by semestre asc  ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -60,89 +61,94 @@ VALUES (
 
         $cn->cerrarBd();
         return $registro;
-        }    
-            
-function tablatemporalcargadas($materias, $matricula){
-    
-   $cn = new coneccion();
-   //setencia sql para crear la tabla
-   $renglon=$materias[0];
-   
-   $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY,matricula varchar(20), materias varchar(20),semestre varchar(20), obligatoria int(1))";
-   mysql_query($sql,$cn->Conectarse());
-   foreach($materias as $renglon)         {
-       
-       foreach($renglon as $campo=>$valor){
-     if ($campo=="materia"){
-         $materia=$valor;
-         
-     }
-       if ($campo=="semestre"){
-           $semestre=$valor; 
-           
-       }
-       if(($materia && $semestre)!= ""){
-           $sql="INSERT INTO temporalcargadas (matricula, materias, semestre, obligatoria) VALUES ('$matricula','$materia',' $semestre', 1) ";      
-     mysql_query($sql, $cn->Conectarse());
-     $cn->cerrarBd();
-           $materia="";
-           $semestre="";
-       }
-    
-   
-         
-        $paso=false;
-       }
-       
-   }
-   
-   //ejecuto la sentencia
-   
-    
-}
+    }
 
-function tablatemporalSeleccionar($materias, $matricula){
-    
-   $cn = new coneccion();
-   //setencia sql para crear la tabla
-   $renglon=$materias[0];
-   
-   $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, matricula varchar(20),materias varchar(20),semestre varchar(20),obligatoria int(1))";
-   mysql_query($sql,$cn->Conectarse());
-   foreach($materias as $renglon)         {
-       
-       foreach($renglon as $campo=>$valor){
-     if ($campo=="materia"){
-         $materia=$valor;
-         
-     }
-       if ($campo=="semestre"){
-           $semestre=$valor; 
-           
-       }
-       if(($materia && $semestre)!= ""){
-           $sql="INSERT INTO temporalseleccionar (matricula, materias, semestre, obligatoria) VALUES ('$matricula','$materia',' $semestre',2) ";      
-     mysql_query($sql, $cn->Conectarse());
-     $cn->cerrarBd(); 
-           $materia="";
-           $semestre="";
-       }
-    
-   
-        
-        $paso=false;
-       }
-       
-   }
-   
-   //ejecuto la sentencia
-   
-}
-    
+    function tablatemporalcargadas($materias, $matricula) {
+
+        $cn = new coneccion();
+        //setencia sql para crear la tabla
+        $renglon = $materias[0];
+        $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY,matricula varchar(20), materias varchar(20),semestre varchar(20), obligatoria int(1),idMateria int(20), fecha DATE) \n"
+    . " ";
+        mysql_query($sql, $cn->Conectarse());
+        $sql = "DELETE FROM temporalcargadas WHERE matricula='$matricula'";
+        mysql_query($sql, $cn->Conectarse());
+        $fecha = date("Y-m-d");
+        foreach ($materias as $renglon) {
+
+            foreach ($renglon as $campo => $valor) {
+                if ($campo == "materia") {
+                    $materia = $valor;
+                }
+                if ($campo == "semestre") {
+                    $semestre = $valor;
+                }
+                if ($campo == "id") {
+                    $idMateria = $valor;
+                }
+                if (($materia && $semestre && $idMateria) != "") {
+
+                    $sql = "INSERT INTO temporalcargadas (matricula, materias, semestre, obligatoria,idMateria, fecha) VALUES ('$matricula','$materia',' $semestre', 1 , '$idMateria', '$fecha') ";
+                    mysql_query($sql, $cn->Conectarse());
+                    $cn->cerrarBd();
+                    $materia = "";
+                    $semestre = "";
+                    $idMateria = "";
+                }
+
+
+
+                $paso = false;
+            }
+        }
+
+        //ejecuto la sentencia
+    }
+
+    function tablatemporalSeleccionar($materias, $matricula) {
+
+        $cn = new coneccion();
+        //setencia sql para crear la tabla
+        $renglon = $materias[0];
+
+        $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, matricula varchar(20),materias varchar(20),semestre varchar(20),obligatoria int(1), idMateria int(20))";
+        mysql_query($sql, $cn->Conectarse());
+        $sql = "DELETE FROM temporalseleccionar WHERE matricula='$matricula'";
+        mysql_query($sql, $cn->Conectarse());
+        foreach ($materias as $renglon) {
+
+            foreach ($renglon as $campo => $valor) {
+                if ($campo == "materia") {
+                    $materia = $valor;
+                }
+                if ($campo == "semestre") {
+                    $semestre = $valor;
+                }
+                if ($campo == "id") {
+                    $idMateria = $valor;
+                }
+                if (($materia && $semestre && $idMateria) != "") {
+                    $sql = "INSERT INTO temporalseleccionar (matricula, materias, semestre, obligatoria, idMateria) VALUES ('$matricula','$materia',' $semestre',2,'$idMateria') ";
+                    mysql_query($sql, $cn->Conectarse());
+                    $cn->cerrarBd();
+                    $materia = "";
+                    $semestre = "";
+                    $idMateria = "";
+                }
+
+
+
+                $paso = false;
+            }
+        }
+
+        //ejecuto la sentencia
+    }
+
     function consultaMateriasObligatorias($matricula) {
         $cn = new coneccion();
         $paso = false;
-        $sql = "SELECT m.materia, m.semestre FROM historial h, materias m where h.usuario = '$matricula' and h.idAcreditacion = 1 and h.calificacion < 70 and m.id = h.idMateria";
+        $sql = "SELECT m.materia, m.semestre, m.id FROM historial h, materias m where h.usuario = '$matricula' and h.idAcreditacion = 1 and h.calificacion < 70 and m.id = h.idMateria";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -159,7 +165,7 @@ function tablatemporalSeleccionar($materias, $matricula){
     function consultaMateriasSeleccionadas($matricula) {
         $cn = new coneccion();
         $paso = false;
-        $sql = "SELECT m.materia, m.semestre FROM materias m,historial h WHERE idAcreditacion <=2 and h.calificacion > 70 and m.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula' )";
+        $sql = "SELECT m.materia, m.semestre, m.id FROM materias m,historial h WHERE idAcreditacion <=2 and h.calificacion > 70 and m.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula' )";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -282,7 +288,7 @@ function tablatemporalSeleccionar($materias, $matricula){
     function guardaArchivos(cargaArchivos $cargar) {
         $cn = new coneccion();
         $sql = "INSERT INTO cargaarchivos (usuario,ubicacion,nombre) 
-           VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "','".$cargar->getNombreArchivo()."')";
+           VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "','" . $cargar->getNombreArchivo() . "')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBD;
     }
