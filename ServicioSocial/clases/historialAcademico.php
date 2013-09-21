@@ -20,7 +20,9 @@ class historialAcademico {
     private $idCurso;
     private $cursando;
     private $ingresoCursado;
-    
+    private $anio;
+    private $curso;
+
     public function getId() {
         return $this->id;
     }
@@ -28,7 +30,7 @@ class historialAcademico {
     public function setId($id) {
         $this->id = $id;
     }
-    
+
     public function getUsuario() {
         return $this->usuario;
     }
@@ -37,7 +39,6 @@ class historialAcademico {
         $this->usuario = $usuario;
     }
 
-    
     public function getIdCurso() {
         return $this->idCurso;
     }
@@ -93,6 +94,25 @@ class historialAcademico {
     public function setAcredito($acredito) {
         $this->idAcreditacion = $acredito;
     }
+
+    
+    public function getCurso() {
+        return $this->curso;
+    }
+
+    public function setCurso($curso) {
+        $this->curso = $curso;
+    }
+    
+    public function getAnio() {
+        return $this->anio;
+    }
+
+    public function setAnio($anio) {
+        $this->anio = $anio;
+    }
+
+
 
 }
 

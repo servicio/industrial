@@ -57,6 +57,21 @@ session_start();
                     $('#myModal').modal('show', function() {
                     });
                 });
+
+
+
+//                ------------------------------------------------
+                $('#Buscar').click(function() {
+                    var matricula = $('#matriculaBuscar').val();
+                    $('#datosPersonales').load('datosPersonales.php?matricula=' + matricula);
+                    $('#tablaMateriasCargadas').load('tabla.php?matricula=' + matricula);
+                    $('#tablaMateriasCargadas').show('slow');
+
+                    control = 1;
+                });
+
+//              ------------------------------------------------     
+
                 $('#ingreso').change(function() {
                     var ingraso = $('#ingreso').val();
                     if (ingraso > 6) {
@@ -88,6 +103,7 @@ session_start();
                     $('#fin').show('slow');
                     $('#fin').delay("1500");
                     $('#fin').slideUp("slow");
+                    $('#tablaMateriasCargadas').hide('slow');
                     control = 0;
                 });
 
@@ -102,16 +118,15 @@ session_start();
                     var cursando = $('#cursando').val();
                     var ingr = $('#ingreso').val();
                     var materias = $('#materiasComunes').val();
+                    var curso = $('#curso').val();
+                    var anio = $('#anio').val();
                     //validar campos
-
-
-
 //                    ---------datosPersonales------------------
                     var nombre = $('#nombre').val();
                     var apellidoP = $('#apellidoP').val();
                     var apellidoM = $('#apellidoM').val();
 
-                    if (m == "" || acred == 0 || Tcurso == 0 || cursando == 0 || ingr == 0) {
+                    if (m == "" || acred == 0 || Tcurso == 0 || cursando == 0 || ingr == 0 || curso==0 || anio==0) {
                         $('#fracaso').slideDown("slow");
                         $('#fracaso').delay("1500");
                         $('#fracaso').slideUp("slow");
@@ -131,7 +146,7 @@ session_start();
                                     $('#malcalif').slideUp("slow");
                                 }
                                 else {
-                                    var informacion = 'matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias;
+                                    var informacion = 'matricula=' + m + '&especialidad=' + espe + '&materia=' + mat + '&acreditacion=' + acred + '&calificacion=' + calif + '&tipoCurso=' + Tcurso + '&cursando=' + cursando + '&ingreso=' + ingr + '&materiaComunes=' + materias+'&a='+anio+ '&c='+curso;
                                     $.get('guardarMaterias.php', informacion, function() {
                                         $('#exito').show("slow");
                                         $('#exito').delay("1500");
@@ -140,6 +155,8 @@ session_start();
                                         $('#especialidad').prop('selectedIndex', 0);
                                         $('#materia').prop('selectedIndex', 0);
                                         $('#acreditacion').prop('selectedIndex', 0);
+                                        $('#anio').prop('selectedIndex', 0);
+                                        $('#curso').prop('selectedIndex', 0);
                                         $('#calificacion').val('');
                                         $('#cursoT').prop('selectedIndex', 0);
                                         $('#ingreso').prop('selectedIndex', 0);
@@ -161,6 +178,7 @@ session_start();
                         if (control == 0) {
                             var informacion = 'nombre=' + nombre + '&apellidoP=' + apellidoP + '&apellidoM=' + apellidoM + '&matricula=' + m;
                             $.get('guardarDatosPersonales.php', informacion, function() {
+                                $('#listaAlumnos').load('dataList.php');
                                 control = 1;
                             });
                         }
@@ -175,6 +193,10 @@ session_start();
         <div style="width: 960px; background-color: white;">
             <br>
             <fieldset style="border-radius: 10px">
+
+
+
+
                 <center>
                     <div id="mal" class="alert alert-error">
                         <strong>Llene todos los campos Correspondientes</strong>
@@ -195,11 +217,36 @@ session_start();
                         <strong>Usuario Finalizado</strong>
                     </div>
                     <legend>Datos Alumnos</legend>
-                    <input id="matricula" style="width: 250px; padding: 15px;" type="text" placeholder="Matricula..." name="matricula"/>
-                    <input id="nombre" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;" placeholder="Nombre" />
+
+                    <div class="input-append" style="float: left; margin-left: 40px">
+                        <input  id="matriculaBuscar" type="text" placeholder="Buscar Matricula...." list="listaAlumnos" style=" height: 30px"/>
+                        <datalist id="listaAlumnos">
+                            <?php
+                            $sql = "Select usuario from datosPersonales ";
+                            $datos = mysql_query($sql, $coneccion->Conectarse());
+                            While ($rs = mysql_fetch_array($datos)) {
+                                ?>
+                                <option value="<?php echo $rs["usuario"]; ?>"><?php echo $rs["usuario"] ?></option>
+                                <?php
+                            }
+                            ?>
+
+                        </datalist>
+                        <input type="submit" class="btn btn-primary" value="Buscar" id="Buscar"/>
+                    </div>
                     <br>
-                    <input id="apellidoP" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;"  placeholder="Apellido Paterno"/>
-                    <input id="apellidoM" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;" placeholder="ApellidoMaterno"/>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <div id="datosPersonales">
+                        <input id="matricula" style="width: 250px; padding: 15px;" type="text" placeholder="Matricula..." name="matricula"/>
+                        <input id="nombre" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;" placeholder="Nombre" />
+                        <br>
+                        <input id="apellidoP" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;"  placeholder="Apellido Paterno"/>
+                        <input id="apellidoM" onkeypress="return val(event)" type="text" style="width: 250px; padding: 15px;" placeholder="ApellidoMaterno"/>
+                    </div>
                     <br>
                     <br>
                     <br>
@@ -263,6 +310,28 @@ session_start();
 
                     <input id="calificacion" onkeypress="return justNumbers(event);"  type="text" style="height: 30px; width: 250px" placeholder="Calificacion" name="calificacion"/>
                     <br>
+                    <select style="width: 100px" id="anio">
+                        <option value="0">Año</option>
+                        <option value="2001">2001</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                    </select>
+                    <select style="width: 70px" id="curso">
+                        <option value="0">Curso</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                    </select>
                     <select id="cursando" style="width: 250px">
                         <option value="0">Cursando</option>
                         <option value="1">Si</option>
