@@ -278,8 +278,8 @@ VALUES (
 //JOSE!!!!!!!!
     function guardarTutorias(avisosTutor $avisosT) {
         $cn = new coneccion();
-        $sql = "INSERT INTO avisostutor (titulo,detalles,usuario) 
-                VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "')";
+        $sql = "INSERT INTO avisostutor (titulo,detalles,usuario,control,leido) 
+                VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "','".$avisosT->getControl()."','".$avisosT->getLeido()."')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBD;
     }
