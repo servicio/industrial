@@ -13,6 +13,7 @@
 class avisosTutor {
     private $titulo;
     private $detalle;
+    private $usuario;
     
     public function getTitulo() {
         return $this->titulo;
@@ -29,6 +30,16 @@ class avisosTutor {
     public function setDetalle($detalle) {
         $this->detalle = $detalle;
     }
+    
+    public function getUsuario() {
+        return $this->usuario;
+    }
+
+    public function setUsuario($usuario) {
+        $this->usuario = $usuario;
+    }
+
+
 
 
 }
