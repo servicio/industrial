@@ -119,7 +119,10 @@ include '../Dao/daoServicio.php';
 
                 <h6>5.- &iquest;Cuantos hermanos/as son en tu familia incluy&eacute;ndote?</h6>
                 <input type="text" name="NumHermanos"><br>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Qué lugar ocupas entre tus hermanos?</h6>
+                <h6><input type="text" name="txtLugarOcupas"></h6>
+                <!--                AGREGADO-->
                 <h6>6.- &iquest;Con qui&eacute;n platicas cuando tienes un problema personal?</h6>
                 <input type="radio" name="PerPlaticar" value="Padre" id="RadioGroup5_0" onClick="opcion6.disabled = true">
                 Padre<br>
@@ -190,7 +193,14 @@ include '../Dao/daoServicio.php';
                         <td><input id="textboxo" type="text" name="textfield9" id="textfield9"></td>
                     </tr>
                 </table>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Que especialidad llevaste en la preparatoria?</h6>
+                <input type="text" name="txtEspecialidad"><br>
+                <!--                AGREGADO-->
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Cual fue tu promedio final de la preparatoria?</h6>
+                <input type="text" name="txtPromedio"><br>
+                <!--                AGREGADO-->
                 <h6>10.- &iquest;Que materias te gustan m&aacute;s?</h6>
                 <input type="text" name="HabMaterias"><br>
 
@@ -292,7 +302,15 @@ include '../Dao/daoServicio.php';
                 <input type="radio" name="Cronica" value="No" id="RadioGroup15_1" onclick="CronicaCual.disabled = true">
                 No
                 <br>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Alguien en tu familia padece alguna enfermedad hereditaria?</h6>
+                <input type="radio" name="rbtHereditaria" value="Si" id="RadioGroup22_0" onClick="txtHereditariaQuien.disabled = false">
+                Si
+                Quien?<input name="txtHereditariaQuien" type="text" disabled="disabled"><br>
+                <input type="radio" name="rbtHereditaria" value="No" id="RadioGroup22_1" onclick="txtHereditariaQuien.disabled = true">
+                No
+                <br>
+                <!--                AGREGADO-->
                 <h6>18.- &iquest;Has recibido atenci&oacute;n psicol&oacute;gica?</h6>
                 <input type="radio" name="AtencionPsi" value="Si" id="RadioGroup16_0" onClick="CualAtencionPsi.disabled = false">
                 Si
@@ -300,7 +318,15 @@ include '../Dao/daoServicio.php';
                 <input type="radio" name="AtencionPsi" value="No" id="RadioGroup16_1" onclick="CualAtencionPsi.disabled = true">
                 No 
                 <br>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Padeces alguna enfermedad mental?</h6>
+                <input type="radio" name="rbtMental" value="Si" id="RadioGroup23_0" onClick="txtMentalCual.disabled = false">
+                Si
+                Especifica:<input name="txtMentalCual" type="text" disabled="disabled"><br>
+                <input type="radio" name="rbtMental" value="No" id="RadioGroup23_1" onclick="txtMentalCual.disabled = true">
+                No
+                <br>
+                <!--                AGREGADO-->
                 <h6>19.- &iquest;D&oacute;nde recibes atenci&oacute;n medica?</h6>
                 <input type="radio" name="AtencionMedica" value="IMSS" id="RadioGroup17_0">
                 IMSS<br>

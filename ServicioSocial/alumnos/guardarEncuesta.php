@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include '../clases/tutorias.php';
 include '../Dao/daoServicio.php';
@@ -29,9 +30,17 @@ $tutorias->setFuenteIngreso($_GET["FuenteIngreso"]);
 if ($tutorias->getFuenteIngreso() == "Otro") {
     $tutorias->setFuenteIngreso($_GET["opcion7"]);
 }
+
 $tutorias->setNumHermanos($_GET["NumHermanos"]);
-
-
+//Agregado
+$tutorias->setLugarOcupas($_GET["txtLugarOcupas"]);
+$tutorias->setEspecialidad($_GET["txtEspecialidad"]);
+$tutorias->setPromedio($_GET["txtPromedio"]);
+$tutorias->setHereditaria($_GET["rbtHereditaria"]);
+$tutorias->setHereditariaQuien($_GET["txtHereditariaQuien"]);
+$tutorias->setMental($_GET["rbtMental"]);
+$tutorias->setMentalCual($_GET["txtMentalCual"]);
+//-----
 $tutorias->setPerPlaticar($_GET["PerPlaticar"]);
 if ($tutorias->getPerPlaticar() == "Otro") {
     $tutorias->setPerPlaticar($_GET["opcion6"]);

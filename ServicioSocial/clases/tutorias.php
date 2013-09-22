@@ -51,6 +51,71 @@ class tutorias {
     private $realizado;
     private $usuario;
     
+    private $lugarOcupas;
+    private $especialidad;
+    private $promedio;
+    private $hereditaria;
+    private $hereditariaQuien;
+    private $mental;
+    private $mentalCual;
+
+    public function getMentalCual() {
+        return $this->mentalCual;
+    }
+
+    public function setMentalCual($mentalCual) {
+        $this->mentalCual = $mentalCual;
+    }
+
+        public function getLugarOcupas() {
+        return $this->lugarOcupas;
+    }
+
+    public function setLugarOcupas($lugarOcupas) {
+        $this->lugarOcupas = $lugarOcupas;
+    }
+
+    public function getEspecialidad() {
+        return $this->especialidad;
+    }
+
+    public function setEspecialidad($especialidad) {
+        $this->especialidad = $especialidad;
+    }
+
+    public function getPromedio() {
+        return $this->promedio;
+    }
+
+    public function setPromedio($promedio) {
+        $this->promedio = $promedio;
+    }
+
+    public function getHereditaria() {
+        return $this->hereditaria;
+    }
+
+    public function setHereditaria($hereditaria) {
+        $this->hereditaria = $hereditaria;
+    }
+
+    public function getHereditariaQuien() {
+        return $this->hereditariaQuien;
+    }
+
+    public function setHereditariaQuien($herditariaQuien) {
+        $this->hereditariaQuien = $herditariaQuien;
+    }
+
+    public function getMental() {
+        return $this->mental;
+    }
+
+    public function setMental($mental) {
+        $this->mental = $mental;
+    }
+
+        
     public function getUsuario() {
         return $this->usuario;
     }
