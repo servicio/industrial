@@ -77,7 +77,7 @@
         </script>
     </head>
     <body>
-        <form name="frmMail" action="enviarMail.php" method="post" enctype="application/x-www-form-urlencoded">
+        <form name="frmMail" action="enviarPHPMail.php" method="post" enctype="multipart/form-data">
             De:<input type="text" name="txtDe"/><br>
             Para:<input type="text" name="txtPara"/><br>
             Asunto:<input type="text" name="txtAsunto"/><br>
