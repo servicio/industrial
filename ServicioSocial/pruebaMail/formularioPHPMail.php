@@ -53,6 +53,12 @@
                     document.frmMail.txtAsunto.focus();
                     verificar = false;
                 }
+                //----------------> Verificando que el flsArchivo tenga contenido (Eliminar para no hacer obligatorio
+                else if (!document.frmMail.flsArchivo.value) {
+                    alert("Se tiene que adjuntar un 'ARCHIVO'");
+                    document.frmMail.flsArchivo.focus();
+                    verificar = false;
+                }
                 //----------------> Verificando que el txaMensaje tenga contenido
                 else if (!document.frmMail.txaMensaje.value) {
                     alert("El campo 'MENSAJE:' es obligatorio");
@@ -75,6 +81,7 @@
             De:<input type="text" name="txtDe"/><br>
             Para:<input type="text" name="txtPara"/><br>
             Asunto:<input type="text" name="txtAsunto"/><br>
+            Adjuntar Archivo: <input type="file" name="flsArchivo"/><br>
             Mensaje:<br><textarea name="txaMensaje"></textarea><br>
             <input type="button" name="btnEnviar" value="Enviar"/><br>
             <?php
@@ -86,3 +93,4 @@
         </form>
     </body>
 </html>
+
