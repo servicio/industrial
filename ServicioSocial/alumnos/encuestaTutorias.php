@@ -18,7 +18,10 @@ include '../Dao/daoServicio.php';
             font-style: italic;
             margin-bottom: 8px;
         }
-        table tr:last-child {background:#456789; color:#fff}
+        table tr:last-child {
+            background:#456789; 
+            color:#fff;
+        }
         th {
             text-align: left;
         }
@@ -43,22 +46,10 @@ include '../Dao/daoServicio.php';
         }
 
         input#textboxo {
-            text-transform:lowercase;
             border:0;
             -webkit-box-shadow:none;
             box-shadow:none;
             width:100%;
-            float:left
-        }
-
-        input#textboxo {
-            text-transform:lowercase;
-            color:#f6892e!important;
-            font-weight:bold;
-            border:0;
-            -webkit-box-shadow:none;
-            box-shadow:none;
-            width:75%;
             float:left
         }
     </style>
@@ -173,24 +164,24 @@ include '../Dao/daoServicio.php';
                 <h6>9.- Menciona las escuelas donde has estudiado el bachillerato, indicando los grados estudiados en caso de haber estudiado en m&aacute;s de una escuela.</h6>
                 <table width="400" border="0" cellspacing="0" cellpadding="5">
                     <tr>
-                        <th width="120" scope="col"><h5>Nombre de la escuela</h5></th>
-                    <th width="120" scope="col"><h5>Estado donde se ubica</h5></th>
-                    <th width="120" scope="col"><h5>Grado cursado</h5></th>
+                        <th width="120" scope="col"><h6>Nombre de la escuela</h6></th>
+                    <th width="120" scope="col"><h6>Estado donde se ubica</h6></th>
+                    <th width="120" scope="col"><h6>Grado cursado</h6></th>
                     </tr>
                     <tr>
-                        <td><input id="textboxo" type="text" name="textfield" id="textfield"></td>
-                        <td><input id="textboxo" type="text" name="textfield2" id="textfield2"></td>
-                        <td><input id="textboxo" type="text" name="textfield3" id="textfield3"></td>
+                        <td><input id="textboxo" type="text" name="txtEscuela1" placeholder="NombEsc1"></td>
+                        <td><input id="textboxo" type="text" name="txtEstado1" placeholder="NombEstc1"></td>
+                        <td><input id="textboxo" type="text" name="txtGrado1" placeholder="NombGrado1"></td>
                     </tr>
                     <tr>
-                        <td><input id="textboxo" type="text" name="textfield4" id="textfield4"></td>
-                        <td><input id="textboxo" type="text" name="textfield6" id="textfield6"></td>
-                        <td><input id="textboxo" type="text" name="textfield8" id="textfield8"></td>
+                        <td><input id="textboxo" type="text" name="txtEscuela2" placeholder="NombEsc2"></td>
+                        <td><input id="textboxo" type="text" name="txtEstado2" placeholder="NombEst2"></td>
+                        <td><input id="textboxo" type="text" name="txtGrado2" placeholder="NombGrado2"></td>
                     </tr>
                     <tr>
-                        <td><input id="textboxo" type="text" name="textfield5" id="textfield5"></td>
-                        <td><input id="textboxo" type="text" name="textfield7" id="textfield7"></td>
-                        <td><input id="textboxo" type="text" name="textfield9" id="textfield9"></td>
+                        <td><input id="textboxo" type="text" name="txtEscuela3" placeholder="NombEsc3"></td>
+                        <td><input id="textboxo" type="text" name="txtEstado3" placeholder="NombEst3"></td>
+                        <td><input id="textboxo" type="text" name="txtGrado3" placeholder="NombGrado3"></td>
                     </tr>
                 </table>
                 <!--                AGREGADO-->
