@@ -4,6 +4,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  * Para que el correo pueda ser enviado se require de un servidor con SMTP configurado
+ * --------------------------------------------
+ * SERVIDORES SMTP
+ * --------------------------------------------
+ * Gmail
+ * Host: smtp.gmail.com
+ * Puerto: 25
+ * Seguridad: ssl
+ * =======================
+ * Hotmail
+ * Host: smtp.live.com
+ * Puerto: 465
+ * Seguridad: tls
+ * =======================
+ * Yahoo
+ * Host: smtp.mail.yahoo.com
+ * Puerto: 25
+ * Seguridad: tls
  */
 $de = $_POST["txtDe"];
 $para = $_POST["txtPara"];
@@ -24,13 +41,13 @@ if (move_uploaded_file($archivo, $destino)) {
     $mail = new PHPMailer(); //Objeto de PHPMailer
     $mail->IsSMTP(); //Protocolo SMTP
     $mail->SMTPAuth = true; //Autentificacion de SMTP
-    $mail->SMTPSecure = "ssl"; //SSL socket layer
-    $mail->Host = "smtp.gmail.com"; //Servidor de SMTP ||Para gmail se cambia por "smtp.gmail.com" ||Para hotmail se cambia por "smtp.live.com"
-    $mail->Port = 465; //Puerto seguro del servidor SMTP ||Para gamil se cambia por "465" || Para hotmail se cambia por "25"
+    $mail->SMTPSecure = "tls"; //SSL socket layer
+    $mail->Host = "smtp.mail.yahoo.com"; //Servidor de SMTP 
+    $mail->Port = 25; //Puerto seguro del servidor SMTP 
     $mail->From = $de; //Remitente (En mi variable)
     $mail->AddAddress($para); //Destinatario
-    $mail->Username = "racoonmx@gmail.com"; /* Tienes que poner una direccion de correo real y de del servidor SMTP seleccionado */
-    $mail->Password = "@joe89mx"; //Aqui va la contraseña valida de tu correo
+    $mail->Username = "poner aqui el correo madre"; /* Tienes que poner una direccion de correo real y de del servidor SMTP seleccionado */
+    $mail->Password = "aqui el password"; //Aqui va la contraseña valida de tu correo
     $mail->Subject = $asunto; //El asunto de correo
     $mail->Body = $mensaje; //El mensaje de correo
     $mail->WordWrap = 50; //# de columnas
