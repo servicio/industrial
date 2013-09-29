@@ -4,7 +4,12 @@ include './cambioMaterias.php';
 extract($_REQUEST);
  extract($_POST);
 	extract($_GET);
-$matricula="prr";        
+     
+//include './validacionseSessionAlumnos.php';
+$validar=new validacionseSessionAlumnos();
+$validar->verificacionDeLogueAlumnos();
+$usuario = $_SESSION["UsuarioAlumno"];
+$matricula = $usuario;
 $valor=$_GET['algo'];
 $semestre=$_GET['semestre'];
 $obligatoria=$_GET['obligatoria'];

@@ -14,7 +14,7 @@ $validar = new validacionseSessionAlumnos();
 $validar->verificacionDeLogueAlumnos();
 $usuario = $_SESSION["UsuarioAlumno"];
 $dao = new dao();
-$algo = "prr";
+$algo = $usuario;
 $materias = new materias();
 
 

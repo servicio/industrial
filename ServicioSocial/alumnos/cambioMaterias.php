@@ -13,7 +13,8 @@ include '../Dao/dao.php';
 include './validacionseSessionAlumnos.php';
 $validar=new validacionseSessionAlumnos();
 $validar->verificacionDeLogueAlumnos();
-$matricula = "prr";
+$usuario = $_SESSION["UsuarioAlumno"];
+$matricula = $usuario;
 $dao = new dao();
 
 ?>
@@ -124,7 +125,7 @@ $dao = new dao();
             
         }
 
-      echo"<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar&obligatoria=$obligatoria&idMateria=$idMateria\" > <img src=\"../imagenes/acepta.png\" border=\"0\" height=\"40%\" width=\"40%\"> </a> </td>";
+      echo"<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar&obligatoria=$obligatoria&idMateria=$idMateria\" > aceptar </a> </td>";
         echo "</tr>";
     }
     echo "</table>";
