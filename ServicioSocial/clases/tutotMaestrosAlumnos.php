@@ -17,7 +17,6 @@ private $id;
 private $idMaestro;
 private $matricula;
 
-
 public function getId() {
     return $this->id;
 }
@@ -34,13 +33,14 @@ public function setIdMaestro($idMaestro) {
     $this->idMaestro = $idMaestro;
 }
 
-public function getIdMaterias() {
+public function getMatricula() {
     return $this->matricula;
 }
 
-public function setIdMaterias($idMaterias) {
-    $this->matricula = $idMaterias;
+public function setMatricula($matricula) {
+    $this->matricula = $matricula;
 }
+
 
 }
 
