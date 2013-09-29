@@ -15,7 +15,6 @@ class validacionseSessionAlumnos {
             header('Location: LoginAlumno.php');
         }
     }
-
     function verificacionSessionAlumnos() {
         $usuarioSession = $_SESSION['UsuarioAlumno'];
         if ($usuarioSession != null) {

@@ -1,4 +1,8 @@
 <?php
+
+include './validacionseSessionAlumnos.php';
+$validar=new validacionseSessionAlumnos();
+$validar->verificacionDeLogueAlumnos();
 include './plantilla.php';
 ?>
 <html>

@@ -34,7 +34,7 @@ VALUES (
 
     function consultatablaseleccionar($matricula) {
         $cn = new coneccion();
-        $sql = "select materias,semestre,obligatoria, idMateria from temporalseleccionar order by semestre asc  ";
+        $sql = "select materias,semestre,obligatoria, idMateria from temporalseleccionar where matricula='$matricula' order by semestre asc   ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
@@ -50,7 +50,7 @@ VALUES (
 
     function consultatablaObligadas($matricula) {
         $cn = new coneccion();
-        $sql = "select materias,semestre,obligatoria,idMateria from temporalcargadas order by semestre asc  ";
+        $sql = "select materias,semestre,obligatoria,idMateria from temporalcargadas where matricula='$matricula' order by semestre asc ";
         $consulta = mysql_query($sql, $cn->Conectarse());
         $registro = array();
         if ($consulta != false) {
