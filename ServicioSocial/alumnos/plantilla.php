@@ -7,6 +7,13 @@
 <script src="../bootsTrap2/js/jquery.min.js"></script>
 <script src="../bootsTrap2/js/bootstrap.js"></script>
 
+<!--Adobe Edge Runtime-->
+<script type="text/javascript" charset="utf-8" src="koko_edgePreload.js"></script>
+<style>
+    .edgeLoad-EDGE-3614109 { visibility:hidden; }
+</style>
+<!--Adobe Edge Runtime End-->
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
     body{ 
@@ -21,8 +28,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Portal de Alumnos Ing. Industrial</title>
 </head>
-<header style="margin-top: 30px">
-    <div class="container"  style="background-image: url(galeria/header.png); background-size: 100% 100%; height: 35%; border-radius: 5px"></div>
+<header style="">
+    <div class="container"  style="background-image: url(galeria/fondo.png); background-size: 100% 100%; height: 40%; border-radius: 5px">
+        <div id="Stage" class="EDGE-3614109">
+        </div>
+    </div>
     <div class="container"> 
         <div class="navbar navbar-inverse">
             <div class="navbar-inner">
