@@ -30,8 +30,8 @@ if (move_uploaded_file($archivo, $destino)) {
     $mail->Port = 465; //Puerto seguro del servidor SMTp de gmail
     $mail->From = $de; //Remitente (En mi variable)
     $mail->AddAddress($para); //Destinatario
-    $mail->Username = "racoonmx@gmail.com"; /* Tienes que poner una direccion de correo real y de del servidor SMTP seleccionado (GMAIL en este caso) */
-    $mail->Password = "@joe89mx"; //Aqui va la contraseña valida de tu correo
+    $mail->Username = "comodoro49@gmail.com"; /* Tienes que poner una direccion de correo real y de del servidor SMTP seleccionado (GMAIL en este caso) */
+    $mail->Password = "******"; //Aqui va la contraseña valida de tu correo
     $mail->Subject = $asunto; //El asunto de correo
     $mail->Body = $mensaje; //El mensaje de correo
     $mail->WordWrap = 50; //# de columnas
