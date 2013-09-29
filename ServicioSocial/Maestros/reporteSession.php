@@ -52,6 +52,8 @@ $cn = new coneccion();
                 <br>
                 <br>
                 <div style="float: left; margin-left: 40px">
+                    <input style="height: 30px; width: 220px" type="date" id="fecha"/>
+                    <br>
                     <select id="usuarios">
                         <option value="0">Seleccione un Usuario</option>
                         <?php
@@ -66,9 +68,8 @@ $cn = new coneccion();
                     </select>
                 </div>
                 <div id="numeroSesion" style="float: right; margin-right:40px"><strong>Session #:<?php echo $numero = $daoServicio->dameNumeroSession(); ?></strong></div>
-                <br><br><br>
+                <br><br><br><br>
                 <div data-spy="scroll">
-
                     <strong>Tareas Anteriores:</strong>
                     <div id="tareasAnteriores">
                     </div>

@@ -2,7 +2,7 @@
 include '../DaoConnection/coneccion.php';
 
 $cn = new coneccion();
-$sql = "SELECT * FROM avisostutor ORDER BY id DESC LIMIT 20";
+$sql = "SELECT * FROM avisos ORDER BY id DESC LIMIT 20";
 $datos = mysql_query($sql, $cn->Conectarse());
 $cn->cerrarBd();
 ?>

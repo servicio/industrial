@@ -6,6 +6,8 @@ include '../DaoConnection/coneccion.php';
     <script>
 
         $(document).ready(function() {
+            $('#error').hide();
+            $('#exito').hide();
             $("#actualizar").hide();
             $("#aparecer").hide();
             $("#actualizarAlumno").hide();
@@ -49,10 +51,21 @@ include '../DaoConnection/coneccion.php';
 
             $("#asignarTutor").click(function() {
                 var info = $("#alumnos").val();
-                var informacion = "maestro=" + $("#maestro").val() + "&alumnos=" + info;
-                $.get('asignar.php', informacion, function() {
-                    $('#alumnos').load("alumnosDisponibles.php");
-                });
+                var maestro = $("#maestro").val();
+                if (info == '' || maestro && maestro == 0) {
+                    $('#error').slideDown('slow');
+                    $('#error').delay('1500');
+                    $('#error').slideUp('slow');
+                }
+                else {
+                    var informacion = "maestro=" + $("#maestro").val() + "&alumnos=" + info;
+                    $.get('asignar.php', informacion, function() {
+                        $('#alumnos').load("alumnosDisponibles.php");
+                        $('#exito').slideDown('slow');
+                        $('#exito').delay('1500');
+                        $('#exito').slideUp('slow');
+                    });
+                }
             });
         });
     </script>
@@ -60,6 +73,12 @@ include '../DaoConnection/coneccion.php';
     <body>
         <div class="container">
             <div    class="span12"  style="overflow-y: scroll; height:230px ;margin: auto; background-color: white; margin-top: -20px">
+                <div id="error"class="alert alert-error">
+                    <center><strong>Seleccione todos los campos correspondientes</strong></center>
+                </div>
+                <div  id="exito" class="alert alert-success">
+                    <center><strong> Alumno Asignado Exitosamente</strong></center>
+                </div>
                 <center>
                     <h2>Asignacion Maestro Tutor</h2>
                     <br>

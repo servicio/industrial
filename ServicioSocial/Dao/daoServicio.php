@@ -5,15 +5,15 @@ include '../clases/maestros.php';
 
 class daoServicio {
 
-    function verificacion_de_ingreso(usuario $u) {
+    function verificacion_de_ingresoMaestros(usuario $u) {
         $cn = new coneccion();
         $paso = false;
-        $sql = "SELECT * FROM usuarios WHERE usuario='" . $u->getUsuario() . "' AND pass='" . $u->getPass() . "'";
+        $sql = "SELECT * FROM usuarios  , maestros    WHERE usuarios.usuario='" . $u->getUsuario() . "' AND usuarios.pass='" . $u->getPass() . "' and usuarios.usuario = maestros.usuario";
         $datos = mysql_query($sql, $cn->Conectarse());
         $columnas = mysql_affected_rows();
         while ($rs = mysql_fetch_array($datos)) {
-            $_SESSION["idMaestroSession"] = $rs["id"];
-            $_SESSION["nombreMaestro"] = $rs["Nombre"] . "&nbsp;" . $rs["ApellidoPaterno"] . "&nbsp;" . $rs["ApellidoMaterno"];
+            $_SESSION["idMaestroSession"] = $rs["maestros.id"];
+            $_SESSION["nombreMaestro"] = $rs[5];
         }
         if ($columnas > 0) {
             $paso = true;
@@ -100,7 +100,7 @@ class daoServicio {
 //JOSE!!!!!!!!
     function guardarTutorias(avisosTutor $avisosT) {
         $cn = new coneccion();
-        $sql = "INSERT INTO avisostutor (titulo,detalles,usuario,control,leido) 
+        $sql = "INSERT INTO avisos (titulo,detalles,usuario,control,leido) 
                 VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "','" . $avisosT->getControl() . "','" . $avisosT->getLeido() . "')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();

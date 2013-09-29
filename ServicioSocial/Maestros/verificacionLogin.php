@@ -8,7 +8,7 @@ $dServicio = new daoServicio();
 $usuario->setUsuario($_GET["usua"]);
 $usuario->setPass($_GET["pass"]);
 
-$paso = $dServicio->verificacion_de_ingreso($usuario);
+$paso = $dServicio->verificacion_de_ingresoMaestros($usuario);
 if ($paso == false) {
     echo '
 <div  id="error" style="height: 35px" class="alert-error">
