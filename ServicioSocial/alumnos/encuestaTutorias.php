@@ -18,7 +18,10 @@ include '../Dao/daoServicio.php';
             font-style: italic;
             margin-bottom: 8px;
         }
-        table tr:last-child {background:#456789; color:#fff}
+        table tr:last-child {
+            background:#456789; 
+            color:#fff;
+        }
         th {
             text-align: left;
         }
@@ -43,22 +46,10 @@ include '../Dao/daoServicio.php';
         }
 
         input#textboxo {
-            text-transform:lowercase;
             border:0;
             -webkit-box-shadow:none;
             box-shadow:none;
             width:100%;
-            float:left
-        }
-
-        input#textboxo {
-            text-transform:lowercase;
-            color:#f6892e!important;
-            font-weight:bold;
-            border:0;
-            -webkit-box-shadow:none;
-            box-shadow:none;
-            width:75%;
             float:left
         }
     </style>
@@ -119,7 +110,10 @@ include '../Dao/daoServicio.php';
 
                 <h6>5.- &iquest;Cuantos hermanos/as son en tu familia incluy&eacute;ndote?</h6>
                 <input type="text" name="NumHermanos"><br>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Qué lugar ocupas entre tus hermanos?</h6>
+                <h6><input type="text" name="txtLugarOcupas"></h6>
+                <!--                AGREGADO-->
                 <h6>6.- &iquest;Con qui&eacute;n platicas cuando tienes un problema personal?</h6>
                 <input type="radio" name="PerPlaticar" value="Padre" id="RadioGroup5_0" onClick="opcion6.disabled = true">
                 Padre<br>
@@ -170,27 +164,34 @@ include '../Dao/daoServicio.php';
                 <h6>9.- Menciona las escuelas donde has estudiado el bachillerato, indicando los grados estudiados en caso de haber estudiado en m&aacute;s de una escuela.</h6>
                 <table width="400" border="0" cellspacing="0" cellpadding="5">
                     <tr>
-                        <th width="120" scope="col"><h5>Nombre de la escuela</h5></th>
-                    <th width="120" scope="col"><h5>Estado donde se ubica</h5></th>
-                    <th width="120" scope="col"><h5>Grado cursado</h5></th>
+                        <th width="120" scope="col"><h6>Nombre de la escuela</h6></th>
+                    <th width="120" scope="col"><h6>Estado donde se ubica</h6></th>
+                    <th width="120" scope="col"><h6>Grado cursado</h6></th>
                     </tr>
                     <tr>
-                        <td><input id="textboxo" type="text" name="textfield" id="textfield"></td>
-                        <td><input id="textboxo" type="text" name="textfield2" id="textfield2"></td>
-                        <td><input id="textboxo" type="text" name="textfield3" id="textfield3"></td>
+                        <td><input id="textboxo" type="text" name="txtEscuela1" placeholder="NombEsc1"></td>
+                        <td><input id="textboxo" type="text" name="txtEstado1" placeholder="NombEstc1"></td>
+                        <td><input id="textboxo" type="text" name="txtGrado1" placeholder="NombGrado1"></td>
                     </tr>
                     <tr>
-                        <td><input id="textboxo" type="text" name="textfield4" id="textfield4"></td>
-                        <td><input id="textboxo" type="text" name="textfield6" id="textfield6"></td>
-                        <td><input id="textboxo" type="text" name="textfield8" id="textfield8"></td>
+                        <td><input id="textboxo" type="text" name="txtEscuela2" placeholder="NombEsc2"></td>
+                        <td><input id="textboxo" type="text" name="txtEstado2" placeholder="NombEst2"></td>
+                        <td><input id="textboxo" type="text" name="txtGrado2" placeholder="NombGrado2"></td>
                     </tr>
                     <tr>
-                        <td><input id="textboxo" type="text" name="textfield5" id="textfield5"></td>
-                        <td><input id="textboxo" type="text" name="textfield7" id="textfield7"></td>
-                        <td><input id="textboxo" type="text" name="textfield9" id="textfield9"></td>
+                        <td><input id="textboxo" type="text" name="txtEscuela3" placeholder="NombEsc3"></td>
+                        <td><input id="textboxo" type="text" name="txtEstado3" placeholder="NombEst3"></td>
+                        <td><input id="textboxo" type="text" name="txtGrado3" placeholder="NombGrado3"></td>
                     </tr>
                 </table>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Que especialidad llevaste en la preparatoria?</h6>
+                <input type="text" name="txtEspecialidad"><br>
+                <!--                AGREGADO-->
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Cual fue tu promedio final de la preparatoria?</h6>
+                <input type="text" name="txtPromedio"><br>
+                <!--                AGREGADO-->
                 <h6>10.- &iquest;Que materias te gustan m&aacute;s?</h6>
                 <input type="text" name="HabMaterias"><br>
 
@@ -292,7 +293,15 @@ include '../Dao/daoServicio.php';
                 <input type="radio" name="Cronica" value="No" id="RadioGroup15_1" onclick="CronicaCual.disabled = true">
                 No
                 <br>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Alguien en tu familia padece alguna enfermedad hereditaria?</h6>
+                <input type="radio" name="rbtHereditaria" value="Si" id="RadioGroup22_0" onClick="txtHereditariaQuien.disabled = false">
+                Si
+                Quien?<input name="txtHereditariaQuien" type="text" disabled="disabled"><br>
+                <input type="radio" name="rbtHereditaria" value="No" id="RadioGroup22_1" onclick="txtHereditariaQuien.disabled = true">
+                No
+                <br>
+                <!--                AGREGADO-->
                 <h6>18.- &iquest;Has recibido atenci&oacute;n psicol&oacute;gica?</h6>
                 <input type="radio" name="AtencionPsi" value="Si" id="RadioGroup16_0" onClick="CualAtencionPsi.disabled = false">
                 Si
@@ -300,7 +309,15 @@ include '../Dao/daoServicio.php';
                 <input type="radio" name="AtencionPsi" value="No" id="RadioGroup16_1" onclick="CualAtencionPsi.disabled = true">
                 No 
                 <br>
-
+                <!--                AGREGADO-->
+                <h6>X.- &iquest;Padeces alguna enfermedad mental?</h6>
+                <input type="radio" name="rbtMental" value="Si" id="RadioGroup23_0" onClick="txtMentalCual.disabled = false">
+                Si
+                Especifica:<input name="txtMentalCual" type="text" disabled="disabled"><br>
+                <input type="radio" name="rbtMental" value="No" id="RadioGroup23_1" onclick="txtMentalCual.disabled = true">
+                No
+                <br>
+                <!--                AGREGADO-->
                 <h6>19.- &iquest;D&oacute;nde recibes atenci&oacute;n medica?</h6>
                 <input type="radio" name="AtencionMedica" value="IMSS" id="RadioGroup17_0">
                 IMSS<br>

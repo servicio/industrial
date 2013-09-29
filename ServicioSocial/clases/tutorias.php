@@ -19,7 +19,6 @@ class tutorias {
     private $ingresosMenFam;
     private $NumHermanos;
     private $PerPlaticar;
-    
     private $relacionPadre;
     private $relacionMadre;
     private $fuenteIngreso;
@@ -50,7 +49,151 @@ class tutorias {
     private $frecuenciaDept;
     private $realizado;
     private $usuario;
+    private $lugarOcupas;
+    private $especialidad;
+    private $promedio;
+    private $hereditaria;
+    private $hereditariaQuien;
+    private $mental;
+    private $mentalCual;
     
+    private $escuela1;
+    private $estado1;
+    private $grado1;
+    private $escuela2;
+    private $estado2;
+    private $grado2;
+    private $escuela3;
+    private $estado3;
+    private $grado3;
+    public function getEscuela1() {
+        return $this->escuela1;
+    }
+
+    public function setEscuela1($escuela1) {
+        $this->escuela1 = $escuela1;
+    }
+
+    public function getEstado1() {
+        return $this->estado1;
+    }
+
+    public function setEstado1($estado1) {
+        $this->estado1 = $estado1;
+    }
+
+    public function getGrado1() {
+        return $this->grado1;
+    }
+
+    public function setGrado1($grado1) {
+        $this->grado1 = $grado1;
+    }
+
+    public function getEscuela2() {
+        return $this->escuela2;
+    }
+
+    public function setEscuela2($escuela2) {
+        $this->escuela2 = $escuela2;
+    }
+
+    public function getEstado2() {
+        return $this->estado2;
+    }
+
+    public function setEstado2($estado2) {
+        $this->estado2 = $estado2;
+    }
+
+    public function getGrado2() {
+        return $this->grado2;
+    }
+
+    public function setGrado2($grado2) {
+        $this->grado2 = $grado2;
+    }
+
+    public function getEscuela3() {
+        return $this->escuela3;
+    }
+
+    public function setEscuela3($escuela3) {
+        $this->escuela3 = $escuela3;
+    }
+
+    public function getEstado3() {
+        return $this->estado3;
+    }
+
+    public function setEstado3($estado3) {
+        $this->estado3 = $estado3;
+    }
+
+    public function getGrado3() {
+        return $this->grado3;
+    }
+
+    public function setGrado3($grado3) {
+        $this->grado3 = $grado3;
+    }
+
+        public function getMentalCual() {
+        return $this->mentalCual;
+    }
+
+    public function setMentalCual($mentalCual) {
+        $this->mentalCual = $mentalCual;
+    }
+
+    public function getLugarOcupas() {
+        return $this->lugarOcupas;
+    }
+
+    public function setLugarOcupas($lugarOcupas) {
+        $this->lugarOcupas = $lugarOcupas;
+    }
+
+    public function getEspecialidad() {
+        return $this->especialidad;
+    }
+
+    public function setEspecialidad($especialidad) {
+        $this->especialidad = $especialidad;
+    }
+
+    public function getPromedio() {
+        return $this->promedio;
+    }
+
+    public function setPromedio($promedio) {
+        $this->promedio = $promedio;
+    }
+
+    public function getHereditaria() {
+        return $this->hereditaria;
+    }
+
+    public function setHereditaria($hereditaria) {
+        $this->hereditaria = $hereditaria;
+    }
+
+    public function getHereditariaQuien() {
+        return $this->hereditariaQuien;
+    }
+
+    public function setHereditariaQuien($herditariaQuien) {
+        $this->hereditariaQuien = $herditariaQuien;
+    }
+
+    public function getMental() {
+        return $this->mental;
+    }
+
+    public function setMental($mental) {
+        $this->mental = $mental;
+    }
+
     public function getUsuario() {
         return $this->usuario;
     }
@@ -58,7 +201,6 @@ class tutorias {
     public function setUsuario($usuario) {
         $this->usuario = $usuario;
     }
-
 
     public function setIdTutorias($idTutorias) {
         $this->idTutorias = $idTutorias;
@@ -351,7 +493,6 @@ class tutorias {
     public function setRealizado($realizado) {
         $this->realizado = $realizado;
     }
-
 
 }
 
