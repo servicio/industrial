@@ -4,12 +4,15 @@
 
 
 <?php
-header('Content-Type: text/html; charset=UTF-8'); 
+
 //include './plantilla.php'; 
 include './plantilla.php';
 
 include '../clases/materias.php';
 include '../Dao/dao.php';
+include './validacionseSessionAlumnos.php';
+$validar=new validacionseSessionAlumnos();
+$validar->verificacionDeLogueAlumnos();
 $matricula = "prr";
 $dao = new dao();
 
