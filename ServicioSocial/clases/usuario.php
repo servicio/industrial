@@ -11,13 +11,23 @@
  * @author Comodoro
  */
 class usuario {
+
     private $usuario;
     private $pass;
     private $Email;
     private $Nombres;
     private $ApellidoPaterno;
     private $ApellidoMaterno;
-    
+    private $tipo;
+
+    public function getTipo() {
+        return $this->tipo;
+    }
+
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
+    }
+
     public function getUsuario() {
         return $this->usuario;
     }
@@ -65,16 +75,6 @@ class usuario {
     public function setApellidoMaterno($ApellidoMaterno) {
         $this->ApellidoMaterno = $ApellidoMaterno;
     }
-
-
-
-
-    
-    
-
-    
-
-
 
 }
 

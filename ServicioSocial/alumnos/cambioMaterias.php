@@ -2,27 +2,23 @@
 
 
 
-
 <?php
-header('Content-Type: text/html; charset=UTF-8'); 
 //include './plantilla.php'; 
-include './plantilla.php';
-
 include '../clases/materias.php';
-include '../Dao/dao.php';
+include '../Dao/daoServicio.php';
 $matricula = "prr";
-$dao = new dao();
+$dao = new daoServicio();
 
 ?>
 
 
 
 
-<div >
+<div style="background: #0072c6">
 
     <?php
     $arreglo2D = $dao->consultatablaObligadas($matricula);
-    echo "<form name=\"materias\" method=\"post\" action=\"GuardarMaterias.php\">";
+    echo "<form name=\"materias\" method=\"post\" action=\"cambioMaterias.php\">";
 
 
     echo '<table border="1" class="table table-bordered table-striped">';
@@ -66,8 +62,7 @@ $dao = new dao();
             }
         }
         if ( $obligatoria != 1) {
-            echo" <td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar&obligatoria=$obligatoria&idMateria=$idMateria\" > algo </a></td>";
-        
+            echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar&obligatoria=$obligatoria&idMateria=$idMateria\" >link text</a></td>";
         }
         echo "</tr>";
     }
@@ -121,7 +116,7 @@ $dao = new dao();
             
         }
 
-      echo"<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar&obligatoria=$obligatoria&idMateria=$idMateria\" > <img src=\"../imagenes/acepta.png\" border=\"0\" height=\"40%\" width=\"40%\"> </a> </td>";
+        echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar&obligatoria=$obligatoria&idMateria=$idMateria\" >link text</a></td>";
         echo "</tr>";
     }
     echo "</table>";
@@ -131,4 +126,4 @@ $dao = new dao();
 </div>
 
 
-<?php include './plantillaFooter.php'; ?>
+<?php ?>
