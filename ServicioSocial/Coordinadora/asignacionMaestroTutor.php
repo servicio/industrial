@@ -11,8 +11,6 @@ include '../DaoConnection/coneccion.php';
             $("#actualizarAlumno").hide();
             $('#alumnos').load("alumnosDisponibles.php");
             var idMaestro;
-
-
             $('#maestro').change(function() {
                 var maestro = $('#maestro').val();
                 idMaestro = $('#maestro').val();
@@ -53,7 +51,7 @@ include '../DaoConnection/coneccion.php';
                 var info = $("#alumnos").val();
                 var informacion = "maestro=" + $("#maestro").val() + "&alumnos=" + info;
                 $.get('asignar.php', informacion, function() {
-
+                    $('#alumnos').load("alumnosDisponibles.php");
                 });
             });
 
