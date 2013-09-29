@@ -1,13 +1,10 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
 <?php
-
 include '../DaoConnection/coneccion.php';
 include '../clases/maestros.php';
 
 class daoServicio {
-
-    
 
     function verificacion_de_ingreso(usuario $u) {
         $cn = new coneccion();
@@ -101,12 +98,12 @@ class daoServicio {
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
-    
+
 //JOSE!!!!!!!!
     function guardarTutorias(avisosTutor $avisosT) {
         $cn = new coneccion();
         $sql = "INSERT INTO avisostutor (titulo,detalles,usuario,control,leido) 
-                VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "','".$avisosT->getControl()."','".$avisosT->getLeido()."')";
+                VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "','" . $avisosT->getControl() . "','" . $avisosT->getLeido() . "')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBD;
     }
@@ -179,6 +176,13 @@ class daoServicio {
         }
         $cn->cerrarBd();
         return $maestro;
+    }
+
+    function asignarAlumnoTutor(tutotMaestrosAlumnos $tutorAlumno) {
+        $cn = new coneccion();
+        $sql = "INSERT INTO tutotmaestrosalumnos(matricula, idMaestro) VALUES('" . $tutorAlumno->getMatricula() . "', '" . $tutorAlumno->getIdMaestro() . "')";
+        mysql_query($sql, $cn->Conectarse());
+        $cn->cerrarBd();
     }
 
 }
