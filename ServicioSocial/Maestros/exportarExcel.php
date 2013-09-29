@@ -30,11 +30,9 @@ while ($Rs2 = mysql_fetch_array($result2)) {
     $myArr = array(
         $Rs2[0],
         $Rs2[1],
-        $Rs2[2],
-        
+        $Rs2[2], 
     );
     $excel->writeLine($myArr);
-    echo 'lalala';
 //Otra forma es
 //$excel->writeLine($Rs2);
 //De este modo volcariamos todos los registros seleccionados

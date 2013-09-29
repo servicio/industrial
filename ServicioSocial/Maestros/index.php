@@ -22,7 +22,6 @@ $cn->cerrarBd();
             <center>
                 <div    class="span12"  style="overflow-y: scroll; height: 335px;  margin: auto; background-color: white; margin-top: -20px">
                     <?php
-                    //echo '<table>';
                     while ($row = mysql_fetch_array($datos)) {
                         echo "<div style='float:left ; margin-left: 100px'>
                             <h3>"

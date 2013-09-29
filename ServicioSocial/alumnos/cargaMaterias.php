@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" type="text/css" href="../css/css.css">
         <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="../bootsTrap2/css/bootstrap-responsive.css"/>
@@ -5,6 +6,7 @@
         <script src="../bootsTrap2/js/jquery.min.js"></script>
         <script src="../bootsTrap2/js/bootstrap.js"></script>
 <?php
+include './plantilla.php';
 // session_start();
 //session_destroy();
 //if(isset($_SESSION['usuario']) and $_SESSION['estado'] == 'Autenticado') 
@@ -13,8 +15,9 @@
     //include './plantilla.php'; 
 //    include '../DaoConnection/coneccion.php';
     include '../clases/materias.php';
-    include '../Dao/daoServicio.php';
-$dao = new daoServicio();
+    include '../Dao/dao.php';
+    header('Content-Type: text/html; charset=UTF-8'); 
+$dao = new dao();
  $algo="prr";
  $materias = new materias();
  
@@ -32,6 +35,7 @@ $dao->tablatemporalSeleccionar($arreglox,$algo);
              location.href='cambioMaterias.php';
         </script><?php
             // Lo dejas entrar a la pagina 
+            include './plantillaFooter.php';
 ////} 
 //else 
 //{   
