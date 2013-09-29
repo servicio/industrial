@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 include '../clases/tutorias.php';
 include '../Dao/daoServicio.php';
 $tutorias = new tutorias();
@@ -29,14 +30,32 @@ $tutorias->setFuenteIngreso($_GET["FuenteIngreso"]);
 if ($tutorias->getFuenteIngreso() == "Otro") {
     $tutorias->setFuenteIngreso($_GET["opcion7"]);
 }
+
 $tutorias->setNumHermanos($_GET["NumHermanos"]);
-
-
+//Agregado
+$tutorias->setLugarOcupas($_GET["txtLugarOcupas"]);
+$tutorias->setEspecialidad($_GET["txtEspecialidad"]);
+$tutorias->setPromedio($_GET["txtPromedio"]);
+$tutorias->setHereditaria($_GET["rbtHereditaria"]);
+$tutorias->setHereditariaQuien($_GET["txtHereditariaQuien"]);
+$tutorias->setMental($_GET["rbtMental"]);
+$tutorias->setMentalCual($_GET["txtMentalCual"]);
+//-----
 $tutorias->setPerPlaticar($_GET["PerPlaticar"]);
 if ($tutorias->getPerPlaticar() == "Otro") {
     $tutorias->setPerPlaticar($_GET["opcion6"]);
 }
-
+//---
+$tutorias->setEscuela1($_GET["txtEscuela1"]);
+$tutorias->setEstado1($_GET["txtEstado1"]);
+$tutorias->setGrado1($_GET["txtGrado1"]);
+$tutorias->setEscuela2($_GET["txtEscuela2"]);
+$tutorias->setEstado2($_GET["txtEstado2"]);
+$tutorias->setGrado2($_GET["txtGrado2"]);
+$tutorias->setEscuela3($_GET["txtEscuela3"]);
+$tutorias->setEstado3($_GET["txtEstado3"]);
+$tutorias->setGrado3($_GET["txtGrado3"]);
+//---
 $tutorias->setHabMaterias($_GET["HabMaterias"]);
 $tutorias->setEstudiosExtTec($_GET["EstudiosExtTec"]);
 $tutorias->setCualExtTec($_GET["CualExtTec"]);

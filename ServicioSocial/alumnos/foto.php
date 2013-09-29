@@ -10,7 +10,7 @@
 
     function do_upload() {
         // subir al servidor
-        document.getElementById('upload_results').innerHTML = '<h1>Cargando al servidor...</h1>';
+        document.getElementById('upload_results').innerHTML = '<h6>Imagen guardada</h6>';
         webcam.upload();
     }
 

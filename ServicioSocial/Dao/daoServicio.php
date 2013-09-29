@@ -3,6 +3,7 @@
 <?php
 
 include '../DaoConnection/coneccion.php';
+include '../clases/maestros.php';
 
 class daoServicio {
 
@@ -62,8 +63,15 @@ class daoServicio {
 
     function insertarHistorial(historialAcademico $h) {
         $c = new coneccion();
-        $sqlInsertar = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion,cursando, ingresoCursado) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "')";
-        mysql_query($sqlInsertar, $c->Conectarse());
+        $fecha = date("d-m-Y");
+        $sql = "INSERT INTO historial (usuario, idMateria, idAcreditacion, calificacion,cursando, ingresoCursado,anio, curso, fecha) VALUES ('" . $h->getMatricula() . "','" . $h->getId_materia() . "','" . $h->getAcredito() . "','" . $h->getCalificacion() . "','" . $h->getCursando() . "','" . $h->getIngresoCursando() . "','" . $h->getAnio() . "','" . $h->getCurso() . "', '$fecha')";
+        $conn = $c->Conectarse();
+        try {
+            $paso = mysql_query($sql, $conn);
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+
         $c->cerrarBd();
     }
 
@@ -93,11 +101,12 @@ class daoServicio {
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
-
+    
+//JOSE!!!!!!!!
     function guardarTutorias(avisosTutor $avisosT) {
         $cn = new coneccion();
-        $sql = "INSERT INTO avisostutor (titulo,detalles) 
-           VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "')";
+        $sql = "INSERT INTO avisostutor (titulo,detalles,usuario,control,leido) 
+                VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "','".$avisosT->getControl()."','".$avisosT->getLeido()."')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBD;
     }
@@ -157,6 +166,19 @@ class daoServicio {
             $paso = true;
         }
         return $paso;
+    }
+
+    function dameInfoMaestro($id) {
+        $cn = new coneccion();
+        $maestro = new maestros();
+        $sql = "SELECT * FROM maestros WHERE id = $id";
+        $datos = mysql_query($sql, $cn->Conectarse());
+        while ($rs = mysql_fetch_array($datos)) {
+            $maestro->setId($rs[0]);
+            $maestro->setMaestro($rs[1]);
+        }
+        $cn->cerrarBd();
+        return $maestro;
     }
 
 }

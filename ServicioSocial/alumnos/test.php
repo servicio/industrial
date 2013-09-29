@@ -2,7 +2,7 @@
 
 include("clase_conexion.php");
 $id_foto=date('YmdHis');//extraemos la fecha del servidor
-$filename = "fotos/".$id_foto.'.jpg';//nombre del archivo
+$filename = "../fotos/".$id_foto.'.jpg';//nombre del archivo
 $result = file_put_contents( $filename, file_get_contents('php://input') );//renombramos la fotografia y la subimos
 if (!$result) {
 	print "No se pudo subir al servidor\n";

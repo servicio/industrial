@@ -11,13 +11,16 @@
  * @author Solis
  */
 class materias {
+
     private $id;
     private $idEspecialidad;
     private $materia;
     private $tiempos;
     private $creditos;
     private $semestre;
-    
+    private $año;
+    private $curso;
+
     public function getMateria() {
         return $this->materia;
     }
@@ -25,7 +28,7 @@ class materias {
     public function setMateria($materia) {
         $this->materia = $materia;
     }
-    
+
     public function getId() {
         return $this->id;
     }
@@ -58,7 +61,6 @@ class materias {
         $this->creditos = $creditos;
     }
 
-        
     public function getSemestre() {
         return $this->semestre;
     }
@@ -66,6 +68,23 @@ class materias {
     public function setSemestre($semestre) {
         $this->semestre = $semestre;
     }
+
+    public function getAño() {
+        return $this->año;
+    }
+
+    public function setAño($año) {
+        $this->año = $año;
+    }
+
+    public function getCurso() {
+        return $this->curso;
+    }
+
+    public function setCurso($curso) {
+        $this->curso = $curso;
+    }
+
 }
 
 ?>

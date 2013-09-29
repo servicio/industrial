@@ -16,10 +16,12 @@ include './plantillaEncabezado.php';
                 $('#error').hide();
                 $('#guardar').click(function() {
                     var datos = 'titulo=' + $('#titulo').val() +
-                            '&detalle=' + $('#detalles').val();
+                            '&detalle=' + $('#detalles').val()+ 
+                            '&para='+ $('#avisosaMostrar').val();
                     var titulo = $('#titulo').val();
                     var detalle = $('#detalles').val();
-                    if (titulo == '' && detalle == '') {
+                    var para = $('#avisosaMostrar').val();
+                    if (titulo == '' || detalle == ''|| para == 0) {
                         $('#error').slideDown('slow');
                         $('#error').delay('1500');
                         $('#error').slideUp('slow');
@@ -48,8 +50,15 @@ include './plantillaEncabezado.php';
                 </div>
                 <br>
                 <center>
+                    
+                    <select id="avisosaMostrar"name="mostrar" style="margin-right: 250px; width: 250px;">
+                        <option value="0">Avisos para...</option>
+                        <option value="1">Coordinador</option>
+                        <option value="3">Alumnos</option>
+                    </select>
+                    <br />
                     <input id="titulo" placeholder="Titulo de Aviso..." type="text" name="textfield" style="width: 250px;  height: 30px; margin-right: 250px"/>
-                    <br><br>
+                    <br/>
                     <textarea placeholder="Observaciones..." id="detalles" style="min-width: 500px;  min-height: 200px; max-width: 500px; max-height: 200px;"></textarea>
                     <p><button id="guardar" class="btn btn-large btn-primary btn btn-success" type="button">Guardar</button></p>
                 </center>

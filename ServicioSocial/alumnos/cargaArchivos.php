@@ -13,6 +13,8 @@ $cn = new coneccion();
 if ($_REQUEST['guardaarchivo'] != null) {
     $nombre = $_FILES['buscaarchivo']['name'];
     $ruta = $_FILES['buscaarchivo']['tmp_name'];
+    $tamañoarchivo = $_FILES['buscaarchivo']['size'];
+    $tamañomaximo = 2000000;
     $ubicacion = "../alumnos/subidas/" . $nombre;
 
     if (is_uploaded_file($ruta)) {
