@@ -11,8 +11,8 @@ include '../DaoConnection/coneccion.php';
             $("#actualizarAlumno").hide();
             $('#alumnos').load("alumnosDisponibles.php");
             var idMaestro;
-            
-            
+
+
             $('#maestro').change(function() {
                 var maestro = $('#maestro').val();
                 idMaestro = $('#maestro').val();
@@ -105,4 +105,5 @@ include './plantillaFooter.php';
 ?>
 
 <div  id="myModal" class="modal hide fade"   aria-labelledby="myModalLabel" aria-hidden="true">
+    <input value="guardar" type='submit' id='actualizar' class='btn btn-primary'aria-hidden='true'/>
 </div>
