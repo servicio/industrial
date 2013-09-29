@@ -14,7 +14,7 @@ $validar = new validacionseSessionAlumnos();
 $validar->verificacionDeLogueAlumnos();
 $usuario = $_SESSION["UsuarioAlumno"];
 $dao = new dao();
-$algo = $usuario;
+$algo = "$usuario";
 $materias = new materias();
 
 
@@ -40,6 +40,3 @@ include './plantillaFooter.php';
 //    
 //}  
 ?>
-
-
-

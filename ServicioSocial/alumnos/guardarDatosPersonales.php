@@ -3,12 +3,11 @@ include'../clases/usuario.php';
 include '../Dao/daoServicio.php';
 $guardar=new usuario();
 $dao=new daoServicio();
-$contrasenia=$_GET["contrasenia"];
-$confirmar=$_GET["confirmar"];
+
 $email=$_GET["Email"];
 $confirmarEmail=$_GET["confirmarEmail"];
         
-if ($contrasenia==$confirmar  ) {
+
    if($email==$confirmarEmail){
        $guardar ->setUsuario($_GET["usuario"]);
 $guardar ->setPass($_GET["contrasenia"]);
@@ -27,21 +26,15 @@ alert("vientos");
 <?php
         header ("Location:plantilla.php"); 
    } 
-   else{
-        ?>
-<script language="javascript">
-alert("Estas mal pendejo");
-</script>
-<?php
-   }
+  
 
 
 
-}
+
 else{
    ?>
 <script language="javascript">
-alert("Estas remal pendejo");
+alert("el email debe ser igual");
 </script>
 <?php
 }

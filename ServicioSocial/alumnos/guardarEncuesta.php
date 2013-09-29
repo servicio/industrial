@@ -87,5 +87,6 @@ $tutorias->setDeporte($_GET["Deporte"]);
 $tutorias->setCualDep($_GET["CualDep"]);
 $tutorias->setFrecuenciaDept($_GET["FrecuenciaDept"]);
 $tutorias->setRealizado(1);
+$tutorias->setUsuario($_SESSION["UsuarioAlumno"]);
 $dao->guardarEncuesta($tutorias);
 ?>

@@ -20,12 +20,7 @@
             <div class="row-fluid">
                 <div class="span4">ApellidoMaterno:</div> <div class="span3"><input type="text" name="ApellidoMaterno" /> </div> 
             </div> 
-            <div class="row-fluid">
-                <div class="span4">Contrase&ntilde;a:</div> <div class="span3"><input type="password" name="contrasenia" /> </div> 
-            </div> 
-            <div class="row-fluid">
-                <div class="span4">Confirmar Contrase&ntilde;a:</div> <div class="span3"><input type="password" name="confirmar" /> </div> 
-            </div> 
+            
             <div class="row-fluid">
                 <div class="span4" >Email:</div> <div class="span3"><input type="email" name="Email"/> </div> 
             </div> 

@@ -5,183 +5,7 @@ include '../clases/maestros.php';
 
 class daoServicio {
 
-    function Intercambiomaterias($matricula, $materia, $semestre, $control, $obligatorias, $idMateria) {
-        $cn = new coneccion();
-        $fecha = date("Y-m-d");
-        if ($control == "aceptar") {
-            $sql = "INSERT INTO temporalcargadas( matricula,materias, semestre, obligatoria, idMateria, fecha ) 
-VALUES (
-'$matricula','$materia', '$semestre','$obligatorias','$idMateria','$fecha'
-)";
-            mysql_query($sql, $cn->Conectarse());
-            $sql = "DELETE FROM temporalseleccionar where materias = '$materia' and matricula= '$matricula'";
-            mysql_query($sql, $cn->Conectarse());
-            $cn->cerrarBd();
-            return;
-        }
-        if ($control == "cancelar") {
-            $sql2 = "INSERT INTO temporalseleccionar( matricula,materias, semestre, obligatoria, idMateria ) 
-VALUES (
-'$matricula','$materia', '$semestre','$obligatorias','$idMateria'
-)";
-            mysql_query($sql2, $cn->Conectarse());
-            $sql2 = "DELETE FROM temporalcargadas where materias = '$materia' and matricula= '$matricula'";
-            mysql_query($sql2, $cn->Conectarse());
-            $cn->cerrarBd();
-            return;
-        }
-    }
-
-    function consultatablaseleccionar($matricula) {
-        $cn = new coneccion();
-        $sql = "select materias,semestre,obligatoria, idMateria from temporalseleccionar order by semestre asc  ";
-        $consulta = mysql_query($sql, $cn->Conectarse());
-        $registro = array();
-        if ($consulta != false) {
-            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-                $registro[] = $renglon;
-            }
-            mysql_free_result($consulta);
-        }
-
-        $cn->cerrarBd();
-        return $registro;
-    }
-
-    function consultatablaObligadas($matricula) {
-        $cn = new coneccion();
-        $sql = "select materias,semestre,obligatoria,idMateria from temporalcargadas order by semestre asc  ";
-        $consulta = mysql_query($sql, $cn->Conectarse());
-        $registro = array();
-        if ($consulta != false) {
-            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-                $registro[] = $renglon;
-            }
-            mysql_free_result($consulta);
-        }
-
-        $cn->cerrarBd();
-        return $registro;
-    }
-
-    function tablatemporalcargadas($materias, $matricula) {
-
-        $cn = new coneccion();
-        //setencia sql para crear la tabla
-        $renglon = $materias[0];
-        $sql = "create table IF NOT EXISTS temporalcargadas (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY,matricula varchar(20), materias varchar(20),semestre varchar(20), obligatoria int(1),idMateria int(20), fecha DATE) \n"
-                . " ";
-        mysql_query($sql, $cn->Conectarse());
-        $sql = "DELETE FROM temporalcargadas WHERE matricula='$matricula'";
-        mysql_query($sql, $cn->Conectarse());
-        $fecha = date("Y-m-d");
-        foreach ($materias as $renglon) {
-
-            foreach ($renglon as $campo => $valor) {
-                if ($campo == "materia") {
-                    $materia = $valor;
-                }
-                if ($campo == "semestre") {
-                    $semestre = $valor;
-                }
-                if ($campo == "id") {
-                    $idMateria = $valor;
-                }
-                if (($materia && $semestre && $idMateria) != "") {
-
-                    $sql = "INSERT INTO temporalcargadas (matricula, materias, semestre, obligatoria,idMateria, fecha) VALUES ('$matricula','$materia',' $semestre', 1 , '$idMateria', '$fecha') ";
-                    mysql_query($sql, $cn->Conectarse());
-                    $cn->cerrarBd();
-                    $materia = "";
-                    $semestre = "";
-                    $idMateria = "";
-                }
-
-
-
-                $paso = false;
-            }
-        }
-
-        //ejecuto la sentencia
-    }
-
-    function tablatemporalSeleccionar($materias, $matricula) {
-
-        $cn = new coneccion();
-        //setencia sql para crear la tabla
-        $renglon = $materias[0];
-
-        $sql = "create table IF NOT EXISTS temporalseleccionar (id MEDIUMINT NOT NULL AUTO_INCREMENT PRIMARY KEY, matricula varchar(20),materias varchar(20),semestre varchar(20),obligatoria int(1), idMateria int(20))";
-        mysql_query($sql, $cn->Conectarse());
-        $sql = "DELETE FROM temporalseleccionar WHERE matricula='$matricula'";
-        mysql_query($sql, $cn->Conectarse());
-        foreach ($materias as $renglon) {
-
-            foreach ($renglon as $campo => $valor) {
-                if ($campo == "materia") {
-                    $materia = $valor;
-                }
-                if ($campo == "semestre") {
-                    $semestre = $valor;
-                }
-                if ($campo == "id") {
-                    $idMateria = $valor;
-                }
-                if (($materia && $semestre && $idMateria) != "") {
-                    $sql = "INSERT INTO temporalseleccionar (matricula, materias, semestre, obligatoria, idMateria) VALUES ('$matricula','$materia',' $semestre',2,'$idMateria') ";
-                    mysql_query($sql, $cn->Conectarse());
-                    $cn->cerrarBd();
-                    $materia = "";
-                    $semestre = "";
-                    $idMateria = "";
-                }
-
-
-
-                $paso = false;
-            }
-        }
-
-        //ejecuto la sentencia
-    }
-
-    function consultaMateriasObligatorias($matricula) {
-        $cn = new coneccion();
-        $paso = false;
-        $sql = "SELECT m.materia, m.semestre, m.id FROM historial h, materias m where h.usuario = '$matricula' and h.idAcreditacion = 1 and h.calificacion < 70 and m.id = h.idMateria";
-        $consulta = mysql_query($sql, $cn->Conectarse());
-        $registro = array();
-        if ($consulta != false) {
-            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-                $registro[] = $renglon;
-            }
-            mysql_free_result($consulta);
-        }
-
-        $cn->cerrarBd();
-        return $registro;
-    }
-
-    function consultaMateriasSeleccionadas($matricula) {
-        $cn = new coneccion();
-        $paso = false;
-        $sql = "SELECT m.materia, m.semestre, m.id FROM materias m,historial h WHERE idAcreditacion <=2 and h.calificacion > 70 and m.id NOT IN (SELECT idMateria FROM historial where usuario='$matricula' )";
-        $consulta = mysql_query($sql, $cn->Conectarse());
-        $registro = array();
-        if ($consulta != false) {
-            while ($renglon = mysql_fetch_array($consulta, MYSQL_ASSOC)) {
-                $registro[] = $renglon;
-            }
-            mysql_free_result($consulta);
-        }
-        $cn->cerrarBd();
-        return $registro;
-    }
-
-    function TablaConsulta($registro) {
-        
-    }
+   
 
     function verificacion_de_ingreso(usuario $u) {
         $cn = new coneccion();
@@ -252,7 +76,7 @@ VALUES (
     function guardarEncuesta(tutorias $t) {
         $c = new coneccion();
         $sqlguardar = "INSERT INTO TUTORIAS (Matricula, lugarViviendo, estCivilPadres, escPadre, escMadre, ingresosMenFam, NumHermanos, PerPlaticar, relacionPadre, relacionMadre, fuenteIngreso, habMaterias, estudiosExtTec, cualExtTec, pasatiempos, trabajas, dondeTrabajas, ocupacionTrab, porqTrab, ingresastRazTec, ingresastRazCar, alergias, cualAlergia, cronica, cronicaCual, atencionPsi, cualAtencionPsi, atencionMedica, bebidasAlc, fumador, problemLegal, motivo, deporte, cualDep, frecuenciaDep, realizado, lugarOcupas, especialidad, promedioFinalPrepa, hereditaria, hereditariaQuien, enfermedadMental, enfermedadMentalCual, escuela1, estado1, grado1, escuela2, estado2, grado2, escuela3, estado3, grado3) VALUES('" . $t->getUsuario() . "','" . $t->getLugarViviendo() . "','" . $t->getEstCivilPadre() . "',
-            '" . $t->getEscPadre() . "','" . $t->getEscMadre() . "','" . $t->getIngresosMenFam() . "','" . $t->getNumHermanos() . "','" . $t->getPerPlaticar() . "','" . $t->getRelacionPadre() . "','" . $t->getRelacionMadre() . "','" . $t->getFuenteIngreso() . "','" . $t->getHabMaterias() . "','" . $t->getEstudiosExtTec() . "','" . $t->getCualExtTec() . "','" . $t->getPasatiempos() . "','" . $t->getTrabajas() . "','" . $t->getDondeTrabajas() . "','" . $t->getOcupacionTrab() . "','" . $t->getPorqTrab() . "','" . $t->getIngresastRazTec() . "','" . $t->getIngresastRazCar() . "','" . $t->getAlergias() . "','" . $t->getCualAlergia() . "','" . $t->getCronica() . "','" . $t->getCronicaCual() . "','" . $t->getAtencionPsi() . "','" . $t->getCualAtencionPsi() . "','" . $t->getAtencionMedica() . "','" . $t->getBebidasAlc() . "','" . $t->getFumador() . "','" . $t->getProblemLegal() . "','" . $t->getMotivo() . "','" . $t->getDeporte() . "','" . $t->getCualDep() . "','" . $t->getFrecuenciaDept() . "','" . $t->getRealizado() . "','" . $t->getLugarOcupas() . "','" . $t->getEspecialidad() . "','" . $t->getPromedio() . "','" . $t->getHereditaria() . "','" . $t->getHereditariaQuien() . "','" . $t->getMental() . "','" . $t->getMentalCual() . "','" . $t->getEscuela1() . "','" . $t->getEstado1() . "','" . $t->getGrado1() . "','" . $t->getEscuela2() . "','" . $t->getEstado2() . "','" . $t->getGrado2() . "','" . $t->getEscuela3() . "','" . $t->getEstado3() . "','" . $t->getGrado3() . "')";
+            '" . $t->getEscPadre() . "','" . $t->getEscMadre() . "','" . $t->getIngresosMenFam() . "','" . $t->getNumHermanos() . "','" . $t->getPerPlaticar() . "','" . $t->getRelacionPadre() . "','" . $t->getRelacionMadre() . "','" . $t->getFuenteIngreso() . "','" . $t->getHabMaterias() . "','" . $t->getEstudiosExtTec() . "','" . $t->getCualExtTec() . "','" . $t->getPasatiempos() . "','" . $t->getTrabajas() . "','" . $t->getDondeTrabajas() . "','" . $t->getOcupacionTrab() . "','" . $t->getPorqTrab() . "','" . $t->getIngresastRazTec() . "','" . $t->getIngresastRazCar() . "','" . $t->getAlergias() . "','" . $t->getCualAlergia() . "','" . $t->getCronica() . "','" . $t->getCronicaCual() . "','" . $t->getAtencionPsi() . "','" . $t->getCualAtencionPsi() . "','" . $t->getAtencionMedica() . "','" . $t->getBebidasAlc() . "','" . $t->getFumador() . "','" . $t->getProblemLegal() . "','" . $t->getMotivo() . "','" . $t->getDeporte() . "','" . $t->getCualDep() . "','" . $t->getFrecuenciaDept() . "','" . $t->getRealizado() . "','".$t->getLugarOcupas()."','".$t->getEspecialidad()."','".$t->getPromedio()."','".$t->getHereditaria()."','".$t->getHereditariaQuien()."','".$t->getMental()."','".$t->getMentalCual()."','".$t->getEscuela1()."','".$t->getEstado1()."','".$t->getGrado1()."','".$t->getEscuela2()."','".$t->getEstado2()."','".$t->getGrado2()."','".$t->getEscuela3()."','".$t->getEstado3()."','".$t->getGrado3()."')";
         mysql_query($sqlguardar, $c->Conectarse());
         $c->cerrarBd();
     }
@@ -268,21 +92,30 @@ VALUES (
 
     function guardarRegistroDatos(usuario $usuario) {
         $cn = new coneccion();
-        $sql = "INSERT INTO usuarios(usuario, pass, Nombres, ApellidoMaterno,ApellidoPaterno,Email)
-         VALUES('" . $usuario->getUsuario() . "','" . $usuario->getPass() . "','" . $usuario->getNombres() . "','" . $usuario->getApellidoMaterno() . "'
+        $sql = "INSERT INTO datosregistrousuario(usuario, Nombres, ApellidoMaterno,ApellidoPaterno,Email)
+         VALUES('" . $usuario->getUsuario() . "','" . $usuario->getNombres() . "','" . $usuario->getApellidoMaterno() . "'
              ,'" . $usuario->getApellidoPaterno() . "','" . $usuario->getEmail() . "')";
         mysql_query($sql, $cn->Conectarse());
         $cn->cerrarBd();
     }
-
+    
 //JOSE!!!!!!!!
     function guardarTutorias(avisosTutor $avisosT) {
         $cn = new coneccion();
         $sql = "INSERT INTO avisostutor (titulo,detalles,usuario,control,leido) 
-                VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "','" . $avisosT->getControl() . "','" . $avisosT->getLeido() . "')";
+                VALUES ('" . $avisosT->getTitulo() . "','" . $avisosT->getDetalle() . "','" . $avisosT->getUsuario() . "','".$avisosT->getControl()."','".$avisosT->getLeido()."')";
         mysql_query($sql, $cn->Conectarse());
-        $cn->cerrarBD;
+        $cn->cerrarBd();
     }
+    
+ //JOSE!!!!
+    function mandarPassAutorizado(usuario $u){
+    $cn = new coneccion();
+    $sql = "INSERT INTO usuarios (usuario,pass,tipo) VALUES ('".$u->getUsuario()."','".$u->getPass()."','".$u->getTipo()."' )";
+    mysql($sql, $cn->Conectarse());
+    $cn->cerrarBd();
+    }
+
 
     function guardarSessionTutorado(sessionTutorias $sesion) {
         $cn = new coneccion();
@@ -298,7 +131,7 @@ VALUES (
         $sql = "INSERT INTO cargaarchivos (usuario,ubicacion,nombre) 
            VALUES ('" . $cargar->getUsuario() . "','" . $cargar->getHubicacion() . "','" . $cargar->getNombreArchivo() . "')";
         mysql_query($sql, $cn->Conectarse());
-        $cn->cerrarBD;
+        $cn->cerrarBd();
     }
 
     //<!--JOEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLLLLLLLLLLLLL-->   
@@ -352,13 +185,6 @@ VALUES (
         }
         $cn->cerrarBd();
         return $maestro;
-    }
-
-    function asignarAlumnoTutor(tutotMaestrosAlumnos $tutorAlumno) {
-        $cn = new coneccion();
-        $sql = "INSERT INTO tutotmaestrosalumnos(matricula, idMaestro) VALUES('" . $tutorAlumno->getMatricula() . "', '" . $tutorAlumno->getIdMaestro() . "')";
-        mysql_query($sql, $cn->Conectarse());
-        $cn->cerrarBd();
     }
 
 }

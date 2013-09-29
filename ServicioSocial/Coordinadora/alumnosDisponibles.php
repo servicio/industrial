@@ -10,7 +10,7 @@ $sql="SELECT * FROM datospersonales dp where dp.usuario not in (SELECT matricula
 $datos = mysql_query($sql, $cn->Conectarse());
 
 echo '<select id="alumnos">
-        <option value="0">Alummno</option>';
+        <option value="">Alummno</option>';
 while ($rs = mysql_fetch_array($datos)) {
     $nombre = $rs[2]. "&nbsp;". " $rs[3] " ."&nbsp;"."$rs[4]";
     echo '
