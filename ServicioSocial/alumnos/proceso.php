@@ -10,7 +10,7 @@ $semestre=$_GET['semestre'];
 $obligatoria=$_GET['obligatoria'];
 $idMateria=$_GET['idMateria'];
 $control=$_GET['aceptar'];
-$dao=new daoServicio();
+$dao=new dao();
 $dao->Intercambiomaterias($matricula,$valor,$semestre, $control,$obligatoria,$idMateria);
 echo"<script>
              location.href='cambioMaterias.php';
