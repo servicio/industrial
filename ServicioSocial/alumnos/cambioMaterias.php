@@ -2,31 +2,23 @@
 
 
 
-
 <?php
-
 //include './plantilla.php'; 
-include './plantilla.php';
-
 include '../clases/materias.php';
-include '../Dao/dao.php';
-include './validacionseSessionAlumnos.php';
-$validar=new validacionseSessionAlumnos();
-$validar->verificacionDeLogueAlumnos();
-$usuario = $_SESSION["UsuarioAlumno"];
-$matricula = $usuario;
-$dao = new dao();
+include '../Dao/daoServicio.php';
+$matricula = "prr";
+$dao = new daoServicio();
 
 ?>
 
 
 
 
-<div >
+<div style="background: #0072c6">
 
     <?php
     $arreglo2D = $dao->consultatablaObligadas($matricula);
-    echo "<form name=\"materias\" method=\"post\" action=\"GuardarMaterias.php\">";
+    echo "<form name=\"materias\" method=\"post\" action=\"cambioMaterias.php\">";
 
 
     echo '<table border="1" class="table table-bordered table-striped">';
@@ -70,8 +62,7 @@ $dao = new dao();
             }
         }
         if ( $obligatoria != 1) {
-            echo" <td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar&obligatoria=$obligatoria&idMateria=$idMateria\" > algo </a></td>";
-        
+            echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=cancelar&obligatoria=$obligatoria&idMateria=$idMateria\" >link text</a></td>";
         }
         echo "</tr>";
     }
@@ -125,7 +116,7 @@ $dao = new dao();
             
         }
 
-      echo"<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar&obligatoria=$obligatoria&idMateria=$idMateria\" > aceptar </a> </td>";
+        echo "<td><a  href=\"proceso.php?algo=$prr&semestre=$plop&aceptar=aceptar&obligatoria=$obligatoria&idMateria=$idMateria\" >link text</a></td>";
         echo "</tr>";
     }
     echo "</table>";
@@ -135,4 +126,4 @@ $dao = new dao();
 </div>
 
 
-<?php include './plantillaFooter.php'; ?>
+<?php ?>
