@@ -50,7 +50,7 @@ include '../DaoConnection/coneccion.php';
             $("#asignarTutor").click(function() {
                 var info = $("#alumnos").val();
                 alert(info);
-                var informacion = "maestro=" + $("#maestro").val() + "alumnos=" + $("#alumnos").val();
+                var informacion = "maestro=" + $("#maestro").val() + "alumnos=" + info;
                 $.get('asignar.php', informacion, function() {
 
                 });
