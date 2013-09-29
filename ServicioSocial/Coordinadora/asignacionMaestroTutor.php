@@ -9,10 +9,11 @@ include '../DaoConnection/coneccion.php';
             $("#actualizar").hide();
             $("#aparecer").hide();
             $("#actualizarAlumno").hide();
-            var maestro = $('#maestro').val();
             $('#alumnos').load("alumnosDisponibles.php");
+            var idMaestro;
             $('#maestro').change(function() {
-
+                var maestro = $('#maestro').val();
+                idMaestro = $('#maestro').val();
                 if (maestro > 0) {
                     $("#actualizar").show('slow');
                     $("#agregar").hide('slow');
@@ -46,9 +47,15 @@ include '../DaoConnection/coneccion.php';
                 }
             });
 
-            $("#actualizarMaestro").click(function() {
-                
+            $("#asignarTutor").click(function() {
+                var info = $("#alumnos").val();
+                alert(info);
+                var informacion = "maestro=" + $("#maestro").val() + "alumnos=" + $("#alumnos").val();
+                $.get('asignar.php', informacion, function() {
+
+                });
             });
+
         });
     </script>
 
@@ -79,12 +86,13 @@ include '../DaoConnection/coneccion.php';
                     </div>
                     <br>
                     <div class="form-inline">
-                        <select id="alumnos" style="width: 260px;">
+                        <select id="alumnos"
+                                style="width: 260px;">
                         </select>
                         <a id="actualizarAlumno" data-toggle="modal" style="height: 20px" class="btn btn-warning"><i class="icon-pencil"></i></a>
                     </div>
                     <br>
-                    <input type="submit" value="Asignar" class="btn btn-success"/>
+                    <input id="asignarTutor" type="submit" value="Asignar" class="btn btn-success"/>
                     <input type="submit" value="Cancelar"  class="btn btn-danger"/> 
                 </center>
             </div>
@@ -96,4 +104,15 @@ include './plantillaFooter.php';
 ?>
 
 <div  id="myModal" class="modal hide fade"   aria-labelledby="myModalLabel" aria-hidden="true">
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'></button>
+    <h3 id='myModalLabel'>Altas Maestros</h3>
+</div>
+<div class='modal-body'>
+    <center>
+        <input id='NombreMaestro' type='text' id='Nombre Maestro' value='".$maestro->getMaestro()."' placeholder='Nombre...' style='height: 40px ;'/>
+    </center>
+    <div class='modal-footer'>
+        <button class='btn btn-warning' data-dismiss='modal' aria-hidden='true'>Cancelar <i class='icon-ban-circle icon-white'></i></button>
+        <button id='a'class='btn btn-primary'aria-hidden='true'>Actualizar<i class='icon-refresh icon-white'></i></button>
+    </div>
 </div>
