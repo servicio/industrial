@@ -89,7 +89,7 @@ include '../DaoConnection/coneccion.php';
                         <a id="actualizarAlumno" data-toggle="modal" style="height: 20px" class="btn btn-warning"><i class="icon-pencil"></i></a>
                     </div>
                     <br>
-                    <input type="submit" value="Asignar" class="btn btn-success"/>
+                    <input id="asignarTutor" type="submit" value="Asignar" class="btn btn-success"/>
                     <input type="submit" value="Cancelar"  class="btn btn-danger"/> 
                 </center>
             </div>

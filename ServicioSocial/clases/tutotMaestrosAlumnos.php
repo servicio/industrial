@@ -11,36 +11,34 @@
  * @author Comodoro
  */
 class tutotMaestrosAlumnos {
-    
 
-private $id;
-private $idMaestro;
-private $matricula;
+    private $id;
+    private $idMaestro;
+    private $matricula;
 
+    public function getId() {
+        return $this->id;
+    }
 
-public function getId() {
-    return $this->id;
-}
+    public function setId($id) {
+        $this->id = $id;
+    }
 
-public function setId($id) {
-    $this->id = $id;
-}
+    public function getIdMaestro() {
+        return $this->idMaestro;
+    }
 
-public function getIdMaestro() {
-    return $this->idMaestro;
-}
+    public function setIdMaestro($idMaestro) {
+        $this->idMaestro = $idMaestro;
+    }
 
-public function setIdMaestro($idMaestro) {
-    $this->idMaestro = $idMaestro;
-}
+    public function getMatricula() {
+        return $this->matricula;
+    }
 
-public function getIdMaterias() {
-    return $this->matricula;
-}
-
-public function setIdMaterias($idMaterias) {
-    $this->matricula = $idMaterias;
-}
+    public function setMatricula($matricula) {
+        $this->matricula = $matricula;
+    }
 
 }
 
