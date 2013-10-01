@@ -4,8 +4,12 @@ include '../DaoConnection/coneccion.php';
 include '../clases/maestros.php';
 
 class daoServicio {
-
-   
+    function graficar (){
+        
+        
+        
+    }
+            
 
     function verificacion_de_ingreso(usuario $u) {
         $cn = new coneccion();
@@ -92,7 +96,7 @@ class daoServicio {
 
     function guardarRegistroDatos(usuario $usuario) {
         $cn = new coneccion();
-        $sql = "INSERT INTO datosregistrousuario(usuario, Nombres, ApellidoMaterno,ApellidoPaterno,Email)
+        $sql = "INSERT INTO datosregistrousuario(usuario, nombres, apellidoMaterno,apellidoPaterno,Email)
          VALUES('" . $usuario->getUsuario() . "','" . $usuario->getNombres() . "','" . $usuario->getApellidoMaterno() . "'
              ,'" . $usuario->getApellidoPaterno() . "','" . $usuario->getEmail() . "')";
         mysql_query($sql, $cn->Conectarse());

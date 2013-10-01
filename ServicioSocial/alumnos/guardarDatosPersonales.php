@@ -10,7 +10,7 @@ $confirmarEmail=$_GET["confirmarEmail"];
 
    if($email==$confirmarEmail){
        $guardar ->setUsuario($_GET["usuario"]);
-$guardar ->setPass($_GET["contrasenia"]);
+//$guardar ->setPass($_GET["contrasenia"]);
 $guardar ->setNombres($_GET["nombres"]);
 $guardar ->setApellidoPaterno($_GET["ApellidoPaterno"]);
 $guardar ->setApellidoMaterno($_GET["ApellidoMaterno"]);
