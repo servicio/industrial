@@ -31,6 +31,7 @@ $barplot1 =new BarPlot($datos);
 // Un gradiente Horizontal de morados
 $barplot1->SetFillGradient("#BE81F7", "#E3CEF6", GRAD_HOR);
 // 30 pixeles de ancho para cada barra
+
 $barplot1->SetWidth(30);
 $grafico->Add($barplot1);
 $grafico->Stroke();
